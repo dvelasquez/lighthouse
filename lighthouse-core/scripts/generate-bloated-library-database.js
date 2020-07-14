@@ -71,7 +71,7 @@ async function collectLibraryStats(library, flags, index) {
         }
       }
 
-      libraries.forEach(library => {
+      libraries.forEach((library, index) => {
         const libraryVersion = `@${library.version}`;
 
         database[library.name] = Object.assign({}, database[library.name],
@@ -83,7 +83,11 @@ async function collectLibraryStats(library, flags, index) {
             })
         );
 
-        console.log(`   ✔ | ${library.version}`);
+        if (index === 0) {
+          database[library.name]['latest'] = database[library.name][libraryVersion];
+        }
+
+        console.log(`   ✔ | ${library.version}` + (index === 0 ? ' (latest)' : ''));
       });
 
       resolve();

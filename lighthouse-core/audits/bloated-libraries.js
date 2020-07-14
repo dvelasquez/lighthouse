@@ -11,6 +11,7 @@
 
 'use strict';
 
+const BundlePhobiaStats = require('../lib/bloated-libraries');
 const Audit = require('./audit.js');
 const i18n = require('../lib/i18n/i18n.js');
 
@@ -28,7 +29,7 @@ const UIStrings = {
 };
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);
-const database = {'moment': 'dayjs'};
+const Suggestions = {'moment': 'dayjs'};
 
 class BloatedLibrariesAudit extends Audit {
   /**
@@ -54,9 +55,18 @@ class BloatedLibrariesAudit extends Audit {
     const foundLibraries = artifacts.Stacks.filter(stack => stack.detector === 'js');
 
     for (const library of foundLibraries) {
-      if (!library.npm || !database[library.npm]) continue;
-      libraryPairings.push({original: library, suggestion: {name: database[library.npm]}});
-    }
+      if (!library.npm || !Suggestions[library.npm]) continue;
+
+      if (library.version && BundlePhobiaStats[library.npm][library.version]) {
+        libraryPairings.push({
+          original: BundlePhobiaStats[library.npm][library.version],
+          suggestion: BundlePhobiaStats[Suggestions[library.npm]['latest']]);
+      } else {
+        libraryPairings.push({
+          original: BundlePhobiaStats[library.npm]['latest'],
+          suggestion: BundlePhobiaStats[Suggestions[library.npm]['latest']]);
+        }
+      }
 
     const tableDetails = [];
     libraryPairings.map(libraryPairing => {
