@@ -12,8 +12,8 @@ const fs = require('fs');
 const exec = require('child_process').exec;
 
 const database = {};
-const bloatedLibraries = ['moment'];
-const suggestedLibraries = ['dayjs', 'luxon', 'date-fns'];
+const bloatedLibraries = ['moment', 'react'];
+const suggestedLibraries = ['dayjs', 'luxon', 'date-fns', 'angular'];
 const totalLibrariesToCollect = bloatedLibraries.length + suggestedLibraries.length;
 
 /**
@@ -55,7 +55,7 @@ async function collectLibraryStats(library, flags, index) {
     console.log(`◉ (${index}/${totalLibrariesToCollect}) ${library} `);
 
     exec(`bundle-phobia ${library} ${flags}`, (error, stdout) => {
-      if (error) console.log(`    ❌ | Failed to run "bundle-phobia ${library}" | ${error}`);
+      if (error) console.log(`    ❌ Failed to run "bundle-phobia ${library}" | ${error}`);
 
       /** @type {Array<{name: string, version: string}>} */
       const libraries = [];
@@ -67,15 +67,13 @@ async function collectLibraryStats(library, flags, index) {
             if (validateLibraryObject(library)) libraries.push(library);
           }
         } catch (e) {
-          console.log(`   ❌ | Failed to parse JSON | ${library}`);
+          console.log(`   ❌ Failed to parse JSON | ${library}`);
         }
       }
 
       libraries.forEach((library, index) => {
-        const libraryVersion = `@${library.version}`;
-
         database[library.name] = Object.assign({}, database[library.name],
-          Object.defineProperty({}, libraryVersion,
+          Object.defineProperty({}, library.version,
             {
               value: library,
               writable: true,
@@ -84,10 +82,10 @@ async function collectLibraryStats(library, flags, index) {
         );
 
         if (index === 0) {
-          database[library.name]['latest'] = database[library.name][libraryVersion];
+          database[library.name]['latest'] = database[library.name][library.version];
         }
 
-        console.log(`   ✔ | ${library.version}` + (index === 0 ? ' (latest)' : ''));
+        console.log(`   ✔ ${library.version}` + (index === 0 ? ' (latest)' : ''));
       });
 
       resolve();
@@ -112,9 +110,9 @@ async function collectLibraryStats(library, flags, index) {
   console.log(`◉ Saving database to ${filePath}...`);
   fs.writeFile(filePath, JSON.stringify(database), (err) => {
     if (err) {
-      console.log(`   ❌ | Failed saving | ${err}`);
+      console.log(`   ❌ Failed saving | ${err}`);
     } else {
-      console.log(`   ✔ | Done!`);
+      console.log(`   ✔ Done!`);
     }
   });
 })();
