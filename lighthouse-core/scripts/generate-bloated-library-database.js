@@ -12,8 +12,8 @@ const fs = require('fs');
 const exec = require('child_process').exec;
 
 const database = {};
-const bloatedLibraries = ['moment', 'react'];
-const suggestedLibraries = ['dayjs', 'luxon', 'date-fns', 'angular'];
+const bloatedLibraries = ['moment'];
+const suggestedLibraries = ['dayjs', 'luxon', 'date-fns'];
 const totalLibrariesToCollect = bloatedLibraries.length + suggestedLibraries.length;
 
 /**

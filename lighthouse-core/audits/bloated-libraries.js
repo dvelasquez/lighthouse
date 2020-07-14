@@ -26,10 +26,12 @@ const UIStrings = {
     '[Learn more](https://developers.google.com/web/fundamentals/performance/webpack/decrease-frontend-size#optimize_dependencies',
   /** Label for a column in a data table. Entries will be names of suggested libraries that are an alternative to what's currently being used. */
   suggestion: 'Suggestion',
+  /** Label for a column in a data table. Entries will be the amount of bytes saved by switching libraries calculated based on the gzip values. */
+  savings: 'Potential Size Savings (Bytes)',
 };
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);
-const Suggestions = {'moment': 'dayjs', 'react': 'angular'};
+const Suggestions = {'moment': 'dayjs'};
 
 class BloatedLibrariesAudit extends Audit {
   /**
@@ -50,11 +52,11 @@ class BloatedLibrariesAudit extends Audit {
    * @return {LH.Audit.Product}
    */
   static audit(artifacts) {
-    /** @type {Array<{original: {name: string}, suggestion: {name: string}}>} */
+    /** @type {Array<{original: {name: string, size: number, gzip: number}, suggestion: {name: string, size: number, gzip: number}}>} */
     const libraryPairings = [];
     const foundLibraries = artifacts.Stacks.filter(stack => stack.detector === 'js');
 
-    const seenLibraries = new Set(); // Avoids duplicate suggestions
+    const seenLibraries = new Set(); // This helps to avoid duplicate suggestions
 
     for (const library of foundLibraries) {
       if (!library.npm || !Suggestions[library.npm]) continue;
@@ -79,6 +81,7 @@ class BloatedLibrariesAudit extends Audit {
       tableDetails.push({
         name: libraryPairing.original.name,
         suggestion: libraryPairing.suggestion.name,
+        savings: libraryPairing.original.gzip - libraryPairing.suggestion.gzip,
       });
     });
 
@@ -86,6 +89,7 @@ class BloatedLibrariesAudit extends Audit {
     const headings = [
       {key: 'name', itemType: 'text', text: str_(i18n.UIStrings.columnName)},
       {key: 'suggestion', itemType: 'text', text: str_(UIStrings.suggestion)},
+      {key: 'savings', itemType: 'text', text: str_(UIStrings.savings)},
     ];
 
     const details = Audit.makeTableDetails(headings, tableDetails, {});
