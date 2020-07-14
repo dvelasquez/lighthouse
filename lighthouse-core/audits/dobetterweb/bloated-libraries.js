@@ -15,8 +15,10 @@ const Audit = require('../audit.js');
 const i18n = require('../../lib/i18n/i18n.js');
 
 const UIStrings = {
-  /** Descriptive title of a Lighthouse audit that provides detail on the large Javascript libraries that are used on the page that have better alternatives. */
-  title: 'Avoid unnecessarily large JavaScript dependencies',
+  /** Title of a Lighthouse audit that provides detail on large Javascript libraries that are used on the page that have better alternatives. This descriptive title is shown when to users when no known "bloated" libraries are detected on the page.*/
+  title: 'Avoids unnecessarily large JavaScript dependencies',
+  /** Title of a Lighthouse audit that provides detail on large Javascript libraries that are used on the page that have better alternatives. This descriptive title is shown when to users when some known "bloated" libraries are detected on the page.*/
+  failureTitle: 'Includes unnecessarily large JavaScript dependencies',
   /** Description of a Lighthouse audit that tells the user why they should care about the large Javascript libraries that have better alternatives.. This is displayed after a user expands the section to see more. No character length limits. */
   description: 'Large JavaScript libraries can lead to poor performance. ' +
     'Prefer smaller, functionally equivalent libraries to reduce your bundle size.' +
