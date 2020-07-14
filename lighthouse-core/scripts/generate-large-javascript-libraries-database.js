@@ -12,9 +12,9 @@ const fs = require('fs');
 const exec = require('child_process').exec;
 
 const database = {};
-const bloatedLibraries = ['moment'];
+const largeLibraries = ['moment'];
 const suggestedLibraries = ['dayjs', 'luxon', 'date-fns'];
-const totalLibrariesToCollect = bloatedLibraries.length + suggestedLibraries.length;
+const totalLibrariesToCollect = largeLibraries.length + suggestedLibraries.length;
 
 /**
  * Returns a file path that the database should be saved to.
@@ -22,7 +22,7 @@ const totalLibrariesToCollect = bloatedLibraries.length + suggestedLibraries.len
  * @return {string}
  */
 function getFilePathToSaveTo() {
-  const savePath = '../lib/bloated-libraries';
+  const savePath = '../lib/large-libraries';
   if (fs.existsSync(savePath + '.json')) {
     return savePath + Math.floor(Math.random() * Math.floor(1000)) + '.json';
   } else {
@@ -96,14 +96,14 @@ async function collectLibraryStats(library, flags, index) {
 (async () => {
   console.log(`Collecting ${totalLibrariesToCollect} libraries...`);
 
-  // Retrieve JSON statistics (-j) for every version (-r) of a bloated library
-  for (let i = 0; i < bloatedLibraries.length; i++) {
-    await collectLibraryStats(bloatedLibraries[i], '-j -r', i + 1);
+  // Retrieve JSON statistics (-j) for every version (-r) of a large library
+  for (let i = 0; i < largeLibraries.length; i++) {
+    await collectLibraryStats(largeLibraries[i], '-j -r', i + 1);
   }
 
   // Retrieve JSON statistics (-j) for only the most recent version of a suggested library
   for (let i = 0; i < suggestedLibraries.length; i++) {
-    await collectLibraryStats(suggestedLibraries[i], '-j', i + 1 + bloatedLibraries.length);
+    await collectLibraryStats(suggestedLibraries[i], '-j', i + 1 + largeLibraries.length);
   }
 
   const filePath = getFilePathToSaveTo();

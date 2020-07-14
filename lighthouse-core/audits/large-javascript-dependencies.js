@@ -6,24 +6,24 @@
 
 /**
  * @fileoverview This audit checks a page for any unnecessarily large npm dependencies.
- * These "bloated" libraries can be replaced with functionally equivalent, smaller ones.
+ * These libraries can be replaced with functionally equivalent, smaller ones.
  */
 
 'use strict';
 
-const BundlePhobiaStats = require('../lib/bloated-libraries.json');
+const BundlePhobiaStats = require('../lib/large-libraries.json');
 const Audit = require('./audit.js');
 const i18n = require('../lib/i18n/i18n.js');
 
 const UIStrings = {
-  /** Title of a Lighthouse audit that provides detail on large Javascript libraries that are used on the page that have better alternatives. This descriptive title is shown when to users when no known "bloated" libraries are detected on the page.*/
+  /** Title of a Lighthouse audit that provides detail on large Javascript libraries that are used on the page that have better alternatives. This descriptive title is shown when to users when no known unnecessarily large libraries are detected on the page.*/
   title: 'Avoids unnecessarily large JavaScript dependencies',
-  /** Title of a Lighthouse audit that provides detail on large Javascript libraries that are used on the page that have better alternatives. This descriptive title is shown when to users when some known "bloated" libraries are detected on the page.*/
+  /** Title of a Lighthouse audit that provides detail on large Javascript libraries that are used on the page that have better alternatives. This descriptive title is shown when to users when some known unnecessarily large libraries are detected on the page.*/
   failureTitle: 'Includes unnecessarily large JavaScript dependencies',
   /** Description of a Lighthouse audit that tells the user why they should care about the large Javascript libraries that have better alternatives.. This is displayed after a user expands the section to see more. No character length limits. */
   description: 'Large JavaScript libraries can lead to poor performance. ' +
     'Prefer smaller, functionally equivalent libraries to reduce your bundle size.' +
-    '[Learn more](https://developers.google.com/web/fundamentals/performance/webpack/decrease-frontend-size#optimize_dependencies',
+    '[Learn more](https://developers.google.com/web/fundamentals/performance/webpack/decrease-frontend-size#optimize_dependencies).',
   /** Label for a column in a data table. Entries will be names of suggested libraries that are an alternative to what's currently being used. */
   suggestion: 'Suggestion',
   /** Label for a column in a data table. Entries will be the amount of bytes saved by switching libraries calculated based on the gzip values. */
@@ -33,13 +33,13 @@ const UIStrings = {
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);
 const Suggestions = {'moment': 'dayjs'};
 
-class BloatedLibrariesAudit extends Audit {
+class LargeJavaScriptDependencies extends Audit {
   /**
    * @return {LH.Audit.Meta}
    */
   static get meta() {
     return {
-      id: 'bloated-libraries',
+      id: 'large-javascript-dependencies',
       title: str_(UIStrings.title),
       failureTitle: str_(UIStrings.failureTitle),
       description: str_(UIStrings.description),
@@ -103,5 +103,5 @@ class BloatedLibrariesAudit extends Audit {
   }
 }
 
-module.exports = BloatedLibrariesAudit;
+module.exports = LargeJavaScriptDependencies;
 module.exports.UIStrings = UIStrings;
