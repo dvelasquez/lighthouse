@@ -38,6 +38,7 @@ class BloatedLibrariesAudit extends Audit {
     return {
       id: 'bloated-libraries',
       title: str_(UIStrings.title),
+      failureTitle: str_(UIStrings.failureTitle),
       description: str_(UIStrings.description),
       requiredArtifacts: ['Stacks'],
     };
@@ -58,7 +59,7 @@ class BloatedLibrariesAudit extends Audit {
     }
 
     const tableDetails = [];
-    libraryPairings.forEach(libraryPairing => {
+    libraryPairings.map(libraryPairing => {
       tableDetails.push({
         name: libraryPairing.original.name,
         suggestion: libraryPairing.suggestion.name,
