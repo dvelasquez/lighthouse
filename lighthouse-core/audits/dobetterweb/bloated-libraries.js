@@ -18,8 +18,8 @@ const UIStrings = {
   /** Title of a Lighthouse audit that provides detail on the Javascript libraries that are used on the page. */
   title: 'Avoid bloated JavaScript dependencies',
   /** Description of a Lighthouse audit that tells the user what this audit is detecting. This is displayed after a user expands the section to see more. No character length limits. */
-  description: 'These are suggestions for functionally equivalent, smaller library alternatives' +
-    'that can reduce your bundle size when substituted. [Learn more](https://web.dev/bloated-libraries/)',
+  description: 'These are suggestions for functionally equivalent library alternatives ' +
+    'that can reduce your bundle size. [Learn more](https://web.dev/bloated-libraries/)',
   suggestion: 'Suggestion',
 };
 
@@ -39,11 +39,12 @@ class BloatedLibrariesAudit extends Audit {
   }
 
   /**
+   * If the given library is bloated, adds a library/suggestion pairing to libraryPairings.
    * @param {LH.Artifacts.DetectedStack} library
-   * @param {object[]} bloatedLibraries
+   * @param {object[]} libraryPairings
    */
   static searchBloatedDatabase(library, libraryPairings) {
-    const database = {'moment': 'dayjs', 'react': 'angular'};
+    const database = {'moment': 'dayjs'};
 
     if (library.npm && database[library.npm]) {
       libraryPairings.push({original: library, suggestion: {name: database[library.npm]}});
@@ -60,11 +61,12 @@ class BloatedLibrariesAudit extends Audit {
     const foundLibraries = artifacts.Stacks.filter(stack => stack.detector === 'js');
     foundLibraries.forEach(library => this.searchBloatedDatabase(library, libraryPairings));
 
-    libraryPairings.forEach((libraryPairing, index) => {
-      libraryPairings[index] = {
+    const tableDetails = [];
+    libraryPairings.forEach(libraryPairing => {
+      tableDetails.push({
         name: libraryPairing.original.name,
         suggestion: libraryPairing.suggestion.name,
-      };
+      });
     });
 
     /** @type {LH.Audit.Details.Table['headings']} */
@@ -72,7 +74,8 @@ class BloatedLibrariesAudit extends Audit {
       {key: 'name', itemType: 'text', text: str_(i18n.UIStrings.columnName)},
       {key: 'suggestion', itemType: 'text', text: str_(UIStrings.suggestion)},
     ];
-    const details = Audit.makeTableDetails(headings, libraryPairings, {});
+
+    const details = Audit.makeTableDetails(headings, tableDetails, {});
 
     return {
       score: libraryPairings.length > 0 ? 0 : 1,
