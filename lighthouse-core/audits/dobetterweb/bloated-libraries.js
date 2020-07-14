@@ -20,6 +20,68 @@ const UIStrings = {
   /** Description of a Lighthouse audit that tells the user what this audit is detecting. This is displayed after a user expands the section to see more. No character length limits. */
   description: 'These libraries have functionally equivalent, smaller alternatives' +
     'that can reduce your bundle size when replaced. [Learn more](https://web.dev/bloated-libraries/)',
+  suggestion: 'Suggestion',
 };
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);
+
+class BloatedLibrariesAudit extends Audit {
+  /**
+   * @return {LH.Audit.Meta}
+   */
+  static get meta() {
+    return {
+      id: 'bloated-libraries',
+      title: str_(UIStrings.title),
+      description: str_(UIStrings.description),
+      requiredArtifacts: ['Stacks'],
+    };
+  }
+
+  /**
+   * @param {LH.Artifacts.DetectedStack} library
+   * @param {object[]} bloatedLibraries
+   */
+  static searchBloatedDatabase(library, libraryPairings) {
+    const database = {'moment': 'dayjs'};
+
+    if (library.npm && database[library.npm]) {
+      libraryPairings.push({original: library, suggestion: database[library.npm]});
+    }
+  }
+
+  /**
+   * @param {LH.Artifacts} artifacts
+   * @return {LH.Audit.Product}
+   */
+  static audit(artifacts) {
+    const libraryPairings = [];
+
+    const foundLibraries = artifacts.Stacks.filter(stack => stack.detector === 'js');
+    foundLibraries.forEach(library => this.searchBloatedDatabase(library, libraryPairings));
+
+    libraryPairings.forEach((libraryPairing, index) => {
+      libraryPairings[index] = {
+        name: libraryPairing.original.name,
+        suggestion: libraryPairing.suggestion.name,
+      };
+    });
+
+    /** @type {LH.Audit.Details.Table['headings']} */
+    const headings = [
+      {key: 'name', itemType: 'text', text: str_(i18n.UIStrings.columnName)},
+      {key: 'suggestion', itemType: 'text', text: str_(UIStrings.suggestion)},
+    ];
+    const details = Audit.makeTableDetails(headings, libraryPairings, {});
+
+    return {
+      score: 1, // Always pass for now.
+      details: {
+        ...details,
+      },
+    };
+  }
+}
+
+module.exports = BloatedLibrariesAudit;
+module.exports.UIStrings = UIStrings;
