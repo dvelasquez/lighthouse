@@ -18,8 +18,8 @@ const UIStrings = {
   /** Title of a Lighthouse audit that provides detail on the Javascript libraries that are used on the page. */
   title: 'Avoid bloated JavaScript dependencies',
   /** Description of a Lighthouse audit that tells the user what this audit is detecting. This is displayed after a user expands the section to see more. No character length limits. */
-  description: 'These libraries have functionally equivalent, smaller alternatives' +
-    'that can reduce your bundle size when replaced. [Learn more](https://web.dev/bloated-libraries/)',
+  description: 'These are suggestions for functionally equivalent, smaller library alternatives' +
+    'that can reduce your bundle size when substituted. [Learn more](https://web.dev/bloated-libraries/)',
   suggestion: 'Suggestion',
 };
 
@@ -43,10 +43,10 @@ class BloatedLibrariesAudit extends Audit {
    * @param {object[]} bloatedLibraries
    */
   static searchBloatedDatabase(library, libraryPairings) {
-    const database = {'moment': 'dayjs'};
+    const database = {'moment': 'dayjs', 'react': 'angular'};
 
     if (library.npm && database[library.npm]) {
-      libraryPairings.push({original: library, suggestion: database[library.npm]});
+      libraryPairings.push({original: library, suggestion: {name: database[library.npm]}});
     }
   }
 
@@ -75,7 +75,7 @@ class BloatedLibrariesAudit extends Audit {
     const details = Audit.makeTableDetails(headings, libraryPairings, {});
 
     return {
-      score: 1, // Always pass for now.
+      score: libraryPairings.length > 0 ? 0 : 1,
       details: {
         ...details,
       },
