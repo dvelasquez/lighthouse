@@ -8,3 +8,18 @@
  * @fileoverview This audit checks a page for any unnecessarily large npm dependencies.
  * These "bloated" libraries can be replaced with functionally equivalent, smaller ones.
  */
+
+'use strict';
+
+const Audit = require('../audit.js');
+const i18n = require('../../lib/i18n/i18n.js');
+
+const UIStrings = {
+  /** Title of a Lighthouse audit that provides detail on the Javascript libraries that are used on the page. */
+  title: 'Avoid bloated JavaScript dependencies',
+  /** Description of a Lighthouse audit that tells the user what this audit is detecting. This is displayed after a user expands the section to see more. No character length limits. */
+  description: 'These libraries have functionally equivalent, smaller alternatives' +
+    'that can reduce your bundle size when replaced. [Learn more](https://web.dev/bloated-libraries/)',
+};
+
+const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);
