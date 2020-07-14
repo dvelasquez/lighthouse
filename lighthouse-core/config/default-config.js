@@ -311,6 +311,7 @@ const defaultConfig = {
     'byte-efficiency/duplicated-javascript',
     'byte-efficiency/legacy-javascript',
     'dobetterweb/appcache-manifest',
+    'dobetterweb/bloated-libraries',
     'dobetterweb/doctype',
     'dobetterweb/charset',
     'dobetterweb/dom-size',
@@ -565,6 +566,7 @@ const defaultConfig = {
         // General Group
         {id: 'no-unload-listeners', weight: 1, group: 'best-practices-general'},
         {id: 'appcache-manifest', weight: 1, group: 'best-practices-general'},
+        {id: 'bloated-libraries', weight: 0, group: 'best-practices-general'},
         {id: 'js-libraries', weight: 0, group: 'best-practices-general'},
         {id: 'deprecations', weight: 1, group: 'best-practices-general'},
         {id: 'errors-in-console', weight: 1, group: 'best-practices-general'},
