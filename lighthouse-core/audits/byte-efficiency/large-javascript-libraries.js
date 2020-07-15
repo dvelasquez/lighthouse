@@ -11,7 +11,7 @@
 
 'use strict';
 
-const bundlePhobiaStats = require('./large-javascript-libraries.json');
+const bundlePhobiaStats = require('./bundlephobia-database.json');
 const largeLibraryToSuggestion = require('./library-suggestions.json');
 
 const Audit = require('../audit.js');

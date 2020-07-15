@@ -12,7 +12,7 @@ const fs = require('fs');
 const exec = require('child_process').exec;
 
 const database = {};
-const allLibraries = require('../audits/large-javascript-libraries/library-suggestions.json');
+const allLibraries = require('../audits/byte-efficiency/library-suggestions.json');
 const largeLibraries = Object.keys(allLibraries);
 const suggestedLibraries = largeLibraries.map(key => allLibraries[key]).flat();
 const totalLibrariesToCollect = largeLibraries.length + suggestedLibraries.length;

@@ -313,6 +313,7 @@ const defaultConfig = {
     'byte-efficiency/efficient-animated-content',
     'byte-efficiency/duplicated-javascript',
     'byte-efficiency/legacy-javascript',
+    'byte-efficiency/large-javascript-libraries',
     'dobetterweb/appcache-manifest',
     'dobetterweb/doctype',
     'dobetterweb/charset',
@@ -338,7 +339,6 @@ const defaultConfig = {
     'seo/plugins',
     'seo/canonical',
     'seo/manual/structured-data',
-    'large-javascript-libraries/large-javascript-libraries',
   ],
 
   groups: {
