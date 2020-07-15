@@ -31,15 +31,15 @@ const UIStrings = {
 };
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);
-const Suggestions = {'moment': 'dayjs'};
+const largeLibraryToSuggestion = {'moment': 'dayjs'};
 
-class LargeJavaScriptDependencies extends Audit {
+class LargeJavascriptLibraries extends Audit {
   /**
    * @return {LH.Audit.Meta}
    */
   static get meta() {
     return {
-      id: 'large-javascript-dependencies',
+      id: 'large-javascript-libraries',
       title: str_(UIStrings.title),
       failureTitle: str_(UIStrings.failureTitle),
       description: str_(UIStrings.description),
@@ -56,22 +56,22 @@ class LargeJavaScriptDependencies extends Audit {
     const libraryPairings = [];
     const foundLibraries = artifacts.Stacks.filter(stack => stack.detector === 'js');
 
-    const seenLibraries = new Set(); // This helps to avoid duplicate suggestions
+    const seenLibraries = new Set();
 
     for (const library of foundLibraries) {
-      if (!library.npm || !Suggestions[library.npm]) continue;
+      if (!library.npm || !largeLibraryToSuggestion[library.npm]) continue;
       if (seenLibraries.has(library.npm)) continue;
       seenLibraries.add(library.npm);
 
       if (library.version && BundlePhobiaStats[library.npm][library.version]) {
         libraryPairings.push({
           original: BundlePhobiaStats[library.npm][library.version],
-          suggestion: BundlePhobiaStats[Suggestions[library.npm]]['latest'],
+          suggestion: BundlePhobiaStats[largeLibraryToSuggestion[library.npm]]['latest'],
         });
       } else {
         libraryPairings.push({
           original: BundlePhobiaStats[library.npm]['latest'],
-          suggestion: BundlePhobiaStats[Suggestions[library.npm]]['latest'],
+          suggestion: BundlePhobiaStats[largeLibraryToSuggestion[library.npm]]['latest'],
         });
       }
     }
@@ -103,5 +103,5 @@ class LargeJavaScriptDependencies extends Audit {
   }
 }
 
-module.exports = LargeJavaScriptDependencies;
+module.exports = LargeJavascriptLibraries;
 module.exports.UIStrings = UIStrings;

@@ -22,7 +22,7 @@ const totalLibrariesToCollect = largeLibraries.length + suggestedLibraries.lengt
  * @return {string}
  */
 function getFilePathToSaveTo() {
-  const savePath = '../lib/large-libraries';
+  const savePath = '../lib/large-javascript-libraries';
   if (fs.existsSync(savePath + '.json')) {
     return savePath + Math.floor(Math.random() * Math.floor(1000)) + '.json';
   } else {
@@ -40,6 +40,8 @@ function validateLibraryObject(library) {
   return library.hasOwnProperty('name') &&
     library.hasOwnProperty('size') &&
     library.hasOwnProperty('gzip') &&
+    library.hasOwnProperty('description') &&
+    library.hasOwnProperty('repository') &&
     library.hasOwnProperty('version') &&
     !library.version.match(/^([0-9]+) packages$/);
 }
@@ -57,7 +59,7 @@ async function collectLibraryStats(library, flags, index) {
     exec(`bundle-phobia ${library} ${flags}`, (error, stdout) => {
       if (error) console.log(`    ❌ Failed to run "bundle-phobia ${library}" | ${error}`);
 
-      /** @type {Array<{name: string, version: string}>} */
+      /** @type {Array<{name: string, version: string, gzip: number, description: string, repository: string}>} */
       const libraries = [];
 
       for (const libraryString of stdout.split('\n')) {
@@ -72,14 +74,16 @@ async function collectLibraryStats(library, flags, index) {
       }
 
       libraries.forEach((library, index) => {
-        database[library.name] = Object.assign({}, database[library.name],
-          Object.defineProperty({}, library.version,
-            {
-              value: library,
-              writable: true,
-              enumerable: true,
-            })
-        );
+        database[library.name] = {
+          ...database[library.name],
+          [library.version]: {
+            name: library.name,
+            version: library.version,
+            gzip: library.gzip,
+            description: library.description,
+            repository: library.repository,
+          },
+        };
 
         if (index === 0) {
           database[library.name]['latest'] = database[library.name][library.version];
@@ -108,7 +112,7 @@ async function collectLibraryStats(library, flags, index) {
 
   const filePath = getFilePathToSaveTo();
   console.log(`◉ Saving database to ${filePath}...`);
-  fs.writeFile(filePath, JSON.stringify(database), (err) => {
+  fs.writeFile(filePath, JSON.stringify(database, null, 2), (err) => {
     if (err) {
       console.log(`   ❌ Failed saving | ${err}`);
     } else {
