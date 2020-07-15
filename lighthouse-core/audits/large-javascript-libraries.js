@@ -11,23 +11,23 @@
 
 'use strict';
 
-const BundlePhobiaStats = require('../lib/large-libraries.json');
+const BundlePhobiaStats = require('../lib/large-javascript-libraries.json');
 const Audit = require('./audit.js');
 const i18n = require('../lib/i18n/i18n.js');
 
 const UIStrings = {
   /** Title of a Lighthouse audit that provides detail on large Javascript libraries that are used on the page that have better alternatives. This descriptive title is shown when to users when no known unnecessarily large libraries are detected on the page.*/
-  title: 'Avoids unnecessarily large JavaScript dependencies',
+  title: 'Avoids unnecessarily large JavaScript libraries',
   /** Title of a Lighthouse audit that provides detail on large Javascript libraries that are used on the page that have better alternatives. This descriptive title is shown when to users when some known unnecessarily large libraries are detected on the page.*/
-  failureTitle: 'Includes unnecessarily large JavaScript dependencies',
+  failureTitle: 'Includes unnecessarily large JavaScript libraries',
   /** Description of a Lighthouse audit that tells the user why they should care about the large Javascript libraries that have better alternatives.. This is displayed after a user expands the section to see more. No character length limits. */
   description: 'Large JavaScript libraries can lead to poor performance. ' +
     'Prefer smaller, functionally equivalent libraries to reduce your bundle size.' +
     '[Learn more](https://developers.google.com/web/fundamentals/performance/webpack/decrease-frontend-size#optimize_dependencies).',
-  /** Label for a column in a data table. Entries will be names of suggested libraries that are an alternative to what's currently being used. */
-  suggestion: 'Suggestion',
-  /** Label for a column in a data table. Entries will be the amount of bytes saved by switching libraries calculated based on the gzip values. */
-  savings: 'Potential Size Savings (Bytes)',
+  /** Label for a column in a data table. Entries will be names of large JS libraries that could be replaced. */
+  name: 'Library Name',
+  /** Label for a column in a data table. Entries will be names of smaller libraries that could be used as a replacement. */
+  suggestion: 'Smaller Alternative',
 };
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);
@@ -52,7 +52,10 @@ class LargeJavascriptLibraries extends Audit {
    * @return {LH.Audit.Product}
    */
   static audit(artifacts) {
-    /** @type {Array<{original: {name: string, size: number, gzip: number}, suggestion: {name: string, size: number, gzip: number}}>} */
+    /** @type {Array<{
+     * original: {name: string, version: string, gzip: number, description: string, repository: string},
+     * suggestion: {name: string, version: string, gzip: number, description: string, repository: string}
+     * }>} */
     const libraryPairings = [];
     const foundLibraries = artifacts.Stacks.filter(stack => stack.detector === 'js');
 
@@ -81,15 +84,18 @@ class LargeJavascriptLibraries extends Audit {
       tableDetails.push({
         name: libraryPairing.original.name,
         suggestion: libraryPairing.suggestion.name,
-        savings: libraryPairing.original.gzip - libraryPairing.suggestion.gzip,
+        savings: ((libraryPairing.original.gzip - libraryPairing.suggestion.gzip) / 1024).
+                    toFixed(2) + ' KiB',
+        originalURL: libraryPairing.original.repository,
+        suggestionURL: libraryPairing.suggestion.repository,
       });
     });
 
     /** @type {LH.Audit.Details.Table['headings']} */
     const headings = [
-      {key: 'name', itemType: 'text', text: str_(i18n.UIStrings.columnName)},
+      {key: 'name', itemType: 'text', text: str_(UIStrings.name)},
       {key: 'suggestion', itemType: 'text', text: str_(UIStrings.suggestion)},
-      {key: 'savings', itemType: 'text', text: str_(UIStrings.savings)},
+      {key: 'savings', itemType: 'text', text: str_(i18n.UIStrings.columnWastedBytes)},
     ];
 
     const details = Audit.makeTableDetails(headings, tableDetails, {});
