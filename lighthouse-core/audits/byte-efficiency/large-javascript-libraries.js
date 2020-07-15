@@ -25,7 +25,7 @@ const UIStrings = {
   /** Description of a Lighthouse audit that tells the user why they should care about the large Javascript libraries that have better alternatives.. This is displayed after a user expands the section to see more. No character length limits. */
   description: 'Large JavaScript libraries can lead to poor performance. ' +
     'Prefer smaller, functionally equivalent libraries to reduce your bundle size.' +
-    '[Learn more](https://developers.google.com/web/fundamentals/performance/webpack/decrease-frontend-size#optimize_dependencies).',
+    ' [Learn more](https://developers.google.com/web/fundamentals/performance/webpack/decrease-frontend-size#optimize_dependencies).',
   /** Label for a column in a data table. Entries will be names of large JS libraries that could be replaced. */
   name: 'Library Name',
   /** Label for a column in a data table. Entries will be names of smaller libraries that could be used as a replacement. */
