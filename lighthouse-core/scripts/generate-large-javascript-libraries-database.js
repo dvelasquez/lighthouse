@@ -22,7 +22,7 @@ const totalLibrariesToCollect = largeLibraries.length + suggestedLibraries.lengt
  * @return {string}
  */
 function getFilePathToSaveTo() {
-  const savePath = '../lib/large-javascript-libraries';
+  const savePath = '../audits/byte-efficiency/large-javascript-libraries';
   if (fs.existsSync(savePath + '.json')) {
     return savePath + Math.floor(Math.random() * Math.floor(1000)) + '.json';
   } else {

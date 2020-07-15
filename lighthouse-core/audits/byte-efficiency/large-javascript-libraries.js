@@ -11,9 +11,9 @@
 
 'use strict';
 
-const BundlePhobiaStats = require('../lib/large-javascript-libraries.json');
-const Audit = require('./audit.js');
-const i18n = require('../lib/i18n/i18n.js');
+const BundlePhobiaStats = require('./large-javascript-libraries.json');
+const Audit = require('../audit.js');
+const i18n = require('../../lib/i18n/i18n.js');
 
 const UIStrings = {
   /** Title of a Lighthouse audit that provides detail on large Javascript libraries that are used on the page that have better alternatives. This descriptive title is shown when to users when no known unnecessarily large libraries are detected on the page.*/
