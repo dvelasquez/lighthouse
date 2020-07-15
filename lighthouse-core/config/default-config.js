@@ -338,6 +338,7 @@ const defaultConfig = {
     'seo/plugins',
     'seo/canonical',
     'seo/manual/structured-data',
+    'large-javascript-libraries/large-javascript-libraries',
   ],
 
   groups: {

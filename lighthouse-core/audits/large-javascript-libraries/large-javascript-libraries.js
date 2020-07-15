@@ -11,7 +11,9 @@
 
 'use strict';
 
-const BundlePhobiaStats = require('./large-javascript-libraries.json');
+const bundlePhobiaStats = require('./large-javascript-libraries.json');
+const largeLibraryToSuggestion = require('./library-suggestions.json');
+
 const Audit = require('../audit.js');
 const i18n = require('../../lib/i18n/i18n.js');
 
@@ -31,7 +33,6 @@ const UIStrings = {
 };
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);
-const largeLibraryToSuggestion = {'moment': 'dayjs'};
 
 class LargeJavascriptLibraries extends Audit {
   /**
@@ -66,15 +67,15 @@ class LargeJavascriptLibraries extends Audit {
       if (seenLibraries.has(library.npm)) continue;
       seenLibraries.add(library.npm);
 
-      if (library.version && BundlePhobiaStats[library.npm][library.version]) {
+      if (library.version && bundlePhobiaStats[library.npm][library.version]) {
         libraryPairings.push({
-          original: BundlePhobiaStats[library.npm][library.version],
-          suggestion: BundlePhobiaStats[largeLibraryToSuggestion[library.npm]]['latest'],
+          original: bundlePhobiaStats[library.npm][library.version],
+          suggestion: bundlePhobiaStats[largeLibraryToSuggestion[library.npm]]['latest'],
         });
       } else {
         libraryPairings.push({
-          original: BundlePhobiaStats[library.npm]['latest'],
-          suggestion: BundlePhobiaStats[largeLibraryToSuggestion[library.npm]]['latest'],
+          original: bundlePhobiaStats[library.npm]['latest'],
+          suggestion: bundlePhobiaStats[largeLibraryToSuggestion[library.npm]]['latest'],
         });
       }
     }
