@@ -68,14 +68,18 @@ class LargeJavascriptLibraries extends Audit {
       seenLibraries.add(library.npm);
 
       if (library.version && bundlePhobiaStats[library.npm][library.version]) {
-        libraryPairings.push({
-          original: bundlePhobiaStats[library.npm][library.version],
-          suggestion: bundlePhobiaStats[largeLibraryToSuggestion[library.npm]]['latest'],
+        largeLibraryToSuggestion[library.npm].map(librarySuggestionName => {
+          libraryPairings.push({
+            original: bundlePhobiaStats[library.npm][library.version],
+            suggestion: bundlePhobiaStats[librarySuggestionName]['latest'],
+          });
         });
       } else {
-        libraryPairings.push({
-          original: bundlePhobiaStats[library.npm]['latest'],
-          suggestion: bundlePhobiaStats[largeLibraryToSuggestion[library.npm]]['latest'],
+        largeLibraryToSuggestion[library.npm].map(librarySuggestionName => {
+          libraryPairings.push({
+            original: bundlePhobiaStats[library.npm]['latest'],
+            suggestion: bundlePhobiaStats[librarySuggestionName]['latest'],
+          });
         });
       }
     }
