@@ -12,8 +12,9 @@ const fs = require('fs');
 const exec = require('child_process').exec;
 
 const database = {};
-const largeLibraries = ['moment'];
-const suggestedLibraries = ['dayjs', 'luxon', 'date-fns'];
+const allLibraries = require('../audits/large-javascript-libraries/library-suggestions.json');
+const largeLibraries = Object.keys(allLibraries);
+const suggestedLibraries = largeLibraries.map(key => allLibraries[key]).flat();
 const totalLibrariesToCollect = largeLibraries.length + suggestedLibraries.length;
 
 /**
