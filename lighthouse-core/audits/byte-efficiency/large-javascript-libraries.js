@@ -11,6 +11,8 @@
 
 'use strict';
 
+/** @typedef {{name: string, version: string, gzip: number, description: string, repository: string}} BundlePhobiaLibrary */
+
 const bundlePhobiaStats = require('./bundlephobia-database.json');
 const largeLibraryToSuggestion = require('./library-suggestions.json');
 
@@ -53,10 +55,7 @@ class LargeJavascriptLibraries extends Audit {
    * @return {LH.Audit.Product}
    */
   static audit(artifacts) {
-    /** @type {Array<{
-     * original: {name: string, version: string, gzip: number, description: string, repository: string},
-     * suggestion: {name: string, version: string, gzip: number, description: string, repository: string}
-     * }>} */
+    /** @type {Array<{original: BundlePhobiaLibrary, suggestion: BundlePhobiaLibrary}>} */
     const libraryPairings = [];
     const foundLibraries = artifacts.Stacks.filter(stack => stack.detector === 'js');
 
@@ -87,20 +86,38 @@ class LargeJavascriptLibraries extends Audit {
     const tableDetails = [];
     libraryPairings.map(libraryPairing => {
       tableDetails.push({
-        name: libraryPairing.original.name,
-        suggestion: libraryPairing.suggestion.name,
-        savings: ((libraryPairing.original.gzip - libraryPairing.suggestion.gzip) / 1024).
-                    toFixed(2) + ' KiB',
+        name: {
+          text: libraryPairing.original.name,
+          url: libraryPairing.original.repository,
+          type: 'link',
+        },
+        suggestion: {
+          text: libraryPairing.suggestion.name,
+          url: libraryPairing.suggestion.repository,
+          type: 'link',
+        },
+        originalSize: libraryPairing.original.gzip,
+        savings: libraryPairing.original.gzip - libraryPairing.suggestion.gzip,
         originalURL: libraryPairing.original.repository,
         suggestionURL: libraryPairing.suggestion.repository,
+        subItems: {
+          type: 'subitems',
+          items: [{
+            originalDescription: libraryPairing.original.description,
+            suggestionDescription: libraryPairing.suggestion.description,
+          }],
+        },
       });
     });
 
-    /** @type {LH.Audit.Details.Table['headings']} */
+    /** @type {LH.Audit.Details.TableColumnHeading[]} */
     const headings = [
-      {key: 'name', itemType: 'text', text: str_(UIStrings.name)},
-      {key: 'suggestion', itemType: 'text', text: str_(UIStrings.suggestion)},
-      {key: 'savings', itemType: 'text', text: str_(i18n.UIStrings.columnWastedBytes)},
+      /* eslint-disable max-len */
+      {key: 'name', itemType: 'url', text: str_(UIStrings.name), subItemsHeading: {key: 'originalDescription'}},
+      {key: 'suggestion', itemType: 'url', text: str_(UIStrings.suggestion), subItemsHeading: {key: 'suggestionDescription'}},
+      {key: 'originalSize', itemType: 'bytes', text: str_(i18n.UIStrings.columnTransferSize)},
+      {key: 'savings', itemType: 'bytes', text: str_(i18n.UIStrings.columnWastedBytes)},
+      /* eslint-enable max-len */
     ];
 
     const details = Audit.makeTableDetails(headings, tableDetails, {});
