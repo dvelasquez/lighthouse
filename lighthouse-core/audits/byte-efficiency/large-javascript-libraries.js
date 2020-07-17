@@ -84,38 +84,48 @@ class LargeJavascriptLibraries extends Audit {
     }
 
     const tableDetails = [];
-    libraryPairings.map(libraryPairing => {
+    let currentAlternative = 0;
+
+    for (let i = 0; i < libraryPairings.length; i++) {
+      if (i > 0) {
+        if (libraryPairings[i].original.name === libraryPairings[i - 1].original.name) {
+          currentAlternative++;
+        } else {
+          currentAlternative = 1;
+        }
+      } else {
+        currentAlternative++;
+      }
+
+      const original = libraryPairings[i].original;
+      const suggestion = libraryPairings[i].suggestion;
+
       tableDetails.push({
         name: {
-          text: libraryPairing.original.name,
-          url: libraryPairing.original.repository,
+          text: currentAlternative === 1 ? original.name : '',
+          url: currentAlternative === 1 ? original.repository : '',
           type: 'link',
         },
         suggestion: {
-          text: libraryPairing.suggestion.name,
-          url: libraryPairing.suggestion.repository,
+          text: currentAlternative + ') ' + suggestion.name,
+          url: suggestion.repository,
           type: 'link',
         },
-        originalSize: libraryPairing.original.gzip,
-        savings: libraryPairing.original.gzip - libraryPairing.suggestion.gzip,
-        originalURL: libraryPairing.original.repository,
-        suggestionURL: libraryPairing.suggestion.repository,
+        savings: original.gzip - suggestion.gzip,
+        originalURL: original.repository,
+        suggestionURL: suggestion.repository,
         subItems: {
           type: 'subitems',
-          items: [{
-            originalDescription: libraryPairing.original.description,
-            suggestionDescription: libraryPairing.suggestion.description,
-          }],
+          items: [{suggestionDescription: str_(suggestion.description)}],
         },
       });
-    });
+    }
 
     /** @type {LH.Audit.Details.TableColumnHeading[]} */
     const headings = [
       /* eslint-disable max-len */
-      {key: 'name', itemType: 'url', text: str_(UIStrings.name), subItemsHeading: {key: 'originalDescription'}},
+      {key: 'name', itemType: 'url', text: str_(UIStrings.name)},
       {key: 'suggestion', itemType: 'url', text: str_(UIStrings.suggestion), subItemsHeading: {key: 'suggestionDescription'}},
-      {key: 'originalSize', itemType: 'bytes', text: str_(i18n.UIStrings.columnTransferSize)},
       {key: 'savings', itemType: 'bytes', text: str_(i18n.UIStrings.columnWastedBytes)},
       /* eslint-enable max-len */
     ];
