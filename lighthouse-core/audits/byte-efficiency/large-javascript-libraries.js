@@ -107,7 +107,7 @@ class LargeJavascriptLibraries extends Audit {
           type: 'link',
         },
         suggestion: {
-          text: currentAlternative + ') ' + suggestion.name,
+          text: currentAlternative + '. ' + suggestion.name,
           url: suggestion.repository,
           type: 'link',
         },
@@ -116,7 +116,7 @@ class LargeJavascriptLibraries extends Audit {
         suggestionURL: suggestion.repository,
         subItems: {
           type: 'subitems',
-          items: [{suggestionDescription: str_(suggestion.description)}],
+          items: [{suggestionDescription: suggestion.description}],
         },
       });
     }
