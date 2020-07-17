@@ -5,7 +5,7 @@
  */
 
 /**
- * @fileoverview This audit checks a page for any unnecessarily large npm dependencies.
+ * @fileoverview This audit checks a page for any large JS libraries with smaller alternatives.
  * These libraries can be replaced with functionally equivalent, smaller ones.
  */
 
