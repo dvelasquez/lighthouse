@@ -11,24 +11,24 @@
 const fs = require('fs');
 const exec = require('child_process').exec;
 
-const database = {};
+const datbasePath = '../audits/byte-efficiency/bundlephobia-database.json';
+const database = fs.existsSync(datbasePath) ?
+  require('../audits/byte-efficiency/bundlephobia-database.json') : {};
 
 const librariesJSON = require('../audits/byte-efficiency/library-suggestions.json');
 /** @type {string[]} */
 const libraries = Object.keys(librariesJSON).map(key => librariesJSON[key]).flat();
 
+
 /**
- * Returns a file path that the database should be saved to.
- * If an existing database exists, then save to a (probably) different path.
- * @return {string}
+ * Returns true if the library's stats have been recently scraped from BundlePhobia
+ * @param {string} library
+ * @return {boolean}
  */
-function getFilePathToSaveTo() {
-  const savePath = '../audits/byte-efficiency/bundlephobia-database';
-  if (fs.existsSync(savePath + '.json')) {
-    return savePath + Math.floor(Math.random() * Math.floor(1000)) + '.json';
-  } else {
-    return savePath + '.json';
-  }
+function hasBeenRecentlyScraped(library) {
+  return !!database[library] &&
+    database[library].lastScraped !== 'Error' &&
+    (Date.now() - database[library].lastScraped) / (1000 * 60 * 60 * 24.0) < 7;
 }
 
 /**
@@ -53,14 +53,25 @@ function validateLibraryObject(library) {
  * @param {number} index
  */
 async function collectLibraryStats(library, index) {
-  return new Promise(resolve => {
-    console.log(`◉ (${index}/${libraries.length}) ${library} `);
+  return new Promise((resolve, reject) => {
+    console.log(`\n◉ (${index}/${libraries.length}) ${library} `);
+
+    if (hasBeenRecentlyScraped(library)) {
+      console.log(`   ❕ Skipping - this was scraped too recently`);
+      resolve();
+      return;
+    }
 
     exec(`bundle-phobia ${library} -j -r`, (error, stdout) => {
-      if (error) console.log(`    ❌ Failed to run "bundle-phobia ${library}" | ${error}`);
+      if (error) {
+        console.log(`    ❌ Failed to run "bundle-phobia ${library}" | ${error}`);
+        reject();
+        return;
+      }
 
       /** @type {Array<{name: string, version: string, gzip: number, description: string, repository: string}>} */
       const libraries = [];
+      let lastScraped = Date.now();
 
       for (const libraryString of stdout.split('\n')) {
         try {
@@ -70,6 +81,7 @@ async function collectLibraryStats(library, index) {
           }
         } catch (e) {
           console.log(`   ❌ Failed to parse JSON | ${library}`);
+          lastScraped = 'Error';
         }
       }
 
@@ -83,6 +95,7 @@ async function collectLibraryStats(library, index) {
             description: library.description,
             repository: library.repository,
           },
+          lastScraped,
         };
 
         if (index === 0) {
@@ -102,12 +115,16 @@ async function collectLibraryStats(library, index) {
   console.log(`Collecting ${libraries.length} libraries...`);
 
   for (let i = 0; i < libraries.length; i++) {
-    await collectLibraryStats(libraries[i], i + 1);
+    try {
+      await collectLibraryStats(libraries[i], i + 1);
+    } catch (e) {
+      console.log('Exiting early...\n');
+      break;
+    }
   }
 
-  const filePath = getFilePathToSaveTo();
-  console.log(`◉ Saving database to ${filePath}...`);
-  fs.writeFile(filePath, JSON.stringify(database, null, 2), (err) => {
+  console.log(`◉ Saving database to ${datbasePath}...`);
+  fs.writeFile(datbasePath, JSON.stringify(database, null, 2), (err) => {
     if (err) {
       console.log(`   ❌ Failed saving | ${err}`);
     } else {

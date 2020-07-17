@@ -1,4 +1,233 @@
 {
+  "numeral": {
+    "2.0.6": {
+      "name": "numeral",
+      "version": "2.0.6",
+      "gzip": 3898,
+      "description": "Format and manipulate numbers.",
+      "repository": "https://github.com/adamwdraper/Numeral-js"
+    },
+    "lastScraped": 1594967812818,
+    "latest": {
+      "name": "numeral",
+      "version": "2.0.6",
+      "gzip": 3898,
+      "description": "Format and manipulate numbers.",
+      "repository": "https://github.com/adamwdraper/Numeral-js"
+    },
+    "2.0.5": {
+      "name": "numeral",
+      "version": "2.0.5",
+      "gzip": 3898,
+      "description": "Format and manipulate numbers.",
+      "repository": "https://github.com/adamwdraper/Numeral-js"
+    },
+    "2.0.4": {
+      "name": "numeral",
+      "version": "2.0.4",
+      "gzip": 3718,
+      "description": "Format and manipulate numbers.",
+      "repository": "https://github.com/adamwdraper/Numeral-js"
+    },
+    "2.0.3": {
+      "name": "numeral",
+      "version": "2.0.3",
+      "gzip": 3491,
+      "description": "Format and manipulate numbers.",
+      "repository": "https://github.com/adamwdraper/Numeral-js"
+    },
+    "2.0.2": {
+      "name": "numeral",
+      "version": "2.0.2",
+      "gzip": 3491,
+      "description": "Format and manipulate numbers.",
+      "repository": "https://github.com/adamwdraper/Numeral-js"
+    },
+    "2.0.1": {
+      "name": "numeral",
+      "version": "2.0.1",
+      "gzip": 3567,
+      "description": "Format and manipulate numbers.",
+      "repository": "https://github.com/adamwdraper/Numeral-js"
+    },
+    "2.0.0": {
+      "name": "numeral",
+      "version": "2.0.0",
+      "gzip": 3562,
+      "description": "Format and manipulate numbers.",
+      "repository": "https://github.com/adamwdraper/Numeral-js"
+    },
+    "1.5.6": {
+      "name": "numeral",
+      "version": "1.5.6",
+      "gzip": 3048,
+      "description": "Format and manipulate numbers.",
+      "repository": "https://github.com/adamwdraper/Numeral-js"
+    }
+  },
+  "numbro": {
+    "2.3.1": {
+      "name": "numbro",
+      "version": "2.3.1",
+      "gzip": 15738,
+      "description": "Format and manipulate numbers.",
+      "repository": "https://github.com/BenjaminVanRyseghem/numbro.git"
+    },
+    "lastScraped": 1594967830302,
+    "latest": {
+      "name": "numbro",
+      "version": "2.3.1",
+      "gzip": 15738,
+      "description": "Format and manipulate numbers.",
+      "repository": "https://github.com/BenjaminVanRyseghem/numbro.git"
+    },
+    "2.3.0": {
+      "name": "numbro",
+      "version": "2.3.0",
+      "gzip": 15667,
+      "description": "Format and manipulate numbers.",
+      "repository": "https://github.com/BenjaminVanRyseghem/numbro.git"
+    },
+    "2.2.0": {
+      "name": "numbro",
+      "version": "2.2.0",
+      "gzip": 15472,
+      "description": "",
+      "repository": ""
+    },
+    "2.1.2": {
+      "name": "numbro",
+      "version": "2.1.2",
+      "gzip": 15222,
+      "description": "Format and manipulate numbers.",
+      "repository": "https://github.com/BenjaminVanRyseghem/numbro"
+    },
+    "2.1.1": {
+      "name": "numbro",
+      "version": "2.1.1",
+      "gzip": 14923,
+      "description": "Format and manipulate numbers.",
+      "repository": "https://github.com/BenjaminVanRyseghem/numbro"
+    },
+    "2.1.0": {
+      "name": "numbro",
+      "version": "2.1.0",
+      "gzip": 14918,
+      "description": "Format and manipulate numbers.",
+      "repository": "https://github.com/BenjaminVanRyseghem/numbro"
+    },
+    "2.0.6": {
+      "name": "numbro",
+      "version": "2.0.6",
+      "gzip": 14872,
+      "description": "Format and manipulate numbers.",
+      "repository": "https://github.com/BenjaminVanRyseghem/numbro"
+    },
+    "2.0.5": {
+      "name": "numbro",
+      "version": "2.0.5",
+      "gzip": 14815,
+      "description": "Format and manipulate numbers.",
+      "repository": "https://github.com/BenjaminVanRyseghem/numbro"
+    }
+  },
+  "accounting": {
+    "0.4.1": {
+      "name": "accounting",
+      "version": "0.4.1",
+      "gzip": 1212,
+      "description": "number, money and currency formatting library",
+      "repository": "https://github.com/openexchangerates/accounting.js"
+    },
+    "lastScraped": 1594967838227,
+    "latest": {
+      "name": "accounting",
+      "version": "0.4.1",
+      "gzip": 1212,
+      "description": "number, money and currency formatting library",
+      "repository": "https://github.com/openexchangerates/accounting.js"
+    },
+    "0.3.2": {
+      "name": "accounting",
+      "version": "0.3.2",
+      "gzip": 1207,
+      "description": "number, money and currency formatting library",
+      "repository": "https://github.com/openexchangerates/accounting.js"
+    },
+    "0.3.0": {
+      "name": "accounting",
+      "version": "0.3.0",
+      "gzip": 1225,
+      "description": "number, money and currency formatting library",
+      "repository": "https://github.com/openexchangerates/accounting.js"
+    }
+  },
+  "currency.js": {
+    "2.0.0": {
+      "name": "currency.js",
+      "version": "2.0.0",
+      "gzip": 1089,
+      "description": "A small, lightweight javascript library for working with currency values.",
+      "repository": "https://github.com/scurker/currency.js.git"
+    },
+    "lastScraped": 1594967855060,
+    "latest": {
+      "name": "currency.js",
+      "version": "2.0.0",
+      "gzip": 1089,
+      "description": "A small, lightweight javascript library for working with currency values.",
+      "repository": "https://github.com/scurker/currency.js.git"
+    },
+    "1.2.2": {
+      "name": "currency.js",
+      "version": "1.2.2",
+      "gzip": 1077,
+      "description": "A small, lightweight javascript library for working with currency values.",
+      "repository": "https://github.com/scurker/currency.js"
+    },
+    "1.2.2-fdf68eec": {
+      "name": "currency.js",
+      "version": "1.2.2-fdf68eec",
+      "gzip": 1077,
+      "description": "A small, lightweight javascript library for working with currency values.",
+      "repository": "https://github.com/scurker/currency.js.git"
+    },
+    "1.2.2-f7ec5522": {
+      "name": "currency.js",
+      "version": "1.2.2-f7ec5522",
+      "gzip": 1076,
+      "description": "A small, lightweight javascript library for working with currency values.",
+      "repository": "https://github.com/scurker/currency.js"
+    },
+    "1.2.2-ed2e31a3": {
+      "name": "currency.js",
+      "version": "1.2.2-ed2e31a3",
+      "gzip": 1077,
+      "description": "A small, lightweight javascript library for working with currency values.",
+      "repository": "https://github.com/scurker/currency.js.git"
+    },
+    "1.2.2-ec8ab613": {
+      "name": "currency.js",
+      "version": "1.2.2-ec8ab613",
+      "gzip": 1077,
+      "description": "A small, lightweight javascript library for working with currency values.",
+      "repository": "https://github.com/scurker/currency.js.git"
+    },
+    "1.2.2-e7e55ce7": {
+      "name": "currency.js",
+      "version": "1.2.2-e7e55ce7",
+      "gzip": 1077,
+      "description": "A small, lightweight javascript library for working with currency values.",
+      "repository": "https://github.com/scurker/currency.js.git"
+    },
+    "1.2.2-de058516": {
+      "name": "currency.js",
+      "version": "1.2.2-de058516",
+      "gzip": 1077,
+      "description": "A small, lightweight javascript library for working with currency values.",
+      "repository": "https://github.com/scurker/currency.js.git"
+    }
+  },
   "moment": {
     "2.27.0": {
       "name": "moment",
@@ -7,6 +236,7 @@
       "description": "Parse, validate, manipulate, and display dates",
       "repository": "https://github.com/moment/moment.git"
     },
+    "lastScraped": 1594969022118,
     "latest": {
       "name": "moment",
       "version": "2.27.0",
@@ -72,6 +302,7 @@
       "description": "2KB immutable date time library alternative to Moment.js with the same modern API ",
       "repository": "https://github.com/iamkun/dayjs.git"
     },
+    "lastScraped": 1594969038760,
     "latest": {
       "name": "dayjs",
       "version": "1.8.29",
@@ -137,6 +368,7 @@
       "description": "Modern JavaScript date utility library",
       "repository": "https://github.com/date-fns/date-fns.git"
     },
+    "lastScraped": 1594969055725,
     "latest": {
       "name": "date-fns",
       "version": "2.14.0",
@@ -202,6 +434,7 @@
       "description": "Immutable date wrapper",
       "repository": "https://github.com/moment/luxon.git"
     },
+    "lastScraped": 1594969072827,
     "latest": {
       "name": "luxon",
       "version": "1.24.1",
@@ -267,6 +500,7 @@
       "description": "Fast deep equal",
       "repository": "https://github.com/epoberezkin/fast-deep-equal.git"
     },
+    "lastScraped": 1594969089610,
     "latest": {
       "name": "fast-deep-equal",
       "version": "3.1.3",
@@ -332,6 +566,7 @@
       "description": "Improved deep equality testing for Node.js and the browser.",
       "repository": "https://github.com/chaijs/deep-eql"
     },
+    "lastScraped": 1594969107108,
     "latest": {
       "name": "deep-eql",
       "version": "4.0.0",
@@ -397,6 +632,7 @@
       "description": "node's assert.deepEqual algorithm",
       "repository": "https://github.com/inspect-js/node-deep-equal.git"
     },
+    "lastScraped": 1594969125785,
     "latest": {
       "name": "deep-equal",
       "version": "2.0.3",
@@ -462,6 +698,7 @@
       "description": "The Lodash method `_.isEqual` exported as a module.",
       "repository": "https://github.com/lodash/lodash"
     },
+    "lastScraped": 1594969142444,
     "latest": {
       "name": "lodash.isequal",
       "version": "4.5.0",
@@ -527,6 +764,7 @@
       "description": "A fast and easy to use JSON Schema validator",
       "repository": "https://github.com/tdegrunt/jsonschema.git"
     },
+    "lastScraped": 1594969159095,
     "latest": {
       "name": "jsonschema",
       "version": "1.2.6",
@@ -592,6 +830,7 @@
       "description": "Object schema validation",
       "repository": "https://github.com/sideway/joi.git"
     },
+    "lastScraped": 1594969176378,
     "latest": {
       "name": "joi",
       "version": "17.1.1",
@@ -657,6 +896,7 @@
       "description": "Another JSON Schema Validator",
       "repository": "https://github.com/ajv-validator/ajv.git"
     },
+    "lastScraped": 1594969193518,
     "latest": {
       "name": "ajv",
       "version": "6.12.3",
@@ -722,6 +962,7 @@
       "description": "A simple, expressive way to validate data in JavaScript.",
       "repository": "https://github.com/ianstormtaylor/superstruct.git"
     },
+    "lastScraped": 1594969210381,
     "latest": {
       "name": "superstruct",
       "version": "0.10.12",
@@ -787,6 +1028,7 @@
       "description": "Dead simple Object schema validation",
       "repository": "https://github.com/jquense/yup.git"
     },
+    "lastScraped": 1594969227167,
     "latest": {
       "name": "yup",
       "version": "0.29.1",
@@ -852,6 +1094,7 @@
       "description": "Declarative validations for JavaScript",
       "repository": "https://github.com/ansman/validate.js"
     },
+    "lastScraped": 1594969243966,
     "latest": {
       "name": "validate.js",
       "version": "0.13.1",
@@ -917,6 +1160,7 @@
       "description": "A querystring parser that supports nesting and arrays, with a depth limit",
       "repository": "https://github.com/ljharb/qs.git"
     },
+    "lastScraped": 1594969260804,
     "latest": {
       "name": "qs",
       "version": "6.9.4",
@@ -982,6 +1226,7 @@
       "description": "Parse and stringify URL query strings",
       "repository": "https://github.com/sindresorhus/query-string.git"
     },
+    "lastScraped": 1594969277622,
     "latest": {
       "name": "query-string",
       "version": "6.13.1",
@@ -1047,6 +1292,7 @@
       "description": "Querystringify - Small, simple but powerful query string parser.",
       "repository": "https://github.com/unshiftio/querystringify"
     },
+    "lastScraped": 1594969294663,
     "latest": {
       "name": "querystringify",
       "version": "2.1.1",
@@ -1112,6 +1358,7 @@
       "description": "Node&#39;s querystring module for all engines.",
       "repository": "https://github.com/Gozala/querystring"
     },
+    "lastScraped": 1594969304208,
     "latest": {
       "name": "querystring",
       "version": "0.2.0",
@@ -1149,6 +1396,7 @@
       "description": "Parse and display moments in any timezone.",
       "repository": "https://github.com/moment/moment-timezone.git"
     },
+    "lastScraped": 1594969321152,
     "latest": {
       "name": "moment-timezone",
       "version": "0.5.31",
@@ -1214,6 +1462,7 @@
       "description": "",
       "repository": ""
     },
+    "lastScraped": 1594969337710,
     "latest": {
       "name": "date-time-format-timezone",
       "version": "1.0.22",
@@ -1279,6 +1528,7 @@
       "description": "figure-out dates across timezones",
       "repository": "https://github.com/spencermountain/spacetime.git"
     },
+    "lastScraped": 1594969354346,
     "latest": {
       "name": "spacetime",
       "version": "6.6.1",
@@ -1344,6 +1594,7 @@
       "description": "Parsing and formatting date strings using IANA time zones for date-fns.",
       "repository": "https://github.com/prantlf/date-fns-timezone"
     },
+    "lastScraped": 1594969367372,
     "latest": {
       "name": "date-fns-timezone",
       "version": "0.1.4",
@@ -1395,6 +1646,7 @@
       "description": "RFC4122 (v1, v4, and v5) UUIDs",
       "repository": "https://github.com/uuidjs/uuid.git"
     },
+    "lastScraped": 1594969384485,
     "latest": {
       "name": "uuid",
       "version": "8.2.0",
@@ -1460,6 +1712,7 @@
       "description": "Amazingly short non-sequential url-friendly unique id generator.",
       "repository": "https://github.com/dylang/shortid"
     },
+    "lastScraped": 1594969401502,
     "latest": {
       "name": "shortid",
       "version": "2.2.15",
@@ -1525,6 +1778,7 @@
       "description": "A tiny (108 bytes), secure URL-friendly unique string ID generator",
       "repository": "https://github.com/ai/nanoid.git"
     },
+    "lastScraped": 1594969418893,
     "latest": {
       "name": "nanoid",
       "version": "3.1.10",
@@ -1590,6 +1844,7 @@
       "description": "Collision-resistant ids optimized for horizontal scaling and performance. For node and browsers.",
       "repository": "https://github.com/ericelliott/cuid.git"
     },
+    "lastScraped": 1594969435886,
     "latest": {
       "name": "cuid",
       "version": "2.1.8",
@@ -1655,6 +1910,7 @@
       "description": "",
       "repository": ""
     },
+    "lastScraped": 1594969452660,
     "latest": {
       "name": "promise",
       "version": "8.1.0",
@@ -1720,6 +1976,7 @@
       "description": "A lightweight library that provides tools for organizing asynchronous code",
       "repository": "https://github.com/stefanpenner/es6-promise"
     },
+    "lastScraped": 1594969469903,
     "latest": {
       "name": "es6-promise",
       "version": "4.2.8",
@@ -1785,6 +2042,7 @@
       "description": "Lightweight promise polyfill. A+ compliant",
       "repository": "https://github.com/taylorhakes/promise-polyfill"
     },
+    "lastScraped": 1594969487339,
     "latest": {
       "name": "promise-polyfill",
       "version": "8.1.3",
@@ -1850,6 +2108,7 @@
       "description": "Polyfill for ES6 Promise",
       "repository": "https://github.com/lahmatiy/es6-promise-polyfill"
     },
+    "lastScraped": 1594969502207,
     "latest": {
       "name": "es6-promise-polyfill",
       "version": "1.2.0",
@@ -1908,6 +2167,7 @@
       "description": "Immutable Data Collections",
       "repository": "https://github.com/facebook/immutable-js"
     },
+    "lastScraped": 1594969519433,
     "latest": {
       "name": "immutable",
       "version": "4.0.0-rc.12",
@@ -1949,6 +2209,527 @@
       "gzip": 16874,
       "description": "Immutable Data Collections",
       "repository": "https://github.com/facebook/immutable-js"
+    },
+    "4.0.0-rc.6": {
+      "name": "immutable",
+      "version": "4.0.0-rc.6",
+      "gzip": 16902,
+      "description": "Immutable Data Collections",
+      "repository": "https://github.com/facebook/immutable-js.git"
+    },
+    "4.0.0-rc.5": {
+      "name": "immutable",
+      "version": "4.0.0-rc.5",
+      "gzip": 16874,
+      "description": "Immutable Data Collections",
+      "repository": "https://github.com/facebook/immutable-js"
+    }
+  },
+  "seamless-immutable": {
+    "7.1.4": {
+      "name": "seamless-immutable",
+      "version": "7.1.4",
+      "gzip": 2770,
+      "description": "Immutable data structures for JavaScript which are backwards-compatible with normal JS Arrays and Objects.",
+      "repository": "https://github.com/rtfeldman/seamless-immutable"
+    },
+    "lastScraped": 1594969536560,
+    "latest": {
+      "name": "seamless-immutable",
+      "version": "7.1.4",
+      "gzip": 2770,
+      "description": "Immutable data structures for JavaScript which are backwards-compatible with normal JS Arrays and Objects.",
+      "repository": "https://github.com/rtfeldman/seamless-immutable"
+    },
+    "7.1.3": {
+      "name": "seamless-immutable",
+      "version": "7.1.3",
+      "gzip": 2767,
+      "description": "Immutable data structures for JavaScript which are backwards-compatible with normal JS Arrays and Objects.",
+      "repository": "https://github.com/rtfeldman/seamless-immutable"
+    },
+    "7.1.2": {
+      "name": "seamless-immutable",
+      "version": "7.1.2",
+      "gzip": 2761,
+      "description": "Immutable data structures for JavaScript which are backwards-compatible with normal JS Arrays and Objects.",
+      "repository": "https://github.com/rtfeldman/seamless-immutable"
+    },
+    "7.1.1": {
+      "name": "seamless-immutable",
+      "version": "7.1.1",
+      "gzip": 2753,
+      "description": "Immutable data structures for JavaScript which are backwards-compatible with normal JS Arrays and Objects.",
+      "repository": "https://github.com/rtfeldman/seamless-immutable"
+    },
+    "7.1.0": {
+      "name": "seamless-immutable",
+      "version": "7.1.0",
+      "gzip": 2498,
+      "description": "Immutable data structures for JavaScript which are backwards-compatible with normal JS Arrays and Objects.",
+      "repository": "https://github.com/rtfeldman/seamless-immutable"
+    },
+    "7.0.1": {
+      "name": "seamless-immutable",
+      "version": "7.0.1",
+      "gzip": 2683,
+      "description": "Immutable data structures for JavaScript which are backwards-compatible with normal JS Arrays and Objects.",
+      "repository": "https://github.com/rtfeldman/seamless-immutable"
+    },
+    "7.0.0": {
+      "name": "seamless-immutable",
+      "version": "7.0.0",
+      "gzip": 2423,
+      "description": "Immutable data structures for JavaScript which are backwards-compatible with normal JS Arrays and Objects.",
+      "repository": "https://github.com/rtfeldman/seamless-immutable"
+    },
+    "6.3.0": {
+      "name": "seamless-immutable",
+      "version": "6.3.0",
+      "gzip": 2232,
+      "description": "Immutable data structures for JavaScript which are backwards-compatible with normal JS Arrays and Objects.",
+      "repository": "https://github.com/rtfeldman/seamless-immutable"
+    }
+  },
+  "immutability-helper": {
+    "3.1.1": {
+      "name": "immutability-helper",
+      "version": "3.1.1",
+      "gzip": 1693,
+      "description": "mutate a copy of data without changing the original source",
+      "repository": "https://github.com/kolodny/immutability-helper.git"
+    },
+    "lastScraped": 1594969553633,
+    "latest": {
+      "name": "immutability-helper",
+      "version": "3.1.1",
+      "gzip": 1693,
+      "description": "mutate a copy of data without changing the original source",
+      "repository": "https://github.com/kolodny/immutability-helper.git"
+    },
+    "3.0.2": {
+      "name": "immutability-helper",
+      "version": "3.0.2",
+      "gzip": 1794,
+      "description": "mutate a copy of data without changing the original source",
+      "repository": "https://github.com/kolodny/immutability-helper.git"
+    },
+    "3.0.1": {
+      "name": "immutability-helper",
+      "version": "3.0.1",
+      "gzip": 1790,
+      "description": "mutate a copy of data without changing the original source",
+      "repository": "https://github.com/kolodny/immutability-helper"
+    },
+    "3.0.0": {
+      "name": "immutability-helper",
+      "version": "3.0.0",
+      "gzip": 1790,
+      "description": "mutate a copy of data without changing the original source",
+      "repository": "https://github.com/kolodny/immutability-helper"
+    },
+    "2.9.1": {
+      "name": "immutability-helper",
+      "version": "2.9.1",
+      "gzip": 1634,
+      "description": "mutate a copy of data without changing the original source",
+      "repository": "https://github.com/kolodny/immutability-helper"
+    },
+    "2.9.0": {
+      "name": "immutability-helper",
+      "version": "2.9.0",
+      "gzip": 1790,
+      "description": "mutate a copy of data without changing the original source",
+      "repository": "https://github.com/kolodny/immutability-helper"
+    },
+    "2.8.1": {
+      "name": "immutability-helper",
+      "version": "2.8.1",
+      "gzip": 1634,
+      "description": "mutate a copy of data without changing the original source",
+      "repository": "https://github.com/kolodny/immutability-helper"
+    },
+    "2.8.0": {
+      "name": "immutability-helper",
+      "version": "2.8.0",
+      "gzip": 1634,
+      "description": "mutate a copy of data without changing the original source",
+      "repository": "https://github.com/kolodny/immutability-helper"
+    }
+  },
+  "baobab": {
+    "2.6.0": {
+      "name": "baobab",
+      "version": "2.6.0",
+      "gzip": 9726,
+      "description": "",
+      "repository": ""
+    },
+    "lastScraped": 1594969570589,
+    "latest": {
+      "name": "baobab",
+      "version": "2.6.0",
+      "gzip": 9726,
+      "description": "",
+      "repository": ""
+    },
+    "2.5.3": {
+      "name": "baobab",
+      "version": "2.5.3",
+      "gzip": 9632,
+      "description": "JavaScript persistent data tree with cursors.",
+      "repository": "https://github.com/Yomguithereal/baobab.git"
+    },
+    "2.5.2": {
+      "name": "baobab",
+      "version": "2.5.2",
+      "gzip": 9238,
+      "description": "JavaScript persistent data tree with cursors.",
+      "repository": "https://github.com/Yomguithereal/baobab"
+    },
+    "2.5.1": {
+      "name": "baobab",
+      "version": "2.5.1",
+      "gzip": 9242,
+      "description": "JavaScript persistent data tree with cursors.",
+      "repository": "https://github.com/Yomguithereal/baobab"
+    },
+    "2.5.0": {
+      "name": "baobab",
+      "version": "2.5.0",
+      "gzip": 9142,
+      "description": "JavaScript persistent data tree with cursors.",
+      "repository": "https://github.com/Yomguithereal/baobab"
+    },
+    "2.4.3": {
+      "name": "baobab",
+      "version": "2.4.3",
+      "gzip": 9126,
+      "description": "JavaScript persistent data tree with cursors.",
+      "repository": "https://github.com/Yomguithereal/baobab"
+    },
+    "2.4.2": {
+      "name": "baobab",
+      "version": "2.4.2",
+      "gzip": 9146,
+      "description": "JavaScript persistent data tree with cursors.",
+      "repository": "https://github.com/Yomguithereal/baobab"
+    },
+    "2.4.1": {
+      "name": "baobab",
+      "version": "2.4.1",
+      "gzip": 9145,
+      "description": "JavaScript persistent data tree with cursors.",
+      "repository": "https://github.com/Yomguithereal/baobab"
+    }
+  },
+  "memoize": {
+    "0.1.1": {
+      "name": "memoize",
+      "version": "0.1.1",
+      "gzip": 1608,
+      "description": "memoize caches your callbacks given a set of arguments w/ persistence",
+      "repository": "https://github.com/stagas/memoize"
+    },
+    "lastScraped": 1594969581890,
+    "latest": {
+      "name": "memoize",
+      "version": "0.1.1",
+      "gzip": 1608,
+      "description": "memoize caches your callbacks given a set of arguments w/ persistence",
+      "repository": "https://github.com/stagas/memoize"
+    },
+    "0.1.0": {
+      "name": "memoize",
+      "version": "0.1.0",
+      "gzip": 1599,
+      "description": "memoize caches your callbacks given a set of arguments w/ persistence",
+      "repository": "https://github.com/stagas/memoize"
+    },
+    "0.0.3": {
+      "name": "memoize",
+      "version": "0.0.3",
+      "gzip": 1476,
+      "description": "memoize caches your callbacks given a set of arguments w/ persistence",
+      "repository": "https://github.com/stagas/memoize"
+    },
+    "0.0.2": {
+      "name": "memoize",
+      "version": "0.0.2",
+      "gzip": 754,
+      "description": "memoize caches your callbacks given a set of arguments w/ persistence",
+      "repository": "https://github.com/stagas/memoize"
+    },
+    "0.0.1": {
+      "name": "memoize",
+      "version": "0.0.1",
+      "gzip": 754,
+      "description": "memoize caches your callbacks given a set of arguments w/ persistence",
+      "repository": "https://github.com/stagas/memoize"
+    }
+  },
+  "memoize-one": {
+    "5.1.1": {
+      "name": "memoize-one",
+      "version": "5.1.1",
+      "gzip": 301,
+      "description": "A memoization library which only remembers the latest invocation",
+      "repository": "https://github.com/alexreardon/memoize-one"
+    },
+    "lastScraped": 1594969604098,
+    "latest": {
+      "name": "memoize-one",
+      "version": "5.1.1",
+      "gzip": 301,
+      "description": "A memoization library which only remembers the latest invocation",
+      "repository": "https://github.com/alexreardon/memoize-one"
+    },
+    "5.1.0": {
+      "name": "memoize-one",
+      "version": "5.1.0",
+      "gzip": 301,
+      "description": "A memoization library which only remembers the latest invocation",
+      "repository": "https://github.com/alexreardon/memoize-one"
+    },
+    "5.1.0-beta.6": {
+      "name": "memoize-one",
+      "version": "5.1.0-beta.6",
+      "gzip": 301,
+      "description": "A memoization library which only remembers the latest invocation",
+      "repository": "https://github.com/alexreardon/memoize-one.git"
+    },
+    "5.1.0-beta.5": {
+      "name": "memoize-one",
+      "version": "5.1.0-beta.5",
+      "gzip": 301,
+      "description": "A memoization library which only remembers the latest invocation",
+      "repository": "https://github.com/alexreardon/memoize-one"
+    },
+    "5.1.0-beta.4": {
+      "name": "memoize-one",
+      "version": "5.1.0-beta.4",
+      "gzip": 301,
+      "description": "A memoization library which only remembers the latest invocation",
+      "repository": "https://github.com/alexreardon/memoize-one.git"
+    },
+    "5.1.0-beta.3": {
+      "name": "memoize-one",
+      "version": "5.1.0-beta.3",
+      "gzip": 326,
+      "description": "A memoization library which only remembers the latest invocation",
+      "repository": "https://github.com/alexreardon/memoize-one.git"
+    },
+    "5.1.0-beta.2": {
+      "name": "memoize-one",
+      "version": "5.1.0-beta.2",
+      "gzip": 326,
+      "description": "A memoization library which only remembers the latest invocation",
+      "repository": "https://github.com/alexreardon/memoize-one.git"
+    },
+    "5.1.0-beta.1": {
+      "name": "memoize-one",
+      "version": "5.1.0-beta.1",
+      "gzip": 326,
+      "description": "A memoization library which only remembers the latest invocation",
+      "repository": "https://github.com/alexreardon/memoize-one.git"
+    }
+  },
+  "lodash.memoize": {
+    "4.1.2": {
+      "name": "lodash.memoize",
+      "version": "4.1.2",
+      "gzip": 1394,
+      "description": "The lodash method `_.memoize` exported as a module.",
+      "repository": "https://github.com/lodash/lodash"
+    },
+    "lastScraped": 1594969621905,
+    "latest": {
+      "name": "lodash.memoize",
+      "version": "4.1.2",
+      "gzip": 1394,
+      "description": "The lodash method `_.memoize` exported as a module.",
+      "repository": "https://github.com/lodash/lodash"
+    },
+    "4.1.1": {
+      "name": "lodash.memoize",
+      "version": "4.1.1",
+      "gzip": 1393,
+      "description": "The lodash method `_.memoize` exported as a module.",
+      "repository": "https://github.com/lodash/lodash"
+    },
+    "4.1.0": {
+      "name": "lodash.memoize",
+      "version": "4.1.0",
+      "gzip": 1501,
+      "description": "The lodash method `_.memoize` exported as a module.",
+      "repository": "https://github.com/lodash/lodash"
+    },
+    "4.0.3": {
+      "name": "lodash.memoize",
+      "version": "4.0.3",
+      "gzip": 1462,
+      "description": "The lodash method `_.memoize` exported as a module.",
+      "repository": "https://github.com/lodash/lodash"
+    },
+    "4.0.2": {
+      "name": "lodash.memoize",
+      "version": "4.0.2",
+      "gzip": 1458,
+      "description": "The lodash method `_.memoize` exported as a module.",
+      "repository": "https://github.com/lodash/lodash.git"
+    },
+    "4.0.1": {
+      "name": "lodash.memoize",
+      "version": "4.0.1",
+      "gzip": 1458,
+      "description": "The lodash method `_.memoize` exported as a module.",
+      "repository": "https://github.com/lodash/lodash"
+    },
+    "4.0.0": {
+      "name": "lodash.memoize",
+      "version": "4.0.0",
+      "gzip": 1458,
+      "description": "The lodash method `_.memoize` exported as a module.",
+      "repository": "https://github.com/lodash/lodash"
+    },
+    "3.1.1": {
+      "name": "lodash.memoize",
+      "version": "3.1.1",
+      "gzip": 413,
+      "description": "The lodash method `_.memoize` exported as a module.",
+      "repository": "https://github.com/lodash/lodash"
+    }
+  },
+  "mem": {
+    "6.1.0": {
+      "name": "mem",
+      "version": "6.1.0",
+      "gzip": 1268,
+      "description": "Memoize functions - An optimization used to speed up consecutive function calls by caching the result of calls with identical input",
+      "repository": "https://github.com/sindresorhus/mem.git"
+    },
+    "lastScraped": 1594969640276,
+    "latest": {
+      "name": "mem",
+      "version": "6.1.0",
+      "gzip": 1268,
+      "description": "Memoize functions - An optimization used to speed up consecutive function calls by caching the result of calls with identical input",
+      "repository": "https://github.com/sindresorhus/mem.git"
+    },
+    "6.0.1": {
+      "name": "mem",
+      "version": "6.0.1",
+      "gzip": 1234,
+      "description": "Memoize functions - An optimization used to speed up consecutive function calls by caching the result of calls with identical input",
+      "repository": "https://github.com/sindresorhus/mem.git"
+    },
+    "6.0.0": {
+      "name": "mem",
+      "version": "6.0.0",
+      "gzip": 1234,
+      "description": "Memoize functions - An optimization used to speed up consecutive function calls by caching the result of calls with identical input",
+      "repository": "https://github.com/sindresorhus/mem.git"
+    },
+    "5.1.1": {
+      "name": "mem",
+      "version": "5.1.1",
+      "gzip": 1052,
+      "description": "Memoize functions - An optimization used to speed up consecutive function calls by caching the result of calls with identical input",
+      "repository": "https://github.com/sindresorhus/mem"
+    },
+    "5.1.0": {
+      "name": "mem",
+      "version": "5.1.0",
+      "gzip": 1055,
+      "description": "Memoize functions - An optimization used to speed up consecutive function calls by caching the result of calls with identical input",
+      "repository": "https://github.com/sindresorhus/mem"
+    },
+    "5.0.0": {
+      "name": "mem",
+      "version": "5.0.0",
+      "gzip": 1082,
+      "description": "Memoize functions - An optimization used to speed up consecutive function calls by caching the result of calls with identical input",
+      "repository": "https://github.com/sindresorhus/mem"
+    },
+    "4.3.0": {
+      "name": "mem",
+      "version": "4.3.0",
+      "gzip": 1098,
+      "description": "Memoize functions - An optimization used to speed up consecutive function calls by caching the result of calls with identical input",
+      "repository": "https://github.com/sindresorhus/mem"
+    },
+    "4.2.0": {
+      "name": "mem",
+      "version": "4.2.0",
+      "gzip": 1099,
+      "description": "Memoize functions - An optimization used to speed up consecutive function calls by caching the result of calls with identical input",
+      "repository": "https://github.com/sindresorhus/mem"
+    }
+  },
+  "fast-memoize": {
+    "2.5.2": {
+      "name": "fast-memoize",
+      "version": "2.5.2",
+      "gzip": 513,
+      "description": "",
+      "repository": ""
+    },
+    "lastScraped": 1594969659934,
+    "latest": {
+      "name": "fast-memoize",
+      "version": "2.5.2",
+      "gzip": 513,
+      "description": "",
+      "repository": ""
+    },
+    "2.5.1": {
+      "name": "fast-memoize",
+      "version": "2.5.1",
+      "gzip": 513,
+      "description": "Fastest memoization lib that supports N arguments",
+      "repository": "https://github.com/caiogondim/fast-memoize"
+    },
+    "2.4.0": {
+      "name": "fast-memoize",
+      "version": "2.4.0",
+      "gzip": 513,
+      "description": "Fastest memoization lib that supports N arguments",
+      "repository": "https://github.com/caiogondim/fast-memoize"
+    },
+    "2.3.2": {
+      "name": "fast-memoize",
+      "version": "2.3.2",
+      "gzip": 513,
+      "description": "Fastest memoization lib that supports N arguments",
+      "repository": "https://github.com/caiogondim/fast-memoize"
+    },
+    "2.3.1": {
+      "name": "fast-memoize",
+      "version": "2.3.1",
+      "gzip": 513,
+      "description": "Fastest memoization lib that supports N arguments",
+      "repository": "https://github.com/caiogondim/fast-memoize.git"
+    },
+    "2.3.0": {
+      "name": "fast-memoize",
+      "version": "2.3.0",
+      "gzip": 513,
+      "description": "Fastest memoization lib that supports N arguments",
+      "repository": "https://github.com/caiogondim/fast-memoize"
+    },
+    "2.2.8": {
+      "name": "fast-memoize",
+      "version": "2.2.8",
+      "gzip": 510,
+      "description": "Fastest memoization lib that supports N arguments",
+      "repository": "https://github.com/caiogondim/fast-memoize"
+    },
+    "2.2.7": {
+      "name": "fast-memoize",
+      "version": "2.2.7",
+      "gzip": 465,
+      "description": "Fastest memoization lib that supports N arguments",
+      "repository": "https://github.com/caiogondim/fast-memoize"
     }
   },
   "got": {
@@ -1959,6 +2740,7 @@
       "description": "Human-friendly and powerful HTTP request library for Node.js",
       "repository": "https://github.com/sindresorhus/got.git"
     },
+    "lastScraped": 1594969678755,
     "latest": {
       "name": "got",
       "version": "11.5.1",
@@ -1972,6 +2754,114 @@
       "gzip": 29896,
       "description": "Human-friendly and powerful HTTP request library for Node.js",
       "repository": "https://github.com/sindresorhus/got.git"
+    },
+    "11.4.0": {
+      "name": "got",
+      "version": "11.4.0",
+      "gzip": 29338,
+      "description": "Human-friendly and powerful HTTP request library for Node.js",
+      "repository": "https://github.com/sindresorhus/got.git"
+    },
+    "11.3.0": {
+      "name": "got",
+      "version": "11.3.0",
+      "gzip": 29174,
+      "description": "Human-friendly and powerful HTTP request library for Node.js",
+      "repository": "https://github.com/sindresorhus/got.git"
+    },
+    "11.2.0": {
+      "name": "got",
+      "version": "11.2.0",
+      "gzip": 28960,
+      "description": "Human-friendly and powerful HTTP request library for Node.js",
+      "repository": "https://github.com/sindresorhus/got.git"
+    },
+    "11.1.4": {
+      "name": "got",
+      "version": "11.1.4",
+      "gzip": 28593,
+      "description": "Human-friendly and powerful HTTP request library for Node.js",
+      "repository": "https://github.com/sindresorhus/got.git"
+    },
+    "11.1.3": {
+      "name": "got",
+      "version": "11.1.3",
+      "gzip": 28719,
+      "description": "Human-friendly and powerful HTTP request library for Node.js",
+      "repository": "https://github.com/sindresorhus/got.git"
+    },
+    "11.1.2": {
+      "name": "got",
+      "version": "11.1.2",
+      "gzip": 28632,
+      "description": "Human-friendly and powerful HTTP request library for Node.js",
+      "repository": "https://github.com/sindresorhus/got.git"
+    }
+  },
+  "phin": {
+    "3.5.0": {
+      "name": "phin",
+      "version": "3.5.0",
+      "gzip": 1672,
+      "description": "The ultra-lightweight Node.js HTTP client",
+      "repository": "https://github.com/ethanent/phin.git"
+    },
+    "lastScraped": 1594969696870,
+    "latest": {
+      "name": "phin",
+      "version": "3.5.0",
+      "gzip": 1672,
+      "description": "The ultra-lightweight Node.js HTTP client",
+      "repository": "https://github.com/ethanent/phin.git"
+    },
+    "3.4.1": {
+      "name": "phin",
+      "version": "3.4.1",
+      "gzip": 688,
+      "description": "The ultra-lightweight Node.js HTTP client",
+      "repository": "https://github.com/ethanent/phin.git"
+    },
+    "3.4.0": {
+      "name": "phin",
+      "version": "3.4.0",
+      "gzip": 688,
+      "description": "The ultra-lightweight Node.js HTTP client",
+      "repository": "https://github.com/ethanent/phin"
+    },
+    "3.3.0": {
+      "name": "phin",
+      "version": "3.3.0",
+      "gzip": 688,
+      "description": "The ultra-lightweight Node.js HTTP client",
+      "repository": "https://github.com/ethanent/phin"
+    },
+    "3.2.4": {
+      "name": "phin",
+      "version": "3.2.4",
+      "gzip": 566,
+      "description": "The ultra-lightweight Node.js HTTP client",
+      "repository": "https://github.com/ethanent/phin"
+    },
+    "3.2.3": {
+      "name": "phin",
+      "version": "3.2.3",
+      "gzip": 563,
+      "description": "The ultra-lightweight Node.js HTTP client",
+      "repository": "https://github.com/ethanent/phin"
+    },
+    "3.2.2": {
+      "name": "phin",
+      "version": "3.2.2",
+      "gzip": 563,
+      "description": "",
+      "repository": ""
+    },
+    "3.2.1": {
+      "name": "phin",
+      "version": "3.2.1",
+      "gzip": 566,
+      "description": "Ultra-simple, lightweight, dependency-free Node.JS HTTP request client",
+      "repository": "https://github.com/ethanent/phin"
     }
   },
   "axios": {
@@ -1982,6 +2872,7 @@
       "description": "Promise based HTTP client for the browser and node.js",
       "repository": "https://github.com/axios/axios.git"
     },
+    "lastScraped": 1594969713637,
     "latest": {
       "name": "axios",
       "version": "0.20.0-0",
@@ -2037,6 +2928,72 @@
       "gzip": 4359,
       "description": "Promise based HTTP client for the browser and node.js",
       "repository": "https://github.com/axios/axios"
+    }
+  },
+  "superagent": {
+    "5.3.1": {
+      "name": "superagent",
+      "version": "5.3.1",
+      "gzip": 6731,
+      "description": "elegant & feature rich browser / node HTTP with a fluent API",
+      "repository": "https://github.com/visionmedia/superagent.git"
+    },
+    "lastScraped": 1594969748855,
+    "latest": {
+      "name": "superagent",
+      "version": "5.3.1",
+      "gzip": 6731,
+      "description": "elegant & feature rich browser / node HTTP with a fluent API",
+      "repository": "https://github.com/visionmedia/superagent.git"
+    },
+    "5.3.0": {
+      "name": "superagent",
+      "version": "5.3.0",
+      "gzip": 6754,
+      "description": "elegant & feature rich browser / node HTTP with a fluent API",
+      "repository": "https://github.com/visionmedia/superagent.git"
+    },
+    "5.2.2": {
+      "name": "superagent",
+      "version": "5.2.2",
+      "gzip": 6567,
+      "description": "",
+      "repository": ""
+    },
+    "5.2.1": {
+      "name": "superagent",
+      "version": "5.2.1",
+      "gzip": 6563,
+      "description": "",
+      "repository": ""
+    },
+    "5.2.0": {
+      "name": "superagent",
+      "version": "5.2.0",
+      "gzip": 6563,
+      "description": "",
+      "repository": ""
+    },
+    "5.1.4": {
+      "name": "superagent",
+      "version": "5.1.4",
+      "gzip": 6558,
+      "description": "",
+      "repository": ""
+    },
+    "5.1.3": {
+      "name": "superagent",
+      "version": "5.1.3",
+      "gzip": 6526,
+      "description": "elegant & feature rich browser / node HTTP with a fluent API",
+      "repository": "https://github.com/visionmedia/superagent.git"
+    },
+    "5.1.2": {
+      "name": "superagent",
+      "version": "5.1.2",
+      "gzip": 6526,
+      "description": "elegant & feature rich browser / node HTTP with a fluent API",
+      "repository": "https://github.com/visionmedia/superagent.git"
     }
   }
 }
