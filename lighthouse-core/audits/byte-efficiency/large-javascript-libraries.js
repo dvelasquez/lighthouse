@@ -94,8 +94,7 @@ class LargeJavascriptLibraries extends Audit {
         return libStats[suggestion]['latest'];
       });
 
-      smallerSuggestions = smallerSuggestions.map(s => s);
-      smallerSuggestions.sort((a, b) => a.gzip - b.gzip);
+     smallerSuggestions = [...smallerSuggestions].sort((a, b) => a.gzip - b.gzip);
       if (smallerSuggestions.length) {
         libraryPairings.push({original: originalLib, suggestions: smallerSuggestions});
       }
