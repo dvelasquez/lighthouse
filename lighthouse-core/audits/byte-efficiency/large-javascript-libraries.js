@@ -33,8 +33,6 @@ const UIStrings = {
     ' [Learn more](https://developers.google.com/web/fundamentals/performance/webpack/decrease-frontend-size#optimize_dependencies).',
   /** Label for a column in a data table. Entries will be names of large JavaScript libraries that could be replaced. */
   name: 'Library',
-  /** Label for a column in a data table. Entries will be names of smaller libraries that could be used as a replacement. */
-  suggestion: 'Smaller Alternative',
 };
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);
@@ -94,7 +92,7 @@ class LargeJavascriptLibraries extends Audit {
         return libStats[suggestion]['latest'];
       });
 
-     smallerSuggestions = [...smallerSuggestions].sort((a, b) => a.gzip - b.gzip);
+      smallerSuggestions = [...smallerSuggestions].sort((a, b) => a.gzip - b.gzip);
       if (smallerSuggestions.length) {
         libraryPairings.push({original: originalLib, suggestions: smallerSuggestions});
       }
