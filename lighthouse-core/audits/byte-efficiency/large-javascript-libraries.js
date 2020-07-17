@@ -13,8 +13,11 @@
 
 /** @typedef {{name: string, version: string, gzip: number, description: string, repository: string}} BundlePhobiaLibrary */
 
+/** @type {Record<string, Record<'lastScraped', number|string> | Record<string, BundlePhobiaLibrary>>} */
 const libStats = require('./bundlephobia-database.json');
-const librarySuggestions = require('./library-suggestions.json');
+
+/** @type string[][] */
+const librarySuggestions = require('./library-suggestions.js').suggestions;
 
 const Audit = require('../audit.js');
 const i18n = require('../../lib/i18n/i18n.js');
@@ -51,16 +54,13 @@ class LargeJavascriptLibraries extends Audit {
   }
 
   /**
+   * Returns the suggestions array containing the given library, minus the library itself.
    * @param {LH.Artifacts.DetectedStack} library
    * @return {string[]}
    */
   static getSuggestions(library) {
-    for (const key of Object.keys(librarySuggestions)) {
-      if (librarySuggestions[key].includes(library.npm)) {
-        return librarySuggestions[key].filter(suggestion => suggestion !== library.npm);
-      }
-    }
-    return [];
+    const suggestions = librarySuggestions.find(s => s.includes(library.npm)) || [];
+    return suggestions.filter(s => s !== library.npm);
   }
 
   /**
@@ -68,79 +68,88 @@ class LargeJavascriptLibraries extends Audit {
    * @return {LH.Audit.Product}
    */
   static audit(artifacts) {
-    /** @type {Array<{original: BundlePhobiaLibrary, suggestion: BundlePhobiaLibrary}>} */
+    /** @type {Array<{original: BundlePhobiaLibrary, suggestions: BundlePhobiaLibrary[]}>} */
     const libraryPairings = [];
-    const foundLibraries = artifacts.Stacks.filter(stack => stack.detector === 'js');
+    const detectedLibs = artifacts.Stacks.filter(stack => stack.detector === 'js');
 
     const seenLibraries = new Set();
 
-    for (const library of foundLibraries) {
-      const suggestions = this.getSuggestions(library);
-      if (!library.npm || !libStats[library.npm] || !suggestions.length) continue;
+    for (const detectedLib of detectedLibs) {
+      const suggestions = this.getSuggestions(detectedLib);
+      if (!detectedLib.npm || !libStats[detectedLib.npm] || !suggestions.length) continue;
 
-      if (seenLibraries.has(library.npm)) continue;
-      seenLibraries.add(library.npm);
+      if (seenLibraries.has(detectedLib.npm)) continue;
+      seenLibraries.add(detectedLib.npm);
 
-      const version = !!library.version && !!libStats[library.npm][library.version]
-        ? library.version
-        : 'latest';
+      let version = 'latest';
+      if (detectedLib.version && libStats[detectedLib.npm][detectedLib.version]) {
+        version = detectedLib.version;
+      }
 
-      suggestions.map(suggestion => {
-        const isSmallerSuggestion = !!libStats[suggestion] &&
-          libStats[suggestion]['latest'].gzip < libStats[library.npm][version].gzip;
+      const originalLib = libStats[detectedLib.npm][version];
+      let smallerSuggestions = suggestions.map(suggestion => {
+        if (!libStats[suggestion]) return;
+        if (libStats[suggestion]['latest'].gzip > originalLib.gzip) return;
 
-        if (isSmallerSuggestion) {
-          libraryPairings.push({
-            original: libStats[library.npm][version],
-            suggestion: libStats[suggestion]['latest'],
-          });
-        }
+        return libStats[suggestion]['latest'];
       });
+
+      smallerSuggestions = smallerSuggestions.map(s => s);
+      smallerSuggestions.sort((a, b) => a.gzip - b.gzip);
+      if (smallerSuggestions.length) {
+        libraryPairings.push({original: originalLib, suggestions: smallerSuggestions});
+      }
     }
 
     const tableDetails = [];
-    let currentAlternative = 0;
-
-    for (let i = 0; i < libraryPairings.length; i++) {
-      if (i > 0) {
-        if (libraryPairings[i].original.name === libraryPairings[i - 1].original.name) {
-          currentAlternative++;
-        } else {
-          currentAlternative = 1;
-        }
-      } else {
-        currentAlternative++;
-      }
-
-      const original = libraryPairings[i].original;
-      const suggestion = libraryPairings[i].suggestion;
+    for (const libraryPairing of libraryPairings) {
+      const original = libraryPairing.original;
+      const suggestions = libraryPairing.suggestions;
 
       tableDetails.push({
         name: {
-          text: currentAlternative === 1 ? original.name : '',
-          url: currentAlternative === 1 ? original.repository : '',
+          text: original.name,
+          url: original.repository,
           type: 'link',
         },
-        suggestion: {
-          text: currentAlternative + '. ' + suggestion.name,
-          url: suggestion.repository,
-          type: 'link',
-        },
-        savings: original.gzip - suggestion.gzip,
-        originalURL: original.repository,
-        suggestionURL: suggestion.repository,
+        size: original.gzip,
+        savings: 0,
         subItems: {
           type: 'subitems',
-          items: [{suggestionDescription: suggestion.description}],
+          items: [],
         },
       });
+
+      for (let i = 0; i < suggestions.length; i++) {
+        tableDetails.push({
+          name: {
+            text: '',
+            url: '',
+            type: 'link',
+          },
+          size: suggestions[i].gzip,
+          savings: original.gzip - suggestions[i].gzip,
+          subItems: {
+            type: 'subitems',
+            items: [
+              {
+                suggestion: {
+                  text: suggestions[i].name,
+                  url: suggestions[i].repository,
+                  type: 'link',
+                },
+              },
+            ],
+          },
+        });
+      }
     }
 
     /** @type {LH.Audit.Details.TableColumnHeading[]} */
     const headings = [
       /* eslint-disable max-len */
-      {key: 'name', itemType: 'url', text: str_(UIStrings.name)},
-      {key: 'suggestion', itemType: 'url', text: str_(UIStrings.suggestion), subItemsHeading: {key: 'suggestionDescription'}},
+      {key: 'name', itemType: 'url', text: str_(UIStrings.name), subItemsHeading: {key: 'suggestion'}},
+      {key: 'size', itemType: 'bytes', text: str_(i18n.UIStrings.columnTransferSize)},
       {key: 'savings', itemType: 'bytes', text: str_(i18n.UIStrings.columnWastedBytes)},
       /* eslint-enable max-len */
     ];

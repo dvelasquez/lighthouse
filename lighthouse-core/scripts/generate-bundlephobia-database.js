@@ -8,17 +8,20 @@
 
 /* eslint-disable no-console */
 
+/** @typedef {{name: string, version: string, gzip: number, description: string, repository: string}} BundlePhobiaLibrary */
+
 const fs = require('fs');
 const exec = require('child_process').exec;
 
-const datbasePath = '../audits/byte-efficiency/bundlephobia-database.json';
-const database = fs.existsSync(datbasePath) ?
-  require('../audits/byte-efficiency/bundlephobia-database.json') : {};
+/** @type string[] */
+const libraries = require('../audits/byte-efficiency/library-suggestions.js').suggestions.flat();
+const databasePath = '../audits/byte-efficiency/bundlephobia-database.json';
 
-const librariesJSON = require('../audits/byte-efficiency/library-suggestions.json');
-/** @type {string[]} */
-const libraries = Object.keys(librariesJSON).map(key => librariesJSON[key]).flat();
-
+/** @type {Record<string, Record<'lastScraped', number|string> | Record<string, BundlePhobiaLibrary>>} */
+let database = {};
+if (fs.existsSync(databasePath)) {
+  database = require(databasePath);
+}
 
 /**
  * Returns true if this library has been scraped from BundlePhobia in the past week.
@@ -26,9 +29,8 @@ const libraries = Object.keys(librariesJSON).map(key => librariesJSON[key]).flat
  * @return {boolean}
  */
 function hasBeenRecentlyScraped(library) {
-  return !!database[library] &&
-    database[library].lastScraped !== 'Error' &&
-    (Date.now() - database[library].lastScraped) / (1000 * 60 * 60 * 24.0) < 7;
+  if (!database[library] || database[library].lastScraped === 'Error') return false;
+  return (Date.now() - database[library].lastScraped) / (1000 * 60 * 60 * 24.0) < 7;
 }
 
 /**
@@ -69,8 +71,9 @@ async function collectLibraryStats(library, index) {
         return;
       }
 
-      /** @type {Array<{name: string, version: string, gzip: number, description: string, repository: string}>} */
+      /** @type {Array<BundlePhobiaLibrary>} */
       const libraries = [];
+      /** @type {string|number} */
       let lastScraped = Date.now();
 
       for (const libraryString of stdout.split('\n')) {
@@ -85,7 +88,9 @@ async function collectLibraryStats(library, index) {
         }
       }
 
-      libraries.forEach((library, index) => {
+      for (let index = 0; index < libraries.length; index++) {
+        const library = libraries[index];
+
         database[library.name] = {
           ...database[library.name],
           [library.version]: {
@@ -103,7 +108,7 @@ async function collectLibraryStats(library, index) {
         }
 
         console.log(`   ✔ ${library.version}` + (index === 0 ? ' (latest)' : ''));
-      });
+      }
 
       resolve();
     });
@@ -123,8 +128,8 @@ async function collectLibraryStats(library, index) {
     }
   }
 
-  console.log(`\n◉ Saving database to ${datbasePath}...`);
-  fs.writeFile(datbasePath, JSON.stringify(database, null, 2), (err) => {
+  console.log(`\n◉ Saving database to ${databasePath}...`);
+  fs.writeFile(databasePath, JSON.stringify(database, null, 2), (err) => {
     if (err) {
       console.log(`   ❌ Failed saving | ${err}`);
     } else {
@@ -132,5 +137,4 @@ async function collectLibraryStats(library, index) {
     }
     console.log(`\nElapsed Time: ${(new Date() - startTime) / 1000}`);
   });
-
 })();
