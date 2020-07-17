@@ -23,7 +23,7 @@ const libraries = Object.keys(librariesJSON).map(key => librariesJSON[key]).flat
  * @return {string}
  */
 function getFilePathToSaveTo() {
-  const savePath = '../audits/byte-efficiency/large-javascript-libraries';
+  const savePath = '../audits/byte-efficiency/bundlephobia-database';
   if (fs.existsSync(savePath + '.json')) {
     return savePath + Math.floor(Math.random() * Math.floor(1000)) + '.json';
   } else {

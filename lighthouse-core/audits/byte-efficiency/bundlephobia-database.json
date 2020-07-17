@@ -1,67 +1,67 @@
 {
-  "moment": {
-    "2.27.0": {
-      "name": "moment",
-      "version": "2.27.0",
-      "gzip": 72054,
-      "description": "Parse, validate, manipulate, and display dates",
-      "repository": "https://github.com/moment/moment.git"
+  "axios": {
+    "0.20.0-0": {
+      "name": "axios",
+      "version": "0.20.0-0",
+      "gzip": 4699,
+      "description": "Promise based HTTP client for the browser and node.js",
+      "repository": "https://github.com/axios/axios.git"
     },
     "latest": {
-      "name": "moment",
-      "version": "2.27.0",
-      "gzip": 72054,
-      "description": "Parse, validate, manipulate, and display dates",
-      "repository": "https://github.com/moment/moment.git"
+      "name": "axios",
+      "version": "0.20.0-0",
+      "gzip": 4699,
+      "description": "Promise based HTTP client for the browser and node.js",
+      "repository": "https://github.com/axios/axios.git"
     },
-    "2.26.0": {
-      "name": "moment",
-      "version": "2.26.0",
-      "gzip": 71580,
-      "description": "Parse, validate, manipulate, and display dates",
-      "repository": "https://github.com/moment/moment.git"
+    "0.19.2": {
+      "name": "axios",
+      "version": "0.19.2",
+      "gzip": 4518,
+      "description": "",
+      "repository": ""
     },
-    "2.25.3": {
-      "name": "moment",
-      "version": "2.25.3",
-      "gzip": 71090,
-      "description": "Parse, validate, manipulate, and display dates",
-      "repository": "https://github.com/moment/moment.git"
+    "0.19.1": {
+      "name": "axios",
+      "version": "0.19.1",
+      "gzip": 4599,
+      "description": "",
+      "repository": ""
     },
-    "2.25.2": {
-      "name": "moment",
-      "version": "2.25.2",
-      "gzip": 71119,
-      "description": "Parse, validate, manipulate, and display dates",
-      "repository": "https://github.com/moment/moment.git"
+    "0.19.0": {
+      "name": "axios",
+      "version": "0.19.0",
+      "gzip": 4411,
+      "description": "Promise based HTTP client for the browser and node.js",
+      "repository": "https://github.com/axios/axios"
     },
-    "2.25.1": {
-      "name": "moment",
-      "version": "2.25.1",
-      "gzip": 20811,
-      "description": "Parse, validate, manipulate, and display dates",
-      "repository": "https://github.com/moment/moment.git"
+    "0.19.0-beta.1": {
+      "name": "axios",
+      "version": "0.19.0-beta.1",
+      "gzip": 4379,
+      "description": "Promise based HTTP client for the browser and node.js",
+      "repository": "https://github.com/axios/axios"
     },
-    "2.25.0": {
-      "name": "moment",
-      "version": "2.25.0",
-      "gzip": 20876,
-      "description": "Parse, validate, manipulate, and display dates",
-      "repository": "https://github.com/moment/moment.git"
+    "0.18.1": {
+      "name": "axios",
+      "version": "0.18.1",
+      "gzip": 3990,
+      "description": "Promise based HTTP client for the browser and node.js",
+      "repository": "https://github.com/axios/axios"
     },
-    "2.24.0": {
-      "name": "moment",
-      "version": "2.24.0",
-      "gzip": 67489,
-      "description": "Parse, validate, manipulate, and display dates",
-      "repository": "https://github.com/moment/moment"
+    "0.18.0": {
+      "name": "axios",
+      "version": "0.18.0",
+      "gzip": 4415,
+      "description": "",
+      "repository": ""
     },
-    "2.23.0": {
-      "name": "moment",
-      "version": "2.23.0",
-      "gzip": 66675,
-      "description": "Parse, validate, manipulate, and display dates",
-      "repository": "https://github.com/moment/moment"
+    "0.17.1": {
+      "name": "axios",
+      "version": "0.17.1",
+      "gzip": 4359,
+      "description": "Promise based HTTP client for the browser and node.js",
+      "repository": "https://github.com/axios/axios"
     }
   },
   "dayjs": {
@@ -78,22 +78,55 @@
       "gzip": 2849,
       "description": "2KB immutable date time library alternative to Moment.js with the same modern API ",
       "repository": "https://github.com/iamkun/dayjs.git"
-    }
-  },
-  "luxon": {
-    "1.24.1": {
-      "name": "luxon",
-      "version": "1.24.1",
-      "gzip": 20912,
-      "description": "Immutable date wrapper",
-      "repository": "https://github.com/moment/luxon.git"
     },
-    "latest": {
-      "name": "luxon",
-      "version": "1.24.1",
-      "gzip": 20912,
-      "description": "Immutable date wrapper",
-      "repository": "https://github.com/moment/luxon.git"
+    "1.8.28": {
+      "name": "dayjs",
+      "version": "1.8.28",
+      "gzip": 2849,
+      "description": "2KB immutable date time library alternative to Moment.js with the same modern API ",
+      "repository": "https://github.com/iamkun/dayjs.git"
+    },
+    "1.8.27": {
+      "name": "dayjs",
+      "version": "1.8.27",
+      "gzip": 2849,
+      "description": "2KB immutable date time library alternative to Moment.js with the same modern API ",
+      "repository": "https://github.com/iamkun/dayjs.git"
+    },
+    "1.8.26": {
+      "name": "dayjs",
+      "version": "1.8.26",
+      "gzip": 2855,
+      "description": "2KB immutable date time library alternative to Moment.js with the same modern API ",
+      "repository": "https://github.com/iamkun/dayjs.git"
+    },
+    "1.8.25": {
+      "name": "dayjs",
+      "version": "1.8.25",
+      "gzip": 2853,
+      "description": "2KB immutable date time library alternative to Moment.js with the same modern API ",
+      "repository": "https://github.com/iamkun/dayjs.git"
+    },
+    "1.8.24": {
+      "name": "dayjs",
+      "version": "1.8.24",
+      "gzip": 2850,
+      "description": "2KB immutable date time library alternative to Moment.js with the same modern API ",
+      "repository": "https://github.com/iamkun/dayjs.git"
+    },
+    "1.8.23": {
+      "name": "dayjs",
+      "version": "1.8.23",
+      "gzip": 2850,
+      "description": "",
+      "repository": ""
+    },
+    "1.8.22": {
+      "name": "dayjs",
+      "version": "1.8.22",
+      "gzip": 2850,
+      "description": "",
+      "repository": ""
     }
   },
   "date-fns": {
@@ -110,6 +143,940 @@
       "gzip": 18304,
       "description": "Modern JavaScript date utility library",
       "repository": "https://github.com/date-fns/date-fns.git"
+    },
+    "2.13.0": {
+      "name": "date-fns",
+      "version": "2.13.0",
+      "gzip": 17928,
+      "description": "Modern JavaScript date utility library",
+      "repository": "https://github.com/date-fns/date-fns.git"
+    },
+    "2.12.0": {
+      "name": "date-fns",
+      "version": "2.12.0",
+      "gzip": 17484,
+      "description": "Modern JavaScript date utility library",
+      "repository": "https://github.com/date-fns/date-fns.git"
+    },
+    "2.11.1": {
+      "name": "date-fns",
+      "version": "2.11.1",
+      "gzip": 17450,
+      "description": "Modern JavaScript date utility library",
+      "repository": "https://github.com/date-fns/date-fns.git"
+    },
+    "2.11.0": {
+      "name": "date-fns",
+      "version": "2.11.0",
+      "gzip": 17406,
+      "description": "",
+      "repository": ""
+    },
+    "2.10.0": {
+      "name": "date-fns",
+      "version": "2.10.0",
+      "gzip": 17385,
+      "description": "",
+      "repository": ""
+    },
+    "2.9.0": {
+      "name": "date-fns",
+      "version": "2.9.0",
+      "gzip": 17355,
+      "description": "",
+      "repository": ""
+    },
+    "2.8.1": {
+      "name": "date-fns",
+      "version": "2.8.1",
+      "gzip": 17166,
+      "description": "Modern JavaScript date utility library",
+      "repository": "https://github.com/date-fns/date-fns.git"
+    }
+  },
+  "luxon": {
+    "1.24.1": {
+      "name": "luxon",
+      "version": "1.24.1",
+      "gzip": 20912,
+      "description": "Immutable date wrapper",
+      "repository": "https://github.com/moment/luxon.git"
+    },
+    "latest": {
+      "name": "luxon",
+      "version": "1.24.1",
+      "gzip": 20912,
+      "description": "Immutable date wrapper",
+      "repository": "https://github.com/moment/luxon.git"
+    },
+    "1.24.0": {
+      "name": "luxon",
+      "version": "1.24.0",
+      "gzip": 20919,
+      "description": "Immutable date wrapper",
+      "repository": "https://github.com/moment/luxon.git"
+    },
+    "1.23.0": {
+      "name": "luxon",
+      "version": "1.23.0",
+      "gzip": 20862,
+      "description": "Immutable date wrapper",
+      "repository": "https://github.com/moment/luxon.git"
+    },
+    "1.22.2": {
+      "name": "luxon",
+      "version": "1.22.2",
+      "gzip": 20834,
+      "description": "Immutable date wrapper",
+      "repository": "https://github.com/moment/luxon.git"
+    },
+    "1.22.0": {
+      "name": "luxon",
+      "version": "1.22.0",
+      "gzip": 20673,
+      "description": "",
+      "repository": ""
+    },
+    "1.21.3": {
+      "name": "luxon",
+      "version": "1.21.3",
+      "gzip": 20521,
+      "description": "Immutable date wrapper",
+      "repository": "https://github.com/moment/luxon.git"
+    },
+    "1.21.2": {
+      "name": "luxon",
+      "version": "1.21.2",
+      "gzip": 20516,
+      "description": "Immutable date wrapper",
+      "repository": "https://github.com/moment/luxon.git"
+    },
+    "1.21.1": {
+      "name": "luxon",
+      "version": "1.21.1",
+      "gzip": 20567,
+      "description": "Immutable date wrapper",
+      "repository": "https://github.com/moment/luxon.git"
+    }
+  },
+  "fast-deep-equal": {
+    "3.1.3": {
+      "name": "fast-deep-equal",
+      "version": "3.1.3",
+      "gzip": 414,
+      "description": "Fast deep equal",
+      "repository": "https://github.com/epoberezkin/fast-deep-equal.git"
+    },
+    "latest": {
+      "name": "fast-deep-equal",
+      "version": "3.1.3",
+      "gzip": 414,
+      "description": "Fast deep equal",
+      "repository": "https://github.com/epoberezkin/fast-deep-equal.git"
+    },
+    "3.1.1": {
+      "name": "fast-deep-equal",
+      "version": "3.1.1",
+      "gzip": 414,
+      "description": "Fast deep equal",
+      "repository": "https://github.com/epoberezkin/fast-deep-equal.git"
+    },
+    "3.1.0": {
+      "name": "fast-deep-equal",
+      "version": "3.1.0",
+      "gzip": 414,
+      "description": "Fast deep equal",
+      "repository": "https://github.com/epoberezkin/fast-deep-equal.git"
+    },
+    "3.0.1": {
+      "name": "fast-deep-equal",
+      "version": "3.0.1",
+      "gzip": 414,
+      "description": "Fast deep equal",
+      "repository": "https://github.com/epoberezkin/fast-deep-equal.git"
+    },
+    "3.0.0": {
+      "name": "fast-deep-equal",
+      "version": "3.0.0",
+      "gzip": 414,
+      "description": "Fast deep equal",
+      "repository": "https://github.com/epoberezkin/fast-deep-equal.git"
+    },
+    "3.0.0-beta.2": {
+      "name": "fast-deep-equal",
+      "version": "3.0.0-beta.2",
+      "gzip": 414,
+      "description": "Fast deep equal",
+      "repository": "https://github.com/epoberezkin/fast-deep-equal"
+    },
+    "3.0.0-beta.1": {
+      "name": "fast-deep-equal",
+      "version": "3.0.0-beta.1",
+      "gzip": 404,
+      "description": "Fast deep equal",
+      "repository": "https://github.com/epoberezkin/fast-deep-equal"
+    },
+    "3.0.0-beta.0": {
+      "name": "fast-deep-equal",
+      "version": "3.0.0-beta.0",
+      "gzip": 404,
+      "description": "Fast deep equal",
+      "repository": "https://github.com/epoberezkin/fast-deep-equal.git"
+    }
+  },
+  "deep-eql": {
+    "4.0.0": {
+      "name": "deep-eql",
+      "version": "4.0.0",
+      "gzip": 1953,
+      "description": "Improved deep equality testing for Node.js and the browser.",
+      "repository": "https://github.com/chaijs/deep-eql"
+    },
+    "latest": {
+      "name": "deep-eql",
+      "version": "4.0.0",
+      "gzip": 1953,
+      "description": "Improved deep equality testing for Node.js and the browser.",
+      "repository": "https://github.com/chaijs/deep-eql"
+    },
+    "3.0.1": {
+      "name": "deep-eql",
+      "version": "3.0.1",
+      "gzip": 1930,
+      "description": "Improved deep equality testing for Node.js and the browser.",
+      "repository": "https://github.com/chaijs/deep-eql"
+    },
+    "3.0.0": {
+      "name": "deep-eql",
+      "version": "3.0.0",
+      "gzip": 1977,
+      "description": "Improved deep equality testing for Node.js and the browser.",
+      "repository": "https://github.com/chaijs/deep-eql.git"
+    },
+    "2.0.2": {
+      "name": "deep-eql",
+      "version": "2.0.2",
+      "gzip": 1949,
+      "description": "Improved deep equality testing for Node.js and the browser.",
+      "repository": "https://github.com/chaijs/deep-eql.git"
+    },
+    "2.0.1": {
+      "name": "deep-eql",
+      "version": "2.0.1",
+      "gzip": 2003,
+      "description": "Improved deep equality testing for Node.js and the browser.",
+      "repository": "https://github.com/chaijs/deep-eql.git"
+    },
+    "2.0.0": {
+      "name": "deep-eql",
+      "version": "2.0.0",
+      "gzip": 1958,
+      "description": "Improved deep equality testing for Node.js and the browser.",
+      "repository": "https://github.com/chaijs/deep-eql.git"
+    },
+    "1.0.3": {
+      "name": "deep-eql",
+      "version": "1.0.3",
+      "gzip": 1981,
+      "description": "Improved deep equality testing for Node.js and the browser.",
+      "repository": "https://github.com/chaijs/deep-eql.git"
+    },
+    "1.0.2": {
+      "name": "deep-eql",
+      "version": "1.0.2",
+      "gzip": 1958,
+      "description": "Improved deep equality testing for Node.js and the browser.",
+      "repository": "https://github.com/chaijs/deep-eql.git"
+    }
+  },
+  "deep-equal": {
+    "2.0.3": {
+      "name": "deep-equal",
+      "version": "2.0.3",
+      "gzip": 9054,
+      "description": "node's assert.deepEqual algorithm",
+      "repository": "https://github.com/inspect-js/node-deep-equal.git"
+    },
+    "latest": {
+      "name": "deep-equal",
+      "version": "2.0.3",
+      "gzip": 9054,
+      "description": "node's assert.deepEqual algorithm",
+      "repository": "https://github.com/inspect-js/node-deep-equal.git"
+    },
+    "2.0.2": {
+      "name": "deep-equal",
+      "version": "2.0.2",
+      "gzip": 8977,
+      "description": "node's assert.deepEqual algorithm",
+      "repository": "https://github.com/inspect-js/node-deep-equal.git"
+    },
+    "2.0.1": {
+      "name": "deep-equal",
+      "version": "2.0.1",
+      "gzip": 8115,
+      "description": "node's assert.deepEqual algorithm",
+      "repository": "https://github.com/inspect-js/node-deep-equal.git"
+    },
+    "1.1.1": {
+      "name": "deep-equal",
+      "version": "1.1.1",
+      "gzip": 2533,
+      "description": "node's assert.deepEqual algorithm",
+      "repository": "https://github.com/substack/node-deep-equal.git"
+    },
+    "1.1.0": {
+      "name": "deep-equal",
+      "version": "1.1.0",
+      "gzip": 2533,
+      "description": "node&#39;s assert.deepEqual algorithm",
+      "repository": "https://github.com/substack/node-deep-equal"
+    },
+    "1.0.1": {
+      "name": "deep-equal",
+      "version": "1.0.1",
+      "gzip": 686,
+      "description": "node&#39;s assert.deepEqual algorithm",
+      "repository": "https://github.com/substack/node-deep-equal"
+    },
+    "1.0.0": {
+      "name": "deep-equal",
+      "version": "1.0.0",
+      "gzip": 681,
+      "description": "node&#39;s assert.deepEqual algorithm",
+      "repository": "https://github.com/substack/node-deep-equal"
+    },
+    "0.2.2": {
+      "name": "deep-equal",
+      "version": "0.2.2",
+      "gzip": 681,
+      "description": "node&#39;s assert.deepEqual algorithm",
+      "repository": "https://github.com/substack/node-deep-equal"
+    }
+  },
+  "lodash.isequal": {
+    "4.5.0": {
+      "name": "lodash.isequal",
+      "version": "4.5.0",
+      "gzip": 3885,
+      "description": "The Lodash method `_.isEqual` exported as a module.",
+      "repository": "https://github.com/lodash/lodash"
+    },
+    "latest": {
+      "name": "lodash.isequal",
+      "version": "4.5.0",
+      "gzip": 3885,
+      "description": "The Lodash method `_.isEqual` exported as a module.",
+      "repository": "https://github.com/lodash/lodash"
+    },
+    "4.4.0": {
+      "name": "lodash.isequal",
+      "version": "4.4.0",
+      "gzip": 3435,
+      "description": "The Lodash method `_.isEqual` exported as a module.",
+      "repository": "https://github.com/lodash/lodash"
+    },
+    "4.3.1": {
+      "name": "lodash.isequal",
+      "version": "4.3.1",
+      "gzip": 3525,
+      "description": "The Lodash method `_.isEqual` exported as a module.",
+      "repository": "https://github.com/lodash/lodash"
+    },
+    "4.3.0": {
+      "name": "lodash.isequal",
+      "version": "4.3.0",
+      "gzip": 3507,
+      "description": "The Lodash method `_.isEqual` exported as a module.",
+      "repository": "https://github.com/lodash/lodash"
+    },
+    "4.2.0": {
+      "name": "lodash.isequal",
+      "version": "4.2.0",
+      "gzip": 3388,
+      "description": "The Lodash method `_.isEqual` exported as a module.",
+      "repository": "https://github.com/lodash/lodash"
+    },
+    "4.1.4": {
+      "name": "lodash.isequal",
+      "version": "4.1.4",
+      "gzip": 3528,
+      "description": "The Lodash method `_.isEqual` exported as a module.",
+      "repository": "https://github.com/lodash/lodash"
+    },
+    "4.1.3": {
+      "name": "lodash.isequal",
+      "version": "4.1.3",
+      "gzip": 3546,
+      "description": "",
+      "repository": ""
+    },
+    "4.1.2": {
+      "name": "lodash.isequal",
+      "version": "4.1.2",
+      "gzip": 3407,
+      "description": "The Lodash method `_.isEqual` exported as a module.",
+      "repository": "https://github.com/lodash/lodash"
+    }
+  },
+  "jsonschema": {
+    "1.2.6": {
+      "name": "jsonschema",
+      "version": "1.2.6",
+      "gzip": 6132,
+      "description": "A fast and easy to use JSON Schema validator",
+      "repository": "https://github.com/tdegrunt/jsonschema.git"
+    },
+    "latest": {
+      "name": "jsonschema",
+      "version": "1.2.6",
+      "gzip": 6132,
+      "description": "A fast and easy to use JSON Schema validator",
+      "repository": "https://github.com/tdegrunt/jsonschema.git"
+    },
+    "1.2.5": {
+      "name": "jsonschema",
+      "version": "1.2.5",
+      "gzip": 6100,
+      "description": "A fast and easy to use JSON Schema validator",
+      "repository": "https://github.com/tdegrunt/jsonschema.git"
+    },
+    "1.2.4": {
+      "name": "jsonschema",
+      "version": "1.2.4",
+      "gzip": 6099,
+      "description": "A fast and easy to use JSON Schema validator",
+      "repository": "https://github.com/tdegrunt/jsonschema"
+    },
+    "1.2.3": {
+      "name": "jsonschema",
+      "version": "1.2.3",
+      "gzip": 6107,
+      "description": "A fast and easy to use JSON Schema validator",
+      "repository": "https://github.com/tdegrunt/jsonschema"
+    },
+    "1.2.2": {
+      "name": "jsonschema",
+      "version": "1.2.2",
+      "gzip": 5790,
+      "description": "A fast and easy to use JSON Schema validator",
+      "repository": "https://github.com/tdegrunt/jsonschema"
+    },
+    "1.2.0": {
+      "name": "jsonschema",
+      "version": "1.2.0",
+      "gzip": 5757,
+      "description": "A fast and easy to use JSON Schema validator",
+      "repository": "https://github.com/tdegrunt/jsonschema"
+    },
+    "1.1.1": {
+      "name": "jsonschema",
+      "version": "1.1.1",
+      "gzip": 5563,
+      "description": "A fast and easy to use JSON Schema validator",
+      "repository": "https://github.com/tdegrunt/jsonschema"
+    },
+    "1.1.0": {
+      "name": "jsonschema",
+      "version": "1.1.0",
+      "gzip": 5416,
+      "description": "A fast and easy to use JSON Schema validator",
+      "repository": "https://github.com/tdegrunt/jsonschema"
+    }
+  },
+  "joi": {
+    "17.1.1": {
+      "name": "joi",
+      "version": "17.1.1",
+      "gzip": 42450,
+      "description": "Object schema validation",
+      "repository": "https://github.com/sideway/joi.git"
+    },
+    "latest": {
+      "name": "joi",
+      "version": "17.1.1",
+      "gzip": 42450,
+      "description": "Object schema validation",
+      "repository": "https://github.com/sideway/joi.git"
+    },
+    "14.3.1": {
+      "name": "joi",
+      "version": "14.3.1",
+      "gzip": 30457,
+      "description": "Object schema validation",
+      "repository": "https://github.com/hapijs/joi.git"
+    },
+    "14.3.0": {
+      "name": "joi",
+      "version": "14.3.0",
+      "gzip": 30004,
+      "description": "Object schema validation",
+      "repository": "https://github.com/hapijs/joi"
+    },
+    "14.2.0": {
+      "name": "joi",
+      "version": "14.2.0",
+      "gzip": 29854,
+      "description": "Object schema validation",
+      "repository": "https://github.com/hapijs/joi"
+    },
+    "14.1.1": {
+      "name": "joi",
+      "version": "14.1.1",
+      "gzip": 29556,
+      "description": "Object schema validation",
+      "repository": "https://github.com/hapijs/joi"
+    },
+    "14.1.0": {
+      "name": "joi",
+      "version": "14.1.0",
+      "gzip": 29550,
+      "description": "Object schema validation",
+      "repository": "https://github.com/hapijs/joi"
+    },
+    "14.0.6": {
+      "name": "joi",
+      "version": "14.0.6",
+      "gzip": 29529,
+      "description": "Object schema validation",
+      "repository": "https://github.com/hapijs/joi"
+    },
+    "14.0.5": {
+      "name": "joi",
+      "version": "14.0.5",
+      "gzip": 29532,
+      "description": "Object schema validation",
+      "repository": "https://github.com/hapijs/joi"
+    }
+  },
+  "ajv": {
+    "6.12.3": {
+      "name": "ajv",
+      "version": "6.12.3",
+      "gzip": 29232,
+      "description": "Another JSON Schema Validator",
+      "repository": "https://github.com/ajv-validator/ajv.git"
+    },
+    "latest": {
+      "name": "ajv",
+      "version": "6.12.3",
+      "gzip": 29232,
+      "description": "Another JSON Schema Validator",
+      "repository": "https://github.com/ajv-validator/ajv.git"
+    },
+    "6.12.2": {
+      "name": "ajv",
+      "version": "6.12.2",
+      "gzip": 29360,
+      "description": "Another JSON Schema Validator",
+      "repository": "https://github.com/epoberezkin/ajv.git"
+    },
+    "6.12.1": {
+      "name": "ajv",
+      "version": "6.12.1",
+      "gzip": 29360,
+      "description": "Another JSON Schema Validator",
+      "repository": "https://github.com/epoberezkin/ajv.git"
+    },
+    "6.12.0": {
+      "name": "ajv",
+      "version": "6.12.0",
+      "gzip": 29357,
+      "description": "",
+      "repository": ""
+    },
+    "6.11.0": {
+      "name": "ajv",
+      "version": "6.11.0",
+      "gzip": 29342,
+      "description": "",
+      "repository": ""
+    },
+    "6.10.2": {
+      "name": "ajv",
+      "version": "6.10.2",
+      "gzip": 29311,
+      "description": "Another JSON Schema Validator",
+      "repository": "https://github.com/epoberezkin/ajv"
+    },
+    "6.10.1": {
+      "name": "ajv",
+      "version": "6.10.1",
+      "gzip": 29203,
+      "description": "Another JSON Schema Validator",
+      "repository": "https://github.com/epoberezkin/ajv"
+    },
+    "6.10.0": {
+      "name": "ajv",
+      "version": "6.10.0",
+      "gzip": 29182,
+      "description": "Another JSON Schema Validator",
+      "repository": "https://github.com/epoberezkin/ajv"
+    }
+  },
+  "superstruct": {
+    "0.10.12": {
+      "name": "superstruct",
+      "version": "0.10.12",
+      "gzip": 2724,
+      "description": "A simple, expressive way to validate data in JavaScript.",
+      "repository": "https://github.com/ianstormtaylor/superstruct.git"
+    },
+    "latest": {
+      "name": "superstruct",
+      "version": "0.10.12",
+      "gzip": 2724,
+      "description": "A simple, expressive way to validate data in JavaScript.",
+      "repository": "https://github.com/ianstormtaylor/superstruct.git"
+    },
+    "0.10.11": {
+      "name": "superstruct",
+      "version": "0.10.11",
+      "gzip": 2724,
+      "description": "A simple, expressive way to validate data in JavaScript.",
+      "repository": "https://github.com/ianstormtaylor/superstruct.git"
+    },
+    "0.10.10": {
+      "name": "superstruct",
+      "version": "0.10.10",
+      "gzip": 2724,
+      "description": "A simple, expressive way to validate data in JavaScript.",
+      "repository": "https://github.com/ianstormtaylor/superstruct.git"
+    },
+    "0.10.9": {
+      "name": "superstruct",
+      "version": "0.10.9",
+      "gzip": 2724,
+      "description": "A simple, expressive way to validate data in JavaScript.",
+      "repository": "https://github.com/ianstormtaylor/superstruct.git"
+    },
+    "0.10.8": {
+      "name": "superstruct",
+      "version": "0.10.8",
+      "gzip": 2724,
+      "description": "A simple, expressive way to validate data in JavaScript.",
+      "repository": "https://github.com/ianstormtaylor/superstruct.git"
+    },
+    "0.10.7": {
+      "name": "superstruct",
+      "version": "0.10.7",
+      "gzip": 2724,
+      "description": "A simple, expressive way to validate data in JavaScript.",
+      "repository": "https://github.com/ianstormtaylor/superstruct.git"
+    },
+    "0.10.6": {
+      "name": "superstruct",
+      "version": "0.10.6",
+      "gzip": 2700,
+      "description": "A simple, expressive way to validate data in JavaScript.",
+      "repository": "https://github.com/ianstormtaylor/superstruct.git"
+    },
+    "0.10.4": {
+      "name": "superstruct",
+      "version": "0.10.4",
+      "gzip": 2681,
+      "description": "A simple, expressive way to validate data in JavaScript.",
+      "repository": "https://github.com/ianstormtaylor/superstruct.git"
+    }
+  },
+  "yup": {
+    "0.29.1": {
+      "name": "yup",
+      "version": "0.29.1",
+      "gzip": 21234,
+      "description": "Dead simple Object schema validation",
+      "repository": "https://github.com/jquense/yup.git"
+    },
+    "latest": {
+      "name": "yup",
+      "version": "0.29.1",
+      "gzip": 21234,
+      "description": "Dead simple Object schema validation",
+      "repository": "https://github.com/jquense/yup.git"
+    },
+    "0.29.0": {
+      "name": "yup",
+      "version": "0.29.0",
+      "gzip": 21167,
+      "description": "Dead simple Object schema validation",
+      "repository": "https://github.com/jquense/yup.git"
+    },
+    "0.28.5": {
+      "name": "yup",
+      "version": "0.28.5",
+      "gzip": 20842,
+      "description": "Dead simple Object schema validation",
+      "repository": "https://github.com/jquense/yup.git"
+    },
+    "0.28.4": {
+      "name": "yup",
+      "version": "0.28.4",
+      "gzip": 20844,
+      "description": "Dead simple Object schema validation",
+      "repository": "https://github.com/jquense/yup.git"
+    },
+    "0.28.3": {
+      "name": "yup",
+      "version": "0.28.3",
+      "gzip": 20842,
+      "description": "Dead simple Object schema validation",
+      "repository": "https://github.com/jquense/yup.git"
+    },
+    "0.28.2": {
+      "name": "yup",
+      "version": "0.28.2",
+      "gzip": 20844,
+      "description": "",
+      "repository": ""
+    },
+    "0.28.1": {
+      "name": "yup",
+      "version": "0.28.1",
+      "gzip": 20987,
+      "description": "",
+      "repository": ""
+    },
+    "0.28.0": {
+      "name": "yup",
+      "version": "0.28.0",
+      "gzip": 22501,
+      "description": "Dead simple Object schema validation",
+      "repository": "https://github.com/jquense/yup.git"
+    }
+  },
+  "validate.js": {
+    "0.13.1": {
+      "name": "validate.js",
+      "version": "0.13.1",
+      "gzip": 5060,
+      "description": "Declarative validations for JavaScript",
+      "repository": "https://github.com/ansman/validate.js"
+    },
+    "latest": {
+      "name": "validate.js",
+      "version": "0.13.1",
+      "gzip": 5060,
+      "description": "Declarative validations for JavaScript",
+      "repository": "https://github.com/ansman/validate.js"
+    },
+    "0.12.0": {
+      "name": "validate.js",
+      "version": "0.12.0",
+      "gzip": 4672,
+      "description": "Declarative validations for JavaScript",
+      "repository": "https://github.com/ansman/validate.js"
+    },
+    "0.11.1": {
+      "name": "validate.js",
+      "version": "0.11.1",
+      "gzip": 4616,
+      "description": "Declarative validations for JavaScript",
+      "repository": "https://github.com/ansman/validate.js"
+    },
+    "0.11.0": {
+      "name": "validate.js",
+      "version": "0.11.0",
+      "gzip": 4587,
+      "description": "Declarative validations for JavaScript",
+      "repository": "https://github.com/ansman/validate.js"
+    },
+    "0.10.0": {
+      "name": "validate.js",
+      "version": "0.10.0",
+      "gzip": 4569,
+      "description": "Declarative validations for JavaScript",
+      "repository": "https://github.com/ansman/validate.js"
+    },
+    "0.9.0": {
+      "name": "validate.js",
+      "version": "0.9.0",
+      "gzip": 4397,
+      "description": "Declarative validations for JavaScript",
+      "repository": "https://github.com/ansman/validate.js"
+    }
+  },
+  "qs": {
+    "6.9.4": {
+      "name": "qs",
+      "version": "6.9.4",
+      "gzip": 3681,
+      "description": "A querystring parser that supports nesting and arrays, with a depth limit",
+      "repository": "https://github.com/ljharb/qs.git"
+    },
+    "latest": {
+      "name": "qs",
+      "version": "6.9.4",
+      "gzip": 3681,
+      "description": "A querystring parser that supports nesting and arrays, with a depth limit",
+      "repository": "https://github.com/ljharb/qs.git"
+    },
+    "6.9.3": {
+      "name": "qs",
+      "version": "6.9.3",
+      "gzip": 3654,
+      "description": "A querystring parser that supports nesting and arrays, with a depth limit",
+      "repository": "https://github.com/ljharb/qs.git"
+    },
+    "6.9.2": {
+      "name": "qs",
+      "version": "6.9.2",
+      "gzip": 3593,
+      "description": "",
+      "repository": ""
+    },
+    "6.9.1": {
+      "name": "qs",
+      "version": "6.9.1",
+      "gzip": 3574,
+      "description": "A querystring parser that supports nesting and arrays, with a depth limit",
+      "repository": "https://github.com/ljharb/qs.git"
+    },
+    "6.9.0": {
+      "name": "qs",
+      "version": "6.9.0",
+      "gzip": 3553,
+      "description": "A querystring parser that supports nesting and arrays, with a depth limit",
+      "repository": "https://github.com/ljharb/qs"
+    },
+    "6.8.2": {
+      "name": "qs",
+      "version": "6.8.2",
+      "gzip": 3639,
+      "description": "A querystring parser that supports nesting and arrays, with a depth limit",
+      "repository": "https://github.com/ljharb/qs.git"
+    },
+    "6.8.1": {
+      "name": "qs",
+      "version": "6.8.1",
+      "gzip": 3579,
+      "description": "A querystring parser that supports nesting and arrays, with a depth limit",
+      "repository": "https://github.com/ljharb/qs.git"
+    },
+    "6.8.0": {
+      "name": "qs",
+      "version": "6.8.0",
+      "gzip": 3539,
+      "description": "A querystring parser that supports nesting and arrays, with a depth limit",
+      "repository": "https://github.com/ljharb/qs"
+    }
+  },
+  "querystring": {
+    "0.2.0": {
+      "name": "querystring",
+      "version": "0.2.0",
+      "gzip": 129,
+      "description": "Node&#39;s querystring module for all engines.",
+      "repository": "https://github.com/Gozala/querystring"
+    },
+    "latest": {
+      "name": "querystring",
+      "version": "0.2.0",
+      "gzip": 129,
+      "description": "Node&#39;s querystring module for all engines.",
+      "repository": "https://github.com/Gozala/querystring"
+    }
+  },
+  "moment-timezone": {
+    "0.5.31": {
+      "name": "moment-timezone",
+      "version": "0.5.31",
+      "gzip": 100664,
+      "description": "Parse and display moments in any timezone.",
+      "repository": "https://github.com/moment/moment-timezone.git"
+    },
+    "latest": {
+      "name": "moment-timezone",
+      "version": "0.5.31",
+      "gzip": 100664,
+      "description": "Parse and display moments in any timezone.",
+      "repository": "https://github.com/moment/moment-timezone.git"
+    }
+  },
+  "uuid": {
+    "8.2.0": {
+      "name": "uuid",
+      "version": "8.2.0",
+      "gzip": 3082,
+      "description": "RFC4122 (v1, v4, and v5) UUIDs",
+      "repository": "https://github.com/uuidjs/uuid.git"
+    },
+    "latest": {
+      "name": "uuid",
+      "version": "8.2.0",
+      "gzip": 3082,
+      "description": "RFC4122 (v1, v4, and v5) UUIDs",
+      "repository": "https://github.com/uuidjs/uuid.git"
+    }
+  },
+  "shortid": {
+    "2.2.15": {
+      "name": "shortid",
+      "version": "2.2.15",
+      "gzip": 1176,
+      "description": "Amazingly short non-sequential url-friendly unique id generator.",
+      "repository": "https://github.com/dylang/shortid"
+    },
+    "latest": {
+      "name": "shortid",
+      "version": "2.2.15",
+      "gzip": 1176,
+      "description": "Amazingly short non-sequential url-friendly unique id generator.",
+      "repository": "https://github.com/dylang/shortid"
+    }
+  },
+  "nanoid": {
+    "3.1.10": {
+      "name": "nanoid",
+      "version": "3.1.10",
+      "gzip": 505,
+      "description": "A tiny (108 bytes), secure URL-friendly unique string ID generator",
+      "repository": "https://github.com/ai/nanoid.git"
+    },
+    "latest": {
+      "name": "nanoid",
+      "version": "3.1.10",
+      "gzip": 505,
+      "description": "A tiny (108 bytes), secure URL-friendly unique string ID generator",
+      "repository": "https://github.com/ai/nanoid.git"
+    }
+  },
+  "immutable": {
+    "4.0.0-rc.12": {
+      "name": "immutable",
+      "version": "4.0.0-rc.12",
+      "gzip": 17657,
+      "description": "Immutable Data Collections",
+      "repository": "https://github.com/facebook/immutable-js"
+    },
+    "latest": {
+      "name": "immutable",
+      "version": "4.0.0-rc.12",
+      "gzip": 17657,
+      "description": "Immutable Data Collections",
+      "repository": "https://github.com/facebook/immutable-js"
+    }
+  },
+  "got": {
+    "11.5.1": {
+      "name": "got",
+      "version": "11.5.1",
+      "gzip": 30211,
+      "description": "Human-friendly and powerful HTTP request library for Node.js",
+      "repository": "https://github.com/sindresorhus/got.git"
+    },
+    "latest": {
+      "name": "got",
+      "version": "11.5.1",
+      "gzip": 30211,
+      "description": "Human-friendly and powerful HTTP request library for Node.js",
+      "repository": "https://github.com/sindresorhus/got.git"
+    },
+    "11.5.0": {
+      "name": "got",
+      "version": "11.5.0",
+      "gzip": 29896,
+      "description": "Human-friendly and powerful HTTP request library for Node.js",
+      "repository": "https://github.com/sindresorhus/got.git"
     }
   }
 }
