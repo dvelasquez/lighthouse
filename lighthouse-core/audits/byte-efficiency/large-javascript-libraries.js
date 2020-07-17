@@ -13,8 +13,8 @@
 
 /** @typedef {{name: string, version: string, gzip: number, description: string, repository: string}} BundlePhobiaLibrary */
 
-const bundlePhobiaStats = require('./bundlephobia-database.json');
-const largeLibraryToSuggestion = require('./library-suggestions.json');
+const libStats = require('./bundlephobia-database.json');
+const librarySuggestions = require('./library-suggestions.json');
 
 const Audit = require('../audit.js');
 const i18n = require('../../lib/i18n/i18n.js');
@@ -51,6 +51,19 @@ class LargeJavascriptLibraries extends Audit {
   }
 
   /**
+   * @param {LH.Artifacts.DetectedStack} library
+   * @return {string[]}
+   */
+  static getSuggestions(library) {
+    for (const key of Object.keys(librarySuggestions)) {
+      if (librarySuggestions[key].includes(library.npm)) {
+        return librarySuggestions[key].filter(suggestion => suggestion !== library.npm);
+      }
+    }
+    return [];
+  }
+
+  /**
    * @param {LH.Artifacts} artifacts
    * @return {LH.Audit.Product}
    */
@@ -62,25 +75,27 @@ class LargeJavascriptLibraries extends Audit {
     const seenLibraries = new Set();
 
     for (const library of foundLibraries) {
-      if (!library.npm || !largeLibraryToSuggestion[library.npm]) continue;
+      const suggestions = this.getSuggestions(library);
+      if (!library.npm || !libStats[library.npm] || !suggestions.length) continue;
+
       if (seenLibraries.has(library.npm)) continue;
       seenLibraries.add(library.npm);
 
-      if (library.version && bundlePhobiaStats[library.npm][library.version]) {
-        largeLibraryToSuggestion[library.npm].map(librarySuggestionName => {
+      const version = !!library.version && !!libStats[library.npm][library.version]
+        ? library.version
+        : 'latest';
+
+      suggestions.map(suggestion => {
+        const isSmallerSuggestion = !!libStats[suggestion] &&
+          libStats[suggestion]['latest'].gzip < libStats[library.npm][version].gzip;
+
+        if (isSmallerSuggestion) {
           libraryPairings.push({
-            original: bundlePhobiaStats[library.npm][library.version],
-            suggestion: bundlePhobiaStats[librarySuggestionName]['latest'],
+            original: libStats[library.npm][version],
+            suggestion: libStats[suggestion]['latest'],
           });
-        });
-      } else {
-        largeLibraryToSuggestion[library.npm].map(librarySuggestionName => {
-          libraryPairings.push({
-            original: bundlePhobiaStats[library.npm]['latest'],
-            suggestion: bundlePhobiaStats[librarySuggestionName]['latest'],
-          });
-        });
-      }
+        }
+      });
     }
 
     const tableDetails = [];

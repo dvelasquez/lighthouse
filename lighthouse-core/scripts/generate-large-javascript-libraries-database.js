@@ -12,10 +12,10 @@ const fs = require('fs');
 const exec = require('child_process').exec;
 
 const database = {};
-const allLibraries = require('../audits/byte-efficiency/library-suggestions.json');
-const largeLibraries = Object.keys(allLibraries);
-const suggestedLibraries = largeLibraries.map(key => allLibraries[key]).flat();
-const totalLibrariesToCollect = largeLibraries.length + suggestedLibraries.length;
+
+const librariesJSON = require('../audits/byte-efficiency/library-suggestions.json');
+/** @type {string[]} */
+const libraries = Object.keys(librariesJSON).map(key => librariesJSON[key]).flat();
 
 /**
  * Returns a file path that the database should be saved to.
@@ -50,14 +50,13 @@ function validateLibraryObject(library) {
 /**
  * Save BundlePhobia stats for a given npm library to the database.
  * @param {string} library
- * @param {string} flags
  * @param {number} index
  */
-async function collectLibraryStats(library, flags, index) {
+async function collectLibraryStats(library, index) {
   return new Promise(resolve => {
-    console.log(`◉ (${index}/${totalLibrariesToCollect}) ${library} `);
+    console.log(`◉ (${index}/${libraries.length}) ${library} `);
 
-    exec(`bundle-phobia ${library} ${flags}`, (error, stdout) => {
+    exec(`bundle-phobia ${library} -j -r`, (error, stdout) => {
       if (error) console.log(`    ❌ Failed to run "bundle-phobia ${library}" | ${error}`);
 
       /** @type {Array<{name: string, version: string, gzip: number, description: string, repository: string}>} */
@@ -99,16 +98,11 @@ async function collectLibraryStats(library, flags, index) {
 }
 
 (async () => {
-  console.log(`Collecting ${totalLibrariesToCollect} libraries...`);
+  const startTime = new Date();
+  console.log(`Collecting ${libraries.length} libraries...`);
 
-  // Retrieve JSON statistics (-j) for every version (-r) of a large library
-  for (let i = 0; i < largeLibraries.length; i++) {
-    await collectLibraryStats(largeLibraries[i], '-j -r', i + 1);
-  }
-
-  // Retrieve JSON statistics (-j) for only the most recent version of a suggested library
-  for (let i = 0; i < suggestedLibraries.length; i++) {
-    await collectLibraryStats(suggestedLibraries[i], '-j', i + 1 + largeLibraries.length);
+  for (let i = 0; i < libraries.length; i++) {
+    await collectLibraryStats(libraries[i], i + 1);
   }
 
   const filePath = getFilePathToSaveTo();
@@ -120,4 +114,7 @@ async function collectLibraryStats(library, flags, index) {
       console.log(`   ✔ Done!`);
     }
   });
+
+  const endTime = new Date();
+  console.log(`Elapsed Time: ${(endTime - startTime) / 1000}`);
 })();
