@@ -21,7 +21,7 @@ const libraries = Object.keys(librariesJSON).map(key => librariesJSON[key]).flat
 
 
 /**
- * Returns true if the library's stats have been recently scraped from BundlePhobia
+ * Returns true if this library has been scraped from BundlePhobia in the past week.
  * @param {string} library
  * @return {boolean}
  */
@@ -57,7 +57,7 @@ async function collectLibraryStats(library, index) {
     console.log(`\n◉ (${index}/${libraries.length}) ${library} `);
 
     if (hasBeenRecentlyScraped(library)) {
-      console.log(`   ❕ Skipping - this was scraped too recently`);
+      console.log(`   ❕ Skipping`);
       resolve();
       return;
     }
@@ -123,15 +123,14 @@ async function collectLibraryStats(library, index) {
     }
   }
 
-  console.log(`◉ Saving database to ${datbasePath}...`);
+  console.log(`\n◉ Saving database to ${datbasePath}...`);
   fs.writeFile(datbasePath, JSON.stringify(database, null, 2), (err) => {
     if (err) {
       console.log(`   ❌ Failed saving | ${err}`);
     } else {
       console.log(`   ✔ Done!`);
     }
+    console.log(`\nElapsed Time: ${(new Date() - startTime) / 1000}`);
   });
 
-  const endTime = new Date();
-  console.log(`Elapsed Time: ${(endTime - startTime) / 1000}`);
 })();
