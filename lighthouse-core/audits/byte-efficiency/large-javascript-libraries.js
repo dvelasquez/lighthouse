@@ -31,7 +31,7 @@ const UIStrings = {
   description: 'Large JavaScript libraries can lead to poor performance. ' +
     'Prefer smaller, functionally equivalent libraries to reduce your bundle size.' +
     ' [Learn more](https://developers.google.com/web/fundamentals/performance/webpack/decrease-frontend-size#optimize_dependencies).',
-  /** Label for a column in a data table. Entries will be names of large JS libraries that could be replaced. */
+  /** Label for a column in a data table. Entries will be names of large JavaScript libraries that could be replaced. */
   name: 'Library Name',
   /** Label for a column in a data table. Entries will be names of smaller libraries that could be used as a replacement. */
   suggestion: 'Smaller Alternative',
