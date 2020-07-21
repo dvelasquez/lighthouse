@@ -8,16 +8,19 @@
 
 /* eslint-disable no-console */
 
-/** @typedef {{name: string, version: string, gzip: number, description: string, repository: string}} BundlePhobiaLibrary */
+// TODO(saavan) These type definitions are incorrect and need to be fixed.
+/** @typedef {{gzip: number, name: string, version: string | number, repository: string}} BundlePhobiaLibrary */
 
 const fs = require('fs');
-const exec = require('child_process').exec;
+const getPackageVersionList = require('bundle-phobia-cli').fetchPackageStats.getPackageVersionList;
+const fetchPackageStats = require('bundle-phobia-cli').fetchPackageStats.fetchPackageStats;
 
 /** @type string[] */
-const libraries = require('../audits/byte-efficiency/library-suggestions.js').suggestions.flat();
+// eslint-disable-next-line max-len
+const librarySuggestions = require('../audits/byte-efficiency/library-suggestions.js').suggestions.flat();
 const databasePath = '../audits/byte-efficiency/bundlephobia-database.json';
 
-/** @type {Record<string, Record<'lastScraped', number|string> | Record<string, BundlePhobiaLibrary>>} */
+/** @type {Record<string, Record<'lastScraped', number|string> | Record<'repository', string> | Record<string, BundlePhobiaLibrary>>} */
 let database = {};
 if (fs.existsSync(databasePath)) {
   database = require(databasePath);
@@ -55,8 +58,8 @@ function validateLibraryObject(library) {
  * @param {number} index
  */
 async function collectLibraryStats(library, index) {
-  return new Promise((resolve, reject) => {
-    console.log(`\n◉ (${index}/${libraries.length}) ${library} `);
+  return new Promise(async (resolve, reject) => {
+    console.log(`\n◉ (${index}/${librarySuggestions.length}) ${library} `);
 
     if (hasBeenRecentlyScraped(library)) {
       console.log(`   ❕ Skipping`);
@@ -64,64 +67,63 @@ async function collectLibraryStats(library, index) {
       return;
     }
 
-    exec(`bundle-phobia ${library} -j -r`, (error, stdout) => {
-      if (error) {
-        console.log(`    ❌ Failed to run "bundle-phobia ${library}" | ${error}`);
-        reject();
-        return;
+    /** @type {Array<BundlePhobiaLibrary>} */
+    const libraries = [];
+    /** @type {string|number} */
+    let lastScraped = Date.now();
+
+    const versions = await getPackageVersionList(library, 10);
+    for (const version of versions) {
+      try {
+        const libraryJSON = await fetchPackageStats(version);
+        if (validateLibraryObject(libraryJSON)) libraries.push(libraryJSON);
+      } catch (e) {
+        console.log(`   ❌ Failed to fetch stats | ${version}`);
+        lastScraped = 'Error';
       }
+    }
 
-      /** @type {Array<BundlePhobiaLibrary>} */
-      const libraries = [];
-      /** @type {string|number} */
-      let lastScraped = Date.now();
+    for (let index = 0; index < libraries.length; index++) {
+      const library = libraries[index];
 
-      for (const libraryString of stdout.split('\n')) {
-        try {
-          if (libraryString.length > 0) {
-            const library = JSON.parse(libraryString);
-            if (validateLibraryObject(library)) libraries.push(library);
-          }
-        } catch (e) {
-          console.log(`   ❌ Failed to parse JSON | ${library}`);
-          lastScraped = 'Error';
-        }
-      }
+      database[library.name] = {
+        ...database[library.name],
+        [library.version]: {
+          gzip: library.gzip,
+        },
+      };
 
-      for (let index = 0; index < libraries.length; index++) {
-        const library = libraries[index];
-
+      if (index === 0) {
         database[library.name] = {
-          ...database[library.name],
-          [library.version]: {
-            name: library.name,
-            version: library.version,
-            gzip: library.gzip,
-            description: library.description,
-            repository: library.repository,
-          },
+          repository: library.repository,
           lastScraped,
+          ...database[library.name],
         };
 
-        if (index === 0) {
-          database[library.name]['latest'] = database[library.name][library.version];
-        }
-
-        console.log(`   ✔ ${library.version}` + (index === 0 ? ' (latest)' : ''));
+        database[library.name]['latest'] = database[library.name][library.version];
       }
 
-      resolve();
-    });
+      if (lastScraped === 'Error') {
+        database[library.name] = {
+          ...database[library.name],
+          lastScraped,
+        };
+      }
+
+      console.log(`   ✔ ${library.version}` + (index === 0 ? ' (latest)' : ''));
+    }
+
+    resolve();
   });
 }
 
 (async () => {
   const startTime = new Date();
-  console.log(`Collecting ${libraries.length} libraries...`);
+  console.log(`Collecting ${librarySuggestions.length} libraries...`);
 
-  for (let i = 0; i < libraries.length; i++) {
+  for (let i = 0; i < librarySuggestions.length; i++) {
     try {
-      await collectLibraryStats(libraries[i], i + 1);
+      await collectLibraryStats(librarySuggestions[i], i + 1);
     } catch (e) {
       console.log('Exiting early...\n');
       break;
