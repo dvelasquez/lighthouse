@@ -89,12 +89,23 @@ class LargeJavascriptLibraries extends Audit {
         if (!libStats[suggestion]) return;
         if (libStats[suggestion]['latest'].gzip > originalLib.gzip) return;
 
-        return libStats[suggestion]['latest'];
+        return {
+          name: suggestion,
+          repository: libStats[suggestion].repository,
+          gzip: libStats[suggestion]['latest'].gzip
+        };
       });
 
       smallerSuggestions = [...smallerSuggestions].sort((a, b) => a.gzip - b.gzip);
       if (smallerSuggestions.length) {
-        libraryPairings.push({original: originalLib, suggestions: smallerSuggestions});
+        libraryPairings.push({
+          original: {
+            gzip: originalLib.gzip,
+            name: detectedLib.npm,
+            repository: libStats[detectedLib.npm].repository,
+          },
+          suggestions: smallerSuggestions,
+        });
       }
     }
 
