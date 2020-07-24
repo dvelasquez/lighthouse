@@ -11,12 +11,12 @@
 
 'use strict';
 
-/** @typedef {{name: string, version: string, gzip: number, description: string, repository: string}} BundlePhobiaLibrary */
+/** @typedef {{name: string, gzip: number, repository: string}} BundlePhobiaLibrary */
 
-/** @type {Record<string, Record<'lastScraped', number|string> | Record<string, BundlePhobiaLibrary>>} */
+/** @type {Record<string, Record<string, BundlePhobiaLibrary>>} */
 const libStats = require('./bundlephobia-database.json');
 
-/** @type string[][] */
+/** @type {Record<string, string[]>} */
 const librarySuggestions = require('./library-suggestions.js').suggestions;
 
 const Audit = require('../audit.js');
@@ -52,16 +52,6 @@ class LargeJavascriptLibraries extends Audit {
   }
 
   /**
-   * Returns the suggestions array containing the given library, minus the library itself.
-   * @param {LH.Artifacts.DetectedStack} library
-   * @return {string[]}
-   */
-  static getSuggestions(library) {
-    const suggestions = librarySuggestions.find(s => s.includes(library.npm)) || [];
-    return suggestions.filter(s => s !== library.npm);
-  }
-
-  /**
    * @param {LH.Artifacts} artifacts
    * @return {LH.Audit.Product}
    */
@@ -73,8 +63,8 @@ class LargeJavascriptLibraries extends Audit {
     const seenLibraries = new Set();
 
     for (const detectedLib of detectedLibs) {
-      const suggestions = this.getSuggestions(detectedLib);
-      if (!detectedLib.npm || !libStats[detectedLib.npm] || !suggestions.length) continue;
+      if (!detectedLib.npm || !libStats[detectedLib.npm]) continue;
+      const suggestions = librarySuggestions[detectedLib.npm] || [];
 
       if (seenLibraries.has(detectedLib.npm)) continue;
       seenLibraries.add(detectedLib.npm);
@@ -92,7 +82,7 @@ class LargeJavascriptLibraries extends Audit {
         return {
           name: suggestion,
           repository: libStats[suggestion].repository,
-          gzip: libStats[suggestion]['latest'].gzip
+          gzip: libStats[suggestion]['latest'].gzip,
         };
       });
 

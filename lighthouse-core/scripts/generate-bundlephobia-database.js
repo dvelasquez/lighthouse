@@ -15,10 +15,12 @@ const fs = require('fs');
 const getPackageVersionList = require('bundle-phobia-cli').fetchPackageStats.getPackageVersionList;
 const fetchPackageStats = require('bundle-phobia-cli').fetchPackageStats.fetchPackageStats;
 
-/** @type string[] */
-// eslint-disable-next-line max-len
-const librarySuggestions = require('../audits/byte-efficiency/library-suggestions.js').suggestions.flat();
 const databasePath = '../audits/byte-efficiency/bundlephobia-database.json';
+
+/** @type {Record<string, string[]>} */
+const suggestionsJSON = require('../audits/byte-efficiency/library-suggestions.js').suggestions;
+/** @type string[] */
+const librarySuggestions = Object.keys(suggestionsJSON).map(s => suggestionsJSON[s].concat(s)).flat();
 
 /** @type {Record<string, Record<'lastScraped', number|string> | Record<'repository', string> | Record<string, BundlePhobiaLibrary>>} */
 let database = {};

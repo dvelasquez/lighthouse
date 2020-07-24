@@ -6,13 +6,9 @@
 
 'use strict';
 
-const suggestions = [
+const suggestions = {
   // general-purpose-date-time
-  [
-    'moment',
-    'date-fns',
-    'luxon',
-  ],
-];
+  'moment': ['date-fns', 'luxon', 'dayjs'],
+};
 
 module.exports = {suggestions};
