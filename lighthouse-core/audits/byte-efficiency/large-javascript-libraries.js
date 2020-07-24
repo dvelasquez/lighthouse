@@ -103,6 +103,17 @@ class LargeJavascriptLibraries extends Audit {
     for (const libraryPairing of libraryPairings) {
       const original = libraryPairing.original;
       const suggestions = libraryPairing.suggestions;
+      const suggestionItems = suggestions.map(suggestion => {
+        return {
+          suggestion: {
+            text: suggestion.name,
+            url: suggestion.repository,
+            type: 'link',
+          },
+          transferSize: suggestion.gzip,
+          wastedBytes: original.gzip - suggestion.gzip,
+        };
+      });
 
       tableDetails.push({
         name: {
@@ -110,45 +121,21 @@ class LargeJavascriptLibraries extends Audit {
           url: original.repository,
           type: 'link',
         },
-        size: original.gzip,
-        savings: 0,
+        transferSize: original.gzip,
+        wastedBytes: 0,
         subItems: {
           type: 'subitems',
-          items: [],
+          items: suggestionItems,
         },
       });
-
-      for (let i = 0; i < suggestions.length; i++) {
-        tableDetails.push({
-          name: {
-            text: '',
-            url: '',
-            type: 'link',
-          },
-          transferSize: suggestions[i].gzip,
-          wastedBytes: original.gzip - suggestions[i].gzip,
-          subItems: {
-            type: 'subitems',
-            items: [
-              {
-                suggestion: {
-                  text: suggestions[i].name,
-                  url: suggestions[i].repository,
-                  type: 'link',
-                },
-              },
-            ],
-          },
-        });
-      }
     }
 
     /** @type {LH.Audit.Details.TableColumnHeading[]} */
     const headings = [
       /* eslint-disable max-len */
       {key: 'name', itemType: 'url', text: str_(UIStrings.name), subItemsHeading: {key: 'suggestion'}},
-      {key: 'transferSize', itemType: 'bytes', text: str_(i18n.UIStrings.columnTransferSize)},
-      {key: 'wastedBytes', itemType: 'bytes', text: str_(i18n.UIStrings.columnWastedBytes)},
+      {key: 'transferSize', itemType: 'bytes', subItemsHeading: {key: 'transferSize'}, text: str_(i18n.UIStrings.columnTransferSize)},
+      {key: 'wastedBytes', itemType: 'bytes', subItemsHeading: {key: 'wastedBytes'}, text: str_(i18n.UIStrings.columnWastedBytes)},
       /* eslint-enable max-len */
     ];
 
