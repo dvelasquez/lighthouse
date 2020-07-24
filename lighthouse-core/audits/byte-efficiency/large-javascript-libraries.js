@@ -133,7 +133,7 @@ class LargeJavascriptLibraries extends Audit {
     /** @type {LH.Audit.Details.TableColumnHeading[]} */
     const headings = [
       /* eslint-disable max-len */
-      {key: 'name', itemType: 'url', text: str_(UIStrings.name), subItemsHeading: {key: 'suggestion'}},
+      {key: 'name', itemType: 'url', subItemsHeading: {key: 'suggestion'}, text: str_(UIStrings.name)},
       {key: 'transferSize', itemType: 'bytes', subItemsHeading: {key: 'transferSize'}, text: str_(i18n.UIStrings.columnTransferSize)},
       {key: 'wastedBytes', itemType: 'bytes', subItemsHeading: {key: 'wastedBytes'}, text: str_(i18n.UIStrings.columnWastedBytes)},
       /* eslint-enable max-len */
