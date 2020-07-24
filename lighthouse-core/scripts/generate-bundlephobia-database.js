@@ -12,10 +12,11 @@
 /** @typedef {{gzip: number, name: string, version: string | number, repository: string}} BundlePhobiaLibrary */
 
 const fs = require('fs');
+const path = require('path');
 const getPackageVersionList = require('bundle-phobia-cli').fetchPackageStats.getPackageVersionList;
 const fetchPackageStats = require('bundle-phobia-cli').fetchPackageStats.fetchPackageStats;
 
-const databasePath = '../audits/byte-efficiency/bundlephobia-database.json';
+const databasePath = path.join(__dirname, '../audits/byte-efficiency/bundlephobia-database.json');
 
 /** @type {Record<string, string[]>} */
 const suggestionsJSON = require('../audits/byte-efficiency/library-suggestions.js').suggestions;
