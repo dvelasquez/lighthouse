@@ -86,7 +86,7 @@ class LargeJavascriptLibraries extends Audit {
         };
       });
 
-      smallerSuggestions = [...smallerSuggestions].sort((a, b) => a.gzip - b.gzip);
+      smallerSuggestions = smallerSuggestions.sort((a, b) => a.gzip - b.gzip);
       if (smallerSuggestions.length) {
         libraryPairings.push({
           original: {
@@ -125,8 +125,8 @@ class LargeJavascriptLibraries extends Audit {
             url: '',
             type: 'link',
           },
-          size: suggestions[i].gzip,
-          savings: original.gzip - suggestions[i].gzip,
+          transferSize: suggestions[i].gzip,
+          wastedBytes: original.gzip - suggestions[i].gzip,
           subItems: {
             type: 'subitems',
             items: [
@@ -147,8 +147,8 @@ class LargeJavascriptLibraries extends Audit {
     const headings = [
       /* eslint-disable max-len */
       {key: 'name', itemType: 'url', text: str_(UIStrings.name), subItemsHeading: {key: 'suggestion'}},
-      {key: 'size', itemType: 'bytes', text: str_(i18n.UIStrings.columnTransferSize)},
-      {key: 'savings', itemType: 'bytes', text: str_(i18n.UIStrings.columnWastedBytes)},
+      {key: 'transferSize', itemType: 'bytes', text: str_(i18n.UIStrings.columnTransferSize)},
+      {key: 'wastedBytes', itemType: 'bytes', text: str_(i18n.UIStrings.columnWastedBytes)},
       /* eslint-enable max-len */
     ];
 

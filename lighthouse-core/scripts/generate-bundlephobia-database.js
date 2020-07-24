@@ -22,7 +22,7 @@ const databasePath = path.join(__dirname, '../audits/byte-efficiency/bundlephobi
 const suggestionsJSON = require('../audits/byte-efficiency/library-suggestions.js').suggestions;
 /** @type string[] */
 /* eslint-disable-next-line max-len */
-const librarySuggestions = Object.keys(suggestionsJSON).map(s => suggestionsJSON[s].concat(s)).flat();
+const librarySuggestions = [].concat(...Object.values(suggestionsJSON)).concat(Object.keys(suggestionsJSON));
 
 /** @type {Record<string, Record<'lastScraped', number|string> | Record<'repository', string> | Record<string, BundlePhobiaLibrary>>} */
 let database = {};
