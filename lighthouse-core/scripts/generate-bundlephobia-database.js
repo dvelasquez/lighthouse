@@ -9,17 +9,18 @@
 /* eslint-disable no-console */
 
 // TODO(saavan) These type definitions are incorrect and need to be fixed.
-/** @typedef {{gzip: number, name: string, version: string | number, repository: string}} BundlePhobiaLibrary */
+/** @typedef {import('bundle-phobia-cli').BundlePhobiaLibrary} BundlePhobiaLibrary */
 
 const fs = require('fs');
 const path = require('path');
 const getPackageVersionList = require('bundle-phobia-cli').fetchPackageStats.getPackageVersionList;
 const fetchPackageStats = require('bundle-phobia-cli').fetchPackageStats.fetchPackageStats;
 
-const databasePath = path.join(__dirname, '../audits/byte-efficiency/bundlephobia-database.json');
+const databasePath = path.join(__dirname, '../lib/large-javascript-libraries/bundlephobia-database.json');
+
 
 /** @type {Record<string, string[]>} */
-const suggestionsJSON = require('../audits/byte-efficiency/library-suggestions.js').suggestions;
+const suggestionsJSON = require('../lib/large-javascript-libraries/library-suggestions.js').suggestions;
 /** @type string[] */
 /* eslint-disable-next-line max-len */
 const librarySuggestions = [].concat(...Object.values(suggestionsJSON)).concat(Object.keys(suggestionsJSON));
@@ -31,20 +32,21 @@ if (fs.existsSync(databasePath)) {
 }
 
 /**
- * Returns true if this library has been scraped from BundlePhobia in the past week.
+ * Returns true if this library has been scraped from BundlePhobia in the past hour.
+ * This is used to rate-limit the number of network requests we make to BundlePhobia.
  * @param {string} library
  * @return {boolean}
  */
 function hasBeenRecentlyScraped(library) {
   if (!database[library] || database[library].lastScraped === 'Error') return false;
-  return (Date.now() - database[library].lastScraped) / (1000 * 60 * 60 * 24.0) < 7;
+  return (Date.now() - database[library].lastScraped) / (1000 * 60 * 60) < 1;
 }
 
 /**
  * Returns true if the object represents valid BundlePhobia JSON.
  * The version string must not match this false-positive expression: '{number} packages'.
  * @param {any} library
- * @return {boolean}
+ * @return {library is BundlePhobiaLibrary}
  */
 function validateLibraryObject(library) {
   return library.hasOwnProperty('name') &&

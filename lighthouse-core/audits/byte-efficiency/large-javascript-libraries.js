@@ -11,13 +11,13 @@
 
 'use strict';
 
-/** @typedef {{name: string, gzip: number, repository: string}} BundlePhobiaLibrary */
+/** @typedef {import('bundle-phobia-cli').BundlePhobiaLibrary} BundlePhobiaLibrary */
 
 /** @type {Record<string, Record<string, BundlePhobiaLibrary>>} */
-const libStats = require('./bundlephobia-database.json');
+const libStats = require('../../lib/large-javascript-libraries/bundlephobia-database.json');
 
 /** @type {Record<string, string[]>} */
-const librarySuggestions = require('./library-suggestions.js').suggestions;
+const librarySuggestions = require('../../lib/large-javascript-libraries/library-suggestions.js').suggestions;
 
 const Audit = require('../audit.js');
 const i18n = require('../../lib/i18n/i18n.js');
@@ -76,7 +76,6 @@ class LargeJavascriptLibraries extends Audit {
 
       const originalLib = libStats[detectedLib.npm][version];
       let smallerSuggestions = suggestions.map(suggestion => {
-        if (!libStats[suggestion]) return;
         if (libStats[suggestion]['latest'].gzip > originalLib.gzip) return;
 
         return {

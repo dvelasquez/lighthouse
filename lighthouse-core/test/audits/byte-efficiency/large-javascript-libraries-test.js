@@ -8,8 +8,8 @@
 /* eslint-disable max-len */
 const LargeJavaScriptLibrariesAudit = require('../../../audits/byte-efficiency/large-javascript-libraries.js');
 const assert = require('assert').strict;
-const libStats = require('../../../audits/byte-efficiency/bundlephobia-database.json');
-const librarySuggestions = require('../../../audits/byte-efficiency/library-suggestions.js').suggestions;
+const libStats = require('../../../lib/large-javascript-libraries/bundlephobia-database.json');
+const librarySuggestions = require('../../../lib/large-javascript-libraries/library-suggestions.js').suggestions;
 /* eslint-enable max-len */
 
 /**
