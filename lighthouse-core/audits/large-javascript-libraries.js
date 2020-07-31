@@ -12,8 +12,12 @@
 'use strict';
 /** @typedef {{gzip: number, name: string, repository: string}} MinifiedBundlePhobiaLibrary */
 
-/** @type {Record<string, Record<string, {T: {gzip: string}, repository: string, lastScraped: number | string}>>} */
-// @ts-ignore
+// { [libName: string]: {gzip: string} }
+// obj['a'] === obj.a
+
+/** @typedef {{repository: string, lastScraped: number, versions: Record<string, {gzip: number}>}} Library */
+
+/** @type {Record<string, Library>} */
 const libStats = require('../lib/large-javascript-libraries/bundlephobia-database.json');
 
 /** @type {Record<string, string[]>} */
@@ -76,11 +80,11 @@ class LargeJavascriptLibraries extends Audit {
       seenLibraries.add(detectedLib.npm);
 
       let version = 'latest';
-      if (detectedLib.version && libStats[detectedLib.npm][detectedLib.version]) {
+      if (detectedLib.version && libStats[detectedLib.npm].versions[detectedLib.version]) {
         version = detectedLib.version;
       }
 
-      const originalLib = libStats[detectedLib.npm][version];
+      const originalLib = libStats[detectedLib.npm].versions[version];
 
       /** @type {Array<{name: string, repository: string, gzip: number}>} */
       // @ts-ignore
