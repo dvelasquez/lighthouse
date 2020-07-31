@@ -28,7 +28,7 @@ const suggestionsJSON = require('../lib/large-javascript-libraries/library-sugge
 const librarySuggestions = [].concat(Object.values(suggestionsJSON), Object.keys(suggestionsJSON));
 
 
-/** @type {Record<string, { T: {gzip: number}, lastScraped: number|string, repository: string} >} */
+/** @type {Record<string, any>} */
 let database = {};
 if (fs.existsSync(databasePath)) {
   database = require(databasePath);
