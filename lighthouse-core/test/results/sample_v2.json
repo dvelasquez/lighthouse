@@ -1924,6 +1924,7 @@
       "description": "Large JavaScript libraries can lead to poor performance. Prefer smaller, functionally equivalent libraries to reduce your bundle size. [Learn more](https://developers.google.com/web/fundamentals/performance/webpack/decrease-frontend-size#optimize_dependencies).",
       "score": 1,
       "scoreDisplayMode": "binary",
+      "displayValue": "0 large libraries found",
       "details": {
         "type": "table",
         "headings": [],
@@ -6899,6 +6900,14 @@
       ],
       "lighthouse-core/audits/large-javascript-libraries.js | description": [
         "audits[large-javascript-libraries].description"
+      ],
+      "lighthouse-core/audits/large-javascript-libraries.js | displayValue": [
+        {
+          "values": {
+            "libraryCount": 0
+          },
+          "path": "audits[large-javascript-libraries].displayValue"
+        }
       ],
       "lighthouse-core/audits/manual/pwa-cross-browser.js | title": [
         "audits[pwa-cross-browser].title"

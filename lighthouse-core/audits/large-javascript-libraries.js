@@ -34,6 +34,7 @@ const UIStrings = {
     ' [Learn more](https://developers.google.com/web/fundamentals/performance/webpack/decrease-frontend-size#optimize_dependencies).',
   /** Label for a column in a data table. Entries will be names of large JavaScript libraries that could be replaced. */
   name: 'Library',
+  /** [ICU Syntax] Label for the Large JavaScrip Libraries audit identifying how many large libraries were found. */
   displayValue: `{libraryCount, plural,
     =1 {1 large library found}
     other {# large libraries found}
