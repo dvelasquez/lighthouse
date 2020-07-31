@@ -14,13 +14,13 @@
 /** @typedef {import('bundle-phobia-cli').BundlePhobiaLibrary} BundlePhobiaLibrary */
 
 /** @type {Record<string, Record<string, BundlePhobiaLibrary>>} */
-const libStats = require('../../lib/large-javascript-libraries/bundlephobia-database.json');
+const libStats = require('../lib/large-javascript-libraries/bundlephobia-database.json');
 
 /** @type {Record<string, string[]>} */
-const librarySuggestions = require('../../lib/large-javascript-libraries/library-suggestions.js').suggestions;
+const librarySuggestions = require('../lib/large-javascript-libraries/library-suggestions.js').suggestions;
 
-const Audit = require('../audit.js');
-const i18n = require('../../lib/i18n/i18n.js');
+const Audit = require('./audit.js');
+const i18n = require('../lib/i18n/i18n.js');
 
 const UIStrings = {
   /** Title of a Lighthouse audit that provides detail on large Javascript libraries that are used on the page that have better alternatives. This descriptive title is shown when to users when no known unnecessarily large libraries are detected on the page.*/
