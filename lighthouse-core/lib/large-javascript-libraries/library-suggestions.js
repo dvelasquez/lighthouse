@@ -6,6 +6,7 @@
 
 'use strict';
 
+/** @type {Record<string, string[]>} */
 const suggestions = {
   // general-purpose-date-time
   'moment': ['date-fns', 'luxon', 'dayjs'],

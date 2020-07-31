@@ -25,11 +25,10 @@ const suggestionsJSON = require('../lib/large-javascript-libraries/library-sugge
 
 /** @type string[] */
 // @ts-ignore
-const librarySuggestions = [].concat(...Object.values(
-  suggestionsJSON)).concat(Object.keys(suggestionsJSON));
+const librarySuggestions = [].concat(Object.values(suggestionsJSON), Object.keys(suggestionsJSON));
 
 
-/** @type {Record<string, { lastScraped: number|string, repository: string} >} */
+/** @type {Record<string, { T: {gzip: number}, lastScraped: number|string, repository: string} >} */
 let database = {};
 if (fs.existsSync(databasePath)) {
   database = require(databasePath);
