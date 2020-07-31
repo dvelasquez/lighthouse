@@ -1918,6 +1918,19 @@
         ]
       }
     },
+    "large-javascript-libraries": {
+      "id": "large-javascript-libraries",
+      "title": "Avoids unnecessarily large JavaScript libraries",
+      "description": "Large JavaScript libraries can lead to poor performance. Prefer smaller, functionally equivalent libraries to reduce your bundle size. [Learn more](https://developers.google.com/web/fundamentals/performance/webpack/decrease-frontend-size#optimize_dependencies).",
+      "score": 1,
+      "scoreDisplayMode": "binary",
+      "details": {
+        "type": "table",
+        "headings": [],
+        "items": [],
+        "summary": {}
+      }
+    },
     "pwa-cross-browser": {
       "id": "pwa-cross-browser",
       "title": "Site works cross-browser",
@@ -3210,19 +3223,6 @@
         "overallSavingsBytes": 0
       }
     },
-    "large-javascript-libraries": {
-      "id": "large-javascript-libraries",
-      "title": "Avoids unnecessarily large JavaScript libraries",
-      "description": "Large JavaScript libraries can lead to poor performance. Prefer smaller, functionally equivalent libraries to reduce your bundle size. [Learn more](https://developers.google.com/web/fundamentals/performance/webpack/decrease-frontend-size#optimize_dependencies).",
-      "score": 1,
-      "scoreDisplayMode": "binary",
-      "details": {
-        "type": "table",
-        "headings": [],
-        "items": [],
-        "summary": {}
-      }
-    },
     "duplicated-javascript": {
       "id": "duplicated-javascript",
       "title": "Remove duplicate modules in JavaScript bundles",
@@ -4297,11 +4297,6 @@
           "group": "load-opportunities"
         },
         {
-          "id": "large-javascript-libraries",
-          "weight": 0,
-          "group": "load-opportunities"
-        },
-        {
           "id": "duplicated-javascript",
           "weight": 0,
           "group": "load-opportunities"
@@ -4403,6 +4398,11 @@
         },
         {
           "id": "unsized-images",
+          "weight": 0,
+          "group": "diagnostics"
+        },
+        {
+          "id": "large-javascript-libraries",
           "weight": 0,
           "group": "diagnostics"
         },
@@ -5591,6 +5591,12 @@
       },
       {
         "startTime": 0,
+        "name": "lh:audit:large-javascript-libraries",
+        "duration": 100,
+        "entryType": "measure"
+      },
+      {
+        "startTime": 0,
         "name": "lh:audit:pwa-cross-browser",
         "duration": 100,
         "entryType": "measure"
@@ -6012,12 +6018,6 @@
       {
         "startTime": 0,
         "name": "lh:audit:efficient-animated-content",
-        "duration": 100,
-        "entryType": "measure"
-      },
-      {
-        "startTime": 0,
-        "name": "lh:audit:large-javascript-libraries",
         "duration": 100,
         "entryType": "measure"
       },
@@ -6894,6 +6894,12 @@
         "audits[object-alt].details.headings[0].text",
         "audits[password-inputs-can-be-pasted-into].details.headings[0].text"
       ],
+      "lighthouse-core/audits/large-javascript-libraries.js | title": [
+        "audits[large-javascript-libraries].title"
+      ],
+      "lighthouse-core/audits/large-javascript-libraries.js | description": [
+        "audits[large-javascript-libraries].description"
+      ],
       "lighthouse-core/audits/manual/pwa-cross-browser.js | title": [
         "audits[pwa-cross-browser].title"
       ],
@@ -7298,12 +7304,6 @@
       ],
       "lighthouse-core/audits/byte-efficiency/efficient-animated-content.js | description": [
         "audits[efficient-animated-content].description"
-      ],
-      "lighthouse-core/audits/byte-efficiency/large-javascript-libraries.js | title": [
-        "audits[large-javascript-libraries].title"
-      ],
-      "lighthouse-core/audits/byte-efficiency/large-javascript-libraries.js | description": [
-        "audits[large-javascript-libraries].description"
       ],
       "lighthouse-core/audits/byte-efficiency/duplicated-javascript.js | title": [
         "audits[duplicated-javascript].title"
