@@ -34,6 +34,10 @@ const UIStrings = {
     ' [Learn more](https://developers.google.com/web/fundamentals/performance/webpack/decrease-frontend-size#optimize_dependencies).',
   /** Label for a column in a data table. Entries will be names of large JavaScript libraries that could be replaced. */
   name: 'Library',
+  displayValue: `{libraryCount, plural,
+    =1 {1 large library found}
+    other {# large libraries found}
+    }`,
 };
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);
@@ -146,11 +150,14 @@ class LargeJavascriptLibraries extends Audit {
       /* eslint-enable max-len */
     ];
 
+    const displayValue = str_(UIStrings.displayValue, {libraryCount: tableDetails.length});
+
     // @ts-ignore
     const details = Audit.makeTableDetails(headings, tableDetails, {});
 
     return {
       score: libraryPairings.length > 0 ? 0 : 1,
+      displayValue,
       details: {
         ...details,
       },
