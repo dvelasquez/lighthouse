@@ -34,7 +34,7 @@ declare module 'bundle-phobia-cli' {
   }
 
   export namespace fetchPackageStats {
-    export function getPackageVersionList(packageName: string): string[];
-    export function fetchPackageStats(packageName: string): BundlePhobiaLibrary[];
+    export function getPackageVersionList(packageName: string, limit: number): string[];
+    export function fetchPackageStats(packageName: string): Array<BundlePhobiaLibrary | undefined>;
   }
 }

@@ -15,17 +15,21 @@ const fs = require('fs');
 const path = require('path');
 const getPackageVersionList = require('bundle-phobia-cli').fetchPackageStats.getPackageVersionList;
 const fetchPackageStats = require('bundle-phobia-cli').fetchPackageStats.fetchPackageStats;
-
-const databasePath = path.join(__dirname, '../lib/large-javascript-libraries/bundlephobia-database.json');
+const databasePath = path.join(__dirname,
+  '../lib/large-javascript-libraries/bundlephobia-database.json');
 
 
 /** @type {Record<string, string[]>} */
-const suggestionsJSON = require('../lib/large-javascript-libraries/library-suggestions.js').suggestions;
-/** @type string[] */
-/* eslint-disable-next-line max-len */
-const librarySuggestions = [].concat(...Object.values(suggestionsJSON)).concat(Object.keys(suggestionsJSON));
+const suggestionsJSON = require('../lib/large-javascript-libraries/library-suggestions.js')
+  .suggestions;
 
-/** @type {Record<string, Record<'lastScraped', number|string> | Record<'repository', string> | Record<string, BundlePhobiaLibrary>>} */
+/** @type string[] */
+// @ts-ignore
+const librarySuggestions = [].concat(...Object.values(
+  suggestionsJSON)).concat(Object.keys(suggestionsJSON));
+
+
+/** @type {Record<string, { lastScraped: number|string, repository: string} >} */
 let database = {};
 if (fs.existsSync(databasePath)) {
   database = require(databasePath);
@@ -39,6 +43,7 @@ if (fs.existsSync(databasePath)) {
  */
 function hasBeenRecentlyScraped(library) {
   if (!database[library] || database[library].lastScraped === 'Error') return false;
+  // @ts-ignore
   return (Date.now() - database[library].lastScraped) / (1000 * 60 * 60) < 1;
 }
 
@@ -106,6 +111,7 @@ async function collectLibraryStats(library, index) {
           ...database[library.name],
         };
 
+        // @ts-ignore
         database[library.name]['latest'] = database[library.name][library.version];
       }
 
@@ -143,6 +149,7 @@ async function collectLibraryStats(library, index) {
     } else {
       console.log(`   ✔ Done!`);
     }
+    // @ts-ignore
     console.log(`\nElapsed Time: ${(new Date() - startTime) / 1000}`);
   });
 })();

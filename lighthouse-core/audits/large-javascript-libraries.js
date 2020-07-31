@@ -10,14 +10,15 @@
  */
 
 'use strict';
+/** @typedef {{gzip: number, name: string, repository: string}} MinifiedBundlePhobiaLibrary */
 
-/** @typedef {import('bundle-phobia-cli').BundlePhobiaLibrary} BundlePhobiaLibrary */
-
-/** @type {Record<string, Record<string, BundlePhobiaLibrary>>} */
+/** @type {Record<string, Record<string, {T: {gzip: string}, repository: string, lastScraped: number | string}>>} */
+// @ts-ignore
 const libStats = require('../lib/large-javascript-libraries/bundlephobia-database.json');
 
 /** @type {Record<string, string[]>} */
-const librarySuggestions = require('../lib/large-javascript-libraries/library-suggestions.js').suggestions;
+const librarySuggestions = require('../lib/large-javascript-libraries/library-suggestions.js')
+  .suggestions;
 
 const Audit = require('./audit.js');
 const i18n = require('../lib/i18n/i18n.js');
@@ -56,7 +57,7 @@ class LargeJavascriptLibraries extends Audit {
    * @return {LH.Audit.Product}
    */
   static audit(artifacts) {
-    /** @type {Array<{original: BundlePhobiaLibrary, suggestions: BundlePhobiaLibrary[]}>} */
+    /** @type {Array<{original: MinifiedBundlePhobiaLibrary, suggestions: MinifiedBundlePhobiaLibrary[]}>} */
     const libraryPairings = [];
     const detectedLibs = artifacts.Stacks.filter(stack => stack.detector === 'js');
 
@@ -75,12 +76,17 @@ class LargeJavascriptLibraries extends Audit {
       }
 
       const originalLib = libStats[detectedLib.npm][version];
+
+      /** @type {Array<{name: string, repository: string, gzip: number}>} */
+      // @ts-ignore
       let smallerSuggestions = suggestions.map(suggestion => {
+        // @ts-ignore
         if (libStats[suggestion]['latest'].gzip > originalLib.gzip) return;
 
         return {
           name: suggestion,
           repository: libStats[suggestion].repository,
+          // @ts-ignore
           gzip: libStats[suggestion]['latest'].gzip,
         };
       });
@@ -89,8 +95,10 @@ class LargeJavascriptLibraries extends Audit {
       if (smallerSuggestions.length) {
         libraryPairings.push({
           original: {
+            // @ts-ignore
             gzip: originalLib.gzip,
             name: detectedLib.npm,
+            // @ts-ignore
             repository: libStats[detectedLib.npm].repository,
           },
           suggestions: smallerSuggestions,
@@ -138,6 +146,7 @@ class LargeJavascriptLibraries extends Audit {
       /* eslint-enable max-len */
     ];
 
+    // @ts-ignore
     const details = Audit.makeTableDetails(headings, tableDetails, {});
 
     return {
