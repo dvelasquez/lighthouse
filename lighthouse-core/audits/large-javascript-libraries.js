@@ -90,13 +90,13 @@ class LargeJavascriptLibraries extends Audit {
       // @ts-ignore
       let smallerSuggestions = suggestions.map(suggestion => {
         // @ts-ignore
-        if (libStats[suggestion]['latest'].gzip > originalLib.gzip) return;
+        if (libStats[suggestion].versions['latest'].gzip > originalLib.gzip) return;
 
         return {
           name: suggestion,
           repository: libStats[suggestion].repository,
           // @ts-ignore
-          gzip: libStats[suggestion]['latest'].gzip,
+          gzip: libStats[suggestion].versions['latest'].gzip,
         };
       });
 

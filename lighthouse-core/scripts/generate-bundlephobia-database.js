@@ -18,17 +18,16 @@ const fetchPackageStats = require('bundle-phobia-cli').fetchPackageStats.fetchPa
 const databasePath = path.join(__dirname,
   '../lib/large-javascript-libraries/bundlephobia-database.json');
 
-
 /** @type {Record<string, string[]>} */
 const suggestionsJSON = require('../lib/large-javascript-libraries/library-suggestions.js')
   .suggestions;
 
 /** @type string[] */
 // @ts-ignore
-const librarySuggestions = [].concat(Object.values(suggestionsJSON), Object.keys(suggestionsJSON));
+const librarySuggestions = [].concat(...Object.values(suggestionsJSON), ...Object.keys(suggestionsJSON));
 
 
-/** @type {Record<string, any>} */
+/** @type {Record<string, {lastScraped: number | string, repository: string, versions: any}>} */
 let database = {};
 if (fs.existsSync(databasePath)) {
   database = require(databasePath);
@@ -96,22 +95,27 @@ async function collectLibraryStats(library, index) {
     for (let index = 0; index < libraries.length; index++) {
       const library = libraries[index];
 
-      database[library.name] = {
-        ...database[library.name],
-        [library.version]: {
-          gzip: library.gzip,
-        },
-      };
-
       if (index === 0) {
         database[library.name] = {
           repository: library.repository,
           lastScraped,
-          ...database[library.name],
+          versions: {},
         };
+      }
 
-        // @ts-ignore
-        database[library.name]['latest'] = database[library.name][library.version];
+      database[library.name] = {
+        ...database[library.name],
+        versions: {
+          ...database[library.name].versions,
+          [library.version]: {
+            gzip: library.gzip,
+          },
+        },
+      };
+
+      if (index === 0) {
+        database[library.name].versions['latest'] =
+          database[library.name].versions[library.version];
       }
 
       if (lastScraped === 'Error') {
