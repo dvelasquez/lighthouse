@@ -28,6 +28,8 @@ async function rerender(iterations) {
 setTimeout(() => {
   const imgEl = document.createElement('img');
   imgEl.src = '../dobetterweb/lighthouse-480x318.jpg';
+  const textEl = document.createElement('span');
+  textEl.textContent = 'Sorry!';
 
   const top = document.getElementById('late-content');
 
