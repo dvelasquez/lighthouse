@@ -171,9 +171,14 @@ function ultradumbBenchmark() {
  */
 /* istanbul ignore next */
 function getNodePath(node) {
+  // For our purposes, there's no worthwhile difference between shadow root and document fragment
+  // We can consider them entirely synonymous.
+  const isShadowRoot = node => node.nodeType === Node.DOCUMENT_FRAGMENT_NODE;
+  const getNodeParent = node => isShadowRoot(node) ? node.host : node.parentNode;
+
   /** @param {Node} node */
   function getNodeIndex(node) {
-    if (node.nodeType === Node.DOCUMENT_FRAGMENT_NODE) {
+    if (isShadowRoot(node)) {
       // User-agent shadow roots get 'u'. Non-UA shadow roots get 'a'.
       return 'a';
     }
@@ -186,10 +191,6 @@ function getNodePath(node) {
       index++;
     }
     return index;
-  }
-
-  function getNodeParent(node) {
-    return node.nodeType === Node.DOCUMENT_FRAGMENT_NODE ? node.host : node.parentNode
   }
 
   const path = [];
