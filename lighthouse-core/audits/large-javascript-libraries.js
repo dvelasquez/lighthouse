@@ -130,10 +130,10 @@ class LargeJavascriptLibraries extends Audit {
         },
         transferSize: original.gzip,
         wastedBytes: 0,
-        subItems: {
+        subItems: /** @type {LH.Audit.Details.TableSubItems} */ ( {
           type: 'subitems',
           items: suggestionItems,
-        },
+        }),
       };
     });
 
@@ -148,7 +148,6 @@ class LargeJavascriptLibraries extends Audit {
 
     const displayValue = str_(UIStrings.displayValue, {libraryCount: tableDetails.length});
 
-    // @ts-ignore
     const details = Audit.makeTableDetails(headings, tableDetails, {});
 
     return {

@@ -22,11 +22,13 @@ const databasePath = path.join(__dirname,
 const suggestionsJSON = require('../lib/large-javascript-libraries/library-suggestions.js')
   .suggestions;
 
-/** @type string[] */
-// @ts-ignore
-const librarySuggestions = [].concat(...Object.values(suggestionsJSON),
-  ...Object.keys(suggestionsJSON));
-
+// const librarySuggestions = [].concat(...Object.values(suggestionsJSON),
+//   ...Object.keys(suggestionsJSON));
+// [1, 2, 3, [1, 2, 3]] => [1, 2, 3, 1, 2, 3]
+const librarySuggestions = [
+  ...Object.values(suggestionsJSON),
+  ...Object.keys(suggestionsJSON),
+];
 
 /** @type {Record<string, {lastScraped: number | 'Error', repository: string, versions: any}>} */
 let database = {};
@@ -41,9 +43,9 @@ if (fs.existsSync(databasePath)) {
  * @return {boolean}
  */
 function hasBeenRecentlyScraped(library) {
-  if (!database[library] || database[library].lastScraped === 'Error') return false;
-  // @ts-ignore
-  return (Date.now() - database[library].lastScraped) / (1000 * 60 * 60) < 1;
+  const lastScraped = database[library].lastScraped;
+  if (!database[library] || lastScraped === 'Error') return false;
+  return (Date.now() - lastScraped) / (1000 * 60 * 60) < 1;
 }
 
 /**
@@ -153,7 +155,6 @@ async function collectLibraryStats(library, index) {
     } else {
       console.log(`   ✔ Done!`);
     }
-    // @ts-ignore
-    console.log(`\nElapsed Time: ${(new Date() - startTime) / 1000}`);
+    console.log(`\nElapsed Time: ${(new Date().getTime() - startTime.getTime()) / 1000}`);
   });
 })();
