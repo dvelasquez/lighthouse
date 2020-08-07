@@ -8,7 +8,6 @@
 
 /* eslint-disable no-console */
 
-// TODO(saavan) These type definitions are incorrect and need to be fixed.
 /** @typedef {import('bundle-phobia-cli').BundlePhobiaLibrary} BundlePhobiaLibrary */
 
 const fs = require('fs');

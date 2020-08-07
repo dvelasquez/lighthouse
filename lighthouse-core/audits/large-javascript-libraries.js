@@ -107,6 +107,7 @@ class LargeJavascriptLibraries extends Audit {
       }
     }
 
+    /** @type {LH.Audit.Details.Table['items']} */
     const tableDetails = libraryPairings.map(libraryPairing => {
       const original = libraryPairing.original;
       const suggestions = libraryPairing.suggestions;
@@ -123,24 +124,24 @@ class LargeJavascriptLibraries extends Audit {
       });
 
       return {
-        name: {
+        name: /** @type {LH.Audit.Details.TableItem} */ {
           text: original.name,
           url: original.repository,
           type: 'link',
         },
         transferSize: original.gzip,
         wastedBytes: 0,
-        subItems: {
+        subItems: /** @type {LH.Audit.Details.TableSubItems} */ ({
           type: 'subitems',
           items: suggestionItems,
-        },
+        }),
       };
     });
 
     /** @type {LH.Audit.Details.TableColumnHeading[]} */
     const headings = [
       /* eslint-disable max-len */
-      {key: 'name', itemType: 'url', subItemsHeading: {key: 'suggestion'}, text: str_(UIStrings.name)},
+      {key: 'name', itemType: 'text', subItemsHeading: {key: 'suggestion'}, text: str_(UIStrings.name)},
       {key: 'transferSize', itemType: 'bytes', subItemsHeading: {key: 'transferSize'}, text: str_(i18n.UIStrings.columnTransferSize)},
       {key: 'wastedBytes', itemType: 'bytes', subItemsHeading: {key: 'wastedBytes'}, text: str_(i18n.UIStrings.columnWastedBytes)},
       /* eslint-enable max-len */
@@ -148,7 +149,6 @@ class LargeJavascriptLibraries extends Audit {
 
     const displayValue = str_(UIStrings.displayValue, {libraryCount: tableDetails.length});
 
-    // @ts-ignore
     const details = Audit.makeTableDetails(headings, tableDetails, {});
 
     return {
