@@ -1,124 +1,7 @@
 {
-  "date-fns": {
-    "repository": "https://github.com/date-fns/date-fns.git",
-    "lastScraped": 1596239787705,
-    "versions": {
-      "2.15.0": {
-        "gzip": 18463
-      },
-      "latest": {
-        "gzip": 18463
-      },
-      "2.14.0": {
-        "gzip": 18304
-      },
-      "2.13.0": {
-        "gzip": 17928
-      },
-      "2.12.0": {
-        "gzip": 17484
-      },
-      "2.11.1": {
-        "gzip": 17450
-      },
-      "2.11.0": {
-        "gzip": 17406
-      },
-      "2.10.0": {
-        "gzip": 17385
-      },
-      "2.9.0": {
-        "gzip": 17355
-      },
-      "2.8.1": {
-        "gzip": 17166
-      },
-      "2.8.0": {
-        "gzip": 17165
-      }
-    }
-  },
-  "luxon": {
-    "repository": "https://github.com/moment/luxon.git",
-    "lastScraped": 1596239802128,
-    "versions": {
-      "1.24.1": {
-        "gzip": 20912
-      },
-      "latest": {
-        "gzip": 20912
-      },
-      "1.24.0": {
-        "gzip": 20919
-      },
-      "1.23.0": {
-        "gzip": 20862
-      },
-      "1.22.2": {
-        "gzip": 20834
-      },
-      "1.22.0": {
-        "gzip": 20673
-      },
-      "1.21.3": {
-        "gzip": 20521
-      },
-      "1.21.2": {
-        "gzip": 20516
-      },
-      "1.21.1": {
-        "gzip": 20567
-      },
-      "1.21.0": {
-        "gzip": 20567
-      },
-      "1.20.0": {
-        "gzip": 20515
-      }
-    }
-  },
-  "dayjs": {
-    "repository": "https://github.com/iamkun/dayjs.git",
-    "lastScraped": 1596239819626,
-    "versions": {
-      "1.8.31": {
-        "gzip": 2856
-      },
-      "latest": {
-        "gzip": 2856
-      },
-      "1.8.30": {
-        "gzip": 2848
-      },
-      "1.8.29": {
-        "gzip": 2849
-      },
-      "1.8.28": {
-        "gzip": 2849
-      },
-      "1.8.27": {
-        "gzip": 2849
-      },
-      "1.8.26": {
-        "gzip": 2855
-      },
-      "1.8.25": {
-        "gzip": 2853
-      },
-      "1.8.24": {
-        "gzip": 2850
-      },
-      "1.8.23": {
-        "gzip": 2850
-      },
-      "1.8.22": {
-        "gzip": 2850
-      }
-    }
-  },
   "moment": {
     "repository": "https://github.com/moment/moment.git",
-    "lastScraped": 1596239837703,
+    "lastScraped": 1596828403005,
     "versions": {
       "2.27.0": {
         "gzip": 72054
@@ -152,6 +35,42 @@
       },
       "2.22.1": {
         "gzip": 65949
+      }
+    }
+  },
+  "date-fns": {
+    "repository": "https://github.com/date-fns/date-fns.git",
+    "lastScraped": 1596828425325,
+    "versions": {
+      "2.15.0": {
+        "gzip": 18463
+      },
+      "latest": {
+        "gzip": 18463
+      }
+    }
+  },
+  "luxon": {
+    "repository": "https://github.com/moment/luxon.git",
+    "lastScraped": 1596828429105,
+    "versions": {
+      "1.24.1": {
+        "gzip": 20912
+      },
+      "latest": {
+        "gzip": 20912
+      }
+    }
+  },
+  "dayjs": {
+    "repository": "https://github.com/iamkun/dayjs.git",
+    "lastScraped": 1596828433077,
+    "versions": {
+      "1.8.32": {
+        "gzip": 2873
+      },
+      "latest": {
+        "gzip": 2873
       }
     }
   }

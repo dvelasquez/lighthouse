@@ -22,13 +22,16 @@ const databasePath = path.join(__dirname,
 const suggestionsJSON = require('../lib/large-javascript-libraries/library-suggestions.js')
   .suggestions;
 
-// const librarySuggestions = [].concat(...Object.values(suggestionsJSON),
-//   ...Object.keys(suggestionsJSON));
-// [1, 2, 3, [1, 2, 3]] => [1, 2, 3, 1, 2, 3]
-const librarySuggestions = [
-  ...Object.values(suggestionsJSON),
-  ...Object.keys(suggestionsJSON),
-];
+
+/** @type {string[]} */
+let largeLibraries = [];
+largeLibraries = largeLibraries.concat(...Object.keys(suggestionsJSON));
+
+/** @type {string[]} */
+let suggestedLibraries = [];
+suggestedLibraries = suggestedLibraries.concat(...Object.values(suggestionsJSON));
+
+const totalLibraries = largeLibraries.length + suggestedLibraries.length;
 
 /** @type {Record<string, {lastScraped: number | 'Error', repository: string, versions: any}>} */
 let database = {};
@@ -43,8 +46,11 @@ if (fs.existsSync(databasePath)) {
  * @return {boolean}
  */
 function hasBeenRecentlyScraped(library) {
+  if (!database[library]) return false;
+
   const lastScraped = database[library].lastScraped;
   if (!database[library] || lastScraped === 'Error') return false;
+
   return (Date.now() - lastScraped) / (1000 * 60 * 60) < 1;
 }
 
@@ -68,10 +74,11 @@ function validateLibraryObject(library) {
  * Save BundlePhobia stats for a given npm library to the database.
  * @param {string} library
  * @param {number} index
+ * @param {number} numVersionsToFetchLimit
  */
-async function collectLibraryStats(library, index) {
+async function collectLibraryStats(library, index, numVersionsToFetchLimit) {
   return new Promise(async (resolve, reject) => {
-    console.log(`\n◉ (${index}/${librarySuggestions.length}) ${library} `);
+    console.log(`\n◉ (${index}/${totalLibraries}) ${library} `);
 
     if (hasBeenRecentlyScraped(library)) {
       console.log(`   ❕ Skipping`);
@@ -84,7 +91,7 @@ async function collectLibraryStats(library, index) {
     /** @type {'Error'|number} */
     let lastScraped = Date.now();
 
-    const versions = await getPackageVersionList(library, 10);
+    const versions = await getPackageVersionList(library, numVersionsToFetchLimit);
     for (const version of versions) {
       try {
         const libraryJSON = await fetchPackageStats(version);
@@ -137,11 +144,23 @@ async function collectLibraryStats(library, index) {
 
 (async () => {
   const startTime = new Date();
-  console.log(`Collecting ${librarySuggestions.length} libraries...`);
+  console.log(`Collecting ${totalLibraries} libraries...`);
 
-  for (let i = 0; i < librarySuggestions.length; i++) {
+  // Fetch up to 10 versions of the large libraries
+  for (let i = 0; i < largeLibraries.length; i++) {
     try {
-      await collectLibraryStats(librarySuggestions[i], i + 1);
+      await collectLibraryStats(largeLibraries[i], i + 1, 10);
+    } catch (e) {
+      console.log('Exiting early...\n');
+      break;
+    }
+  }
+
+  // Fetch only the latest version of the suggested libraries
+  for (let i = 0; i < suggestedLibraries.length; i++) {
+    try {
+      const index = i + 1 + largeLibraries.length;
+      await collectLibraryStats(suggestedLibraries[i], index, 1);
     } catch (e) {
       console.log('Exiting early...\n');
       break;
