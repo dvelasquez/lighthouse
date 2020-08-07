@@ -824,6 +824,9 @@
   "lighthouse-core/audits/is-on-https.js | warning": {
     "message": "Allowed with warning"
   },
+  "lighthouse-core/audits/large-javascript-libraries.js | columnLibraryName": {
+    "message": "Library"
+  },
   "lighthouse-core/audits/large-javascript-libraries.js | description": {
     "message": "Large JavaScript libraries can lead to poor performance. Prefer smaller, functionally equivalent libraries to reduce your bundle size. [Learn more](https://developers.google.com/web/fundamentals/performance/webpack/decrease-frontend-size#optimize_dependencies)."
   },
@@ -832,9 +835,6 @@
   },
   "lighthouse-core/audits/large-javascript-libraries.js | failureTitle": {
     "message": "Replace unnecessarily large JavaScript libraries"
-  },
-  "lighthouse-core/audits/large-javascript-libraries.js | name": {
-    "message": "Library"
   },
   "lighthouse-core/audits/large-javascript-libraries.js | title": {
     "message": "Avoids unnecessarily large JavaScript libraries"
