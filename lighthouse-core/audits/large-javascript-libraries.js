@@ -10,7 +10,7 @@
  */
 
 'use strict';
-/** @typedef {{repository: string, lastScraped: number, versions: Record<string, {gzip: number}>}} BundlePhobiaLibrary */
+/** @typedef {{repository: string, lastScraped: number|'Error', versions: Record<string, {gzip: number}>}} BundlePhobiaLibrary */
 /** @typedef {{gzip: number, name: string, repository: string}} MinifiedBundlePhobiaLibrary */
 
 /** @type {Record<string, BundlePhobiaLibrary>} */
@@ -107,8 +107,7 @@ class LargeJavascriptLibraries extends Audit {
       }
     }
 
-    const tableDetails = [];
-    for (const libraryPairing of libraryPairings) {
+    const tableDetails = libraryPairings.map(libraryPairing => {
       const original = libraryPairing.original;
       const suggestions = libraryPairing.suggestions;
       const suggestionItems = suggestions.map(suggestion => {
@@ -123,7 +122,7 @@ class LargeJavascriptLibraries extends Audit {
         };
       });
 
-      tableDetails.push({
+      return {
         name: {
           text: original.name,
           url: original.repository,
@@ -135,8 +134,8 @@ class LargeJavascriptLibraries extends Audit {
           type: 'subitems',
           items: suggestionItems,
         },
-      });
-    }
+      };
+    });
 
     /** @type {LH.Audit.Details.TableColumnHeading[]} */
     const headings = [

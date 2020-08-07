@@ -27,7 +27,7 @@ const suggestionsJSON = require('../lib/large-javascript-libraries/library-sugge
 const librarySuggestions = [].concat(...Object.values(suggestionsJSON), ...Object.keys(suggestionsJSON));
 
 
-/** @type {Record<string, {lastScraped: number | string, repository: string, versions: any}>} */
+/** @type {Record<string, {lastScraped: number | 'Error', repository: string, versions: any}>} */
 let database = {};
 if (fs.existsSync(databasePath)) {
   database = require(databasePath);
@@ -41,7 +41,6 @@ if (fs.existsSync(databasePath)) {
  */
 function hasBeenRecentlyScraped(library) {
   if (!database[library] || database[library].lastScraped === 'Error') return false;
-  // @ts-ignore
   return (Date.now() - database[library].lastScraped) / (1000 * 60 * 60) < 1;
 }
 
@@ -78,7 +77,7 @@ async function collectLibraryStats(library, index) {
 
     /** @type {Array<BundlePhobiaLibrary>} */
     const libraries = [];
-    /** @type {string|number} */
+    /** @type {'Error'|number} */
     let lastScraped = Date.now();
 
     const versions = await getPackageVersionList(library, 10);
