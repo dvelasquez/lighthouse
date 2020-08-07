@@ -166,7 +166,7 @@ function ultradumbBenchmark() {
  *   https://github.com/ChromeDevTools/devtools-frontend/blob/4fff931bb/front_end/sdk/DOMModel.js#L625-L647
  * Backend: https://source.chromium.org/search?q=f:node.cc%20symbol:PrintNodePathTo&sq=&ss=chromium%2Fchromium%2Fsrc
  *
- * TODO: Doesn't handle frames.
+ * TODO: DevTools nodePath handling doesn't currently support iframes, but probably could.
  * @param {Node} node
  */
 /* istanbul ignore next */
