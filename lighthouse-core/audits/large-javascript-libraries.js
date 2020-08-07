@@ -33,7 +33,7 @@ const UIStrings = {
     'Prefer smaller, functionally equivalent libraries to reduce your bundle size.' +
     ' [Learn more](https://developers.google.com/web/fundamentals/performance/webpack/decrease-frontend-size#optimize_dependencies).',
   /** Label for a column in a data table. Entries will be names of large JavaScript libraries that could be replaced. */
-  name: 'Library',
+  columnLibraryName: 'Library',
   /** [ICU Syntax] Label for the Large JavaScrip Libraries audit identifying how many large libraries were found. */
   displayValue: `{libraryCount, plural,
     =1 {1 large library found}
@@ -94,7 +94,7 @@ class LargeJavascriptLibraries extends Audit {
         });
       }
 
-      smallerSuggestions = smallerSuggestions.sort((a, b) => a.gzip - b.gzip);
+      smallerSuggestions.sort((a, b) => a.gzip - b.gzip);
       if (smallerSuggestions.length) {
         libraryPairings.push({
           original: {
@@ -141,7 +141,7 @@ class LargeJavascriptLibraries extends Audit {
     /** @type {LH.Audit.Details.TableColumnHeading[]} */
     const headings = [
       /* eslint-disable max-len */
-      {key: 'name', itemType: 'text', subItemsHeading: {key: 'suggestion'}, text: str_(UIStrings.name)},
+      {key: 'name', itemType: 'text', subItemsHeading: {key: 'suggestion'}, text: str_(UIStrings.columnLibraryName)},
       {key: 'transferSize', itemType: 'bytes', subItemsHeading: {key: 'transferSize'}, text: str_(i18n.UIStrings.columnTransferSize)},
       {key: 'wastedBytes', itemType: 'bytes', subItemsHeading: {key: 'wastedBytes'}, text: str_(i18n.UIStrings.columnWastedBytes)},
       /* eslint-enable max-len */
