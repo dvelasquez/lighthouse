@@ -41,6 +41,7 @@ if (fs.existsSync(databasePath)) {
  */
 function hasBeenRecentlyScraped(library) {
   if (!database[library] || database[library].lastScraped === 'Error') return false;
+  // @ts-ignore
   return (Date.now() - database[library].lastScraped) / (1000 * 60 * 60) < 1;
 }
 
