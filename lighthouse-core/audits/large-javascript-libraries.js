@@ -10,14 +10,10 @@
  */
 
 'use strict';
+/** @typedef {{repository: string, lastScraped: number, versions: Record<string, {gzip: number}>}} BundlePhobiaLibrary */
 /** @typedef {{gzip: number, name: string, repository: string}} MinifiedBundlePhobiaLibrary */
 
-// { [libName: string]: {gzip: string} }
-// obj['a'] === obj.a
-
-/** @typedef {{repository: string, lastScraped: number, versions: Record<string, {gzip: number}>}} Library */
-
-/** @type {Record<string, Library>} */
+/** @type {Record<string, BundlePhobiaLibrary>} */
 const libStats = require('../lib/large-javascript-libraries/bundlephobia-database.json');
 
 /** @type {Record<string, string[]>} */
@@ -87,27 +83,23 @@ class LargeJavascriptLibraries extends Audit {
       const originalLib = libStats[detectedLib.npm].versions[version];
 
       /** @type {Array<{name: string, repository: string, gzip: number}>} */
-      // @ts-ignore
-      let smallerSuggestions = suggestions.map(suggestion => {
-        // @ts-ignore
-        if (libStats[suggestion].versions['latest'].gzip > originalLib.gzip) return;
+      let smallerSuggestions = [];
+      for (const suggestion of suggestions) {
+        if (libStats[suggestion].versions['latest'].gzip > originalLib.gzip) continue;
 
-        return {
+        smallerSuggestions.push({
           name: suggestion,
           repository: libStats[suggestion].repository,
-          // @ts-ignore
           gzip: libStats[suggestion].versions['latest'].gzip,
-        };
-      });
+        });
+      }
 
       smallerSuggestions = smallerSuggestions.sort((a, b) => a.gzip - b.gzip);
       if (smallerSuggestions.length) {
         libraryPairings.push({
           original: {
-            // @ts-ignore
             gzip: originalLib.gzip,
             name: detectedLib.npm,
-            // @ts-ignore
             repository: libStats[detectedLib.npm].repository,
           },
           suggestions: smallerSuggestions,
