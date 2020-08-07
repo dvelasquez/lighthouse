@@ -24,7 +24,8 @@ const suggestionsJSON = require('../lib/large-javascript-libraries/library-sugge
 
 /** @type string[] */
 // @ts-ignore
-const librarySuggestions = [].concat(...Object.values(suggestionsJSON), ...Object.keys(suggestionsJSON));
+const librarySuggestions = [].concat(...Object.values(suggestionsJSON),
+  ...Object.keys(suggestionsJSON));
 
 
 /** @type {Record<string, {lastScraped: number | 'Error', repository: string, versions: any}>} */

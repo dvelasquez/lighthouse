@@ -73,7 +73,8 @@ describe('Large JavaScript libraries audit', () => {
       ],
     });
 
-    assert.equal(auditResult.details.items[0].transferSize, libStats['moment']['latest'].gzip);
+    assert.equal(auditResult.details.items[0].transferSize,
+      libStats['moment'].versions['latest'].gzip);
   });
 
   it('does not provide duplicate suggestions when a library appears twice', () => {
@@ -111,7 +112,7 @@ describe('Large JavaScript libraries audit', () => {
       concat(Object.keys(librarySuggestions));
 
     for (const library of libraries) {
-      if (!libStats[library] || !libStats[library]['latest']) {
+      if (!libStats[library] || !libStats[library].versions['latest']) {
         assert.fail('The library "' + library + '" does not have any stats. ' +
           'Please re-run the generate-bundlephobia-database script ' +
           'to keep the database up-to-date.');
