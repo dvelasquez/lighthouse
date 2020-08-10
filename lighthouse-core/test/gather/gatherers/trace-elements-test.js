@@ -543,7 +543,7 @@ describe('Trace Elements gatherer - Animated Elements', () => {
     ]);
   });
 
-  it('properly resolves all animated elements in real trace', async () => { // TODO: Update real trace
+  it('properly resolves all animated elements in real trace', async () => {
     const LCPNodeData = {
       traceEventType: 'largest-contentful-paint',
       devtoolsNodePath: '1,HTML,1,BODY,2,DIV',
@@ -634,9 +634,9 @@ describe('Trace Elements gatherer - Animated Elements', () => {
       {
         ...animationNodeData,
         animations: [
-          {failureReasonsMask: 8224},
-          {name: 'alpha', failureReasonsMask: 8224},
-          {name: 'beta', failureReasonsMask: 8224},
+          {failureReasonsMask: 8224, unsupportedProperties: ['width']},
+          {name: 'alpha', failureReasonsMask: 8224, unsupportedProperties: ['height']},
+          {name: 'beta', failureReasonsMask: 8224, unsupportedProperties: ['background-color']},
         ],
         nodeId: 4,
       },
