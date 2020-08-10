@@ -221,7 +221,7 @@ class FontSize extends Gatherer {
   }
 
   /**
-   * Maps backendNodeId of TextNodes to {fontSize, textLength}.
+   * Iterates on the TextNodes in a DOM Snapshot.
    * Every entry is associated with a TextNode in the layout tree (not display: none).
    * @param {LH.Crdp.DOMSnapshot.CaptureSnapshotResponse} snapshot
    */
