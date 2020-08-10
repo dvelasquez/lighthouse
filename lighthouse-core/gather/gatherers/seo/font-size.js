@@ -280,9 +280,7 @@ class FontSize extends Gatherer {
   }
 
   /**
-   * The only connection between a snapshot Node and an actual Protocol Node is backendId,
-   * so that is used to join the two data structures. DOMSnapshot.captureSnapshot doesn't
-   * give the entire Node object, so DOM.getFlattenedDocument is used.
+   * Get all the failing text nodes that don't meet the legible text threshold.
    * @param {LH.Crdp.DOMSnapshot.CaptureSnapshotResponse} snapshot
    */
   findFailingNodes(snapshot) {
@@ -327,13 +325,9 @@ class FontSize extends Gatherer {
     ]);
 
     // Get the computed font-size style of every node.
-    const snapshotPromise = passContext.driver.sendCommand('DOMSnapshot.captureSnapshot', {
+    const snapshot = await passContext.driver.sendCommand('DOMSnapshot.captureSnapshot', {
       computedStyles: ['font-size'],
     });
-    // const allNodesPromise = getAllNodesFromBody(passContext.driver);
-    const snapshot = await snapshotPromise;
-    // `backendIdsToFontData` will include all non-empty TextNodes.
-    // `crdpNodes` will only contain the body node and its descendants.
 
     const {
       totalTextLength,
