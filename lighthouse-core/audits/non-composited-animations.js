@@ -19,8 +19,11 @@ const UIStrings = {
   =1 {# animated element found}
   other {# animated elements found}
   }`,
-  /** Name of a compositor failure reason where the CSS property being animated is not supported on the compositor. */
-  unsupportedCSSProperty: 'Unsupported CSS Property',
+  /**
+   * @description Name of a compositor failure reason where the CSS property being animated is not supported on the compositor.
+   * @example {height, width} properties
+   */
+  unsupportedCSSProperty: 'Unsupported CSS Properties: {properties}',
 };
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);
@@ -28,12 +31,13 @@ const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);
 /**
  * Each failure reason is represented by a bit flag. The bit shift operator '<<' is used to define which bit corresponds to each failure reason.
  * https://source.chromium.org/search?q=f:compositor_animations.h%20%22enum%20FailureReason%22
- * @type {{flag: number, text: string}[]}
+ * @type {{flag: number, text: string, needsUnsupportedProperties?: boolean}[]}
  */
 const ACTIONABLE_FAILURE_REASONS = [
   {
     flag: 1 << 13,
-    text: str_(UIStrings.unsupportedCSSProperty),
+    text: UIStrings.unsupportedCSSProperty,
+    needsUnsupportedProperties: true,
   },
 ];
 
@@ -42,12 +46,18 @@ const ACTIONABLE_FAILURE_REASONS = [
  * Each flag is a number with a single bit set to 1 in the position corresponding to a failure reason.
  * We can check if a specific bit is true in the failure coding using bitwise and '&' with the flag.
  * @param {number} failureCode
+ * @param {string[]} unsupportedProperties
  * @return {string[]}
  */
-function getActionableFailureReasons(failureCode) {
+function getActionableFailureReasons(failureCode, unsupportedProperties) {
   return ACTIONABLE_FAILURE_REASONS
     .filter(reason => failureCode & reason.flag)
-    .map(reason => reason.text);
+    .map(reason => {
+      if (reason.needsUnsupportedProperties) {
+        return str_(reason.text, {properties: unsupportedProperties.join(', ')});
+      }
+      return str_(reason.text);
+    });
 }
 
 class NonCompositedAnimations extends Audit {
@@ -94,9 +104,11 @@ class NonCompositedAnimations extends Audit {
 
       const animations = element.animations || [];
       const animationReasons = new Map();
-      for (const {name, failureReasonsMask} of animations) {
+      for (const {name, failureReasonsMask, unsupportedProperties} of animations) {
         if (!failureReasonsMask) continue;
-        for (const failureReason of getActionableFailureReasons(failureReasonsMask)) {
+        const failureReasons =
+          getActionableFailureReasons(failureReasonsMask, unsupportedProperties || []);
+        for (const failureReason of failureReasons) {
           if (name) {
             hasDisplayNames = true;
           }
