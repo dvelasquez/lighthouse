@@ -222,6 +222,7 @@ module.exports = [
               _minChromiumMilestone: 86,
               name: 'anim',
               failureReasonsMask: 8224,
+              unsupportedProperties: ['background-color'],
             },
           ],
         },
@@ -323,14 +324,14 @@ module.exports = [
                   items: [
                     {
                       // From JavaScript `.animate` which has no animation display name
-                      failureReason: 'Unsupported CSS Property',
+                      failureReason: 'Unsupported CSS Properties: width',
                     },
                     {
-                      failureReason: 'Unsupported CSS Property',
+                      failureReason: 'Unsupported CSS Properties: height',
                       animation: 'alpha',
                     },
                     {
-                      failureReason: 'Unsupported CSS Property',
+                      failureReason: 'Unsupported CSS Properties: background-color',
                       animation: 'beta',
                     },
                   ],
