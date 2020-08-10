@@ -36,13 +36,15 @@ function getUniqueFailingRules(fontSizeArtifact) {
   /** @type {Map<string, FailingNodeData>} */
   const failingRules = new Map();
 
-  fontSizeArtifact.forEach(({cssRule, fontSize, textLength, node}) => {
-    const artifactId = getFontArtifactId(cssRule, node);
+  fontSizeArtifact.forEach((failingNodeData) => {
+    const {nodeId, cssRule, fontSize, textLength, parentNode} = failingNodeData;
+    const artifactId = getFontArtifactId(cssRule, parentNode, nodeId);
     const failingRule = failingRules.get(artifactId);
 
     if (!failingRule) {
       failingRules.set(artifactId, {
-        node,
+        nodeId,
+        parentNode,
         cssRule,
         fontSize,
         textLength,
@@ -76,7 +78,7 @@ function getAttributeMap(attributes = []) {
 
 /**
  * TODO: return unique selector, like axe-core does, instead of just id/class/name of a single node
- * @param {FailingNodeData['node']} node
+ * @param {FailingNodeData['parentNode']} node
  * @returns {string}
  */
 function getSelector(node) {
@@ -91,11 +93,11 @@ function getSelector(node) {
     }
   }
 
-  return node.localName.toLowerCase();
+  return node.nodeName.toLowerCase();
 }
 
 /**
- * @param {FailingNodeData['node']} node
+ * @param {FailingNodeData['parentNode']} node
  * @return {LH.Audit.Details.NodeValue}
  */
 function nodeToTableNode(node) {
@@ -107,14 +109,14 @@ function nodeToTableNode(node) {
   return {
     type: 'node',
     selector: node.parentNode ? getSelector(node.parentNode) : '',
-    snippet: `<${node.localName}${attributesString}>`,
+    snippet: `<${node.nodeName.toLowerCase()}${attributesString}>`,
   };
 }
 
 /**
  * @param {string} baseURL
  * @param {FailingNodeData['cssRule']} styleDeclaration
- * @param {FailingNodeData['node']} node
+ * @param {FailingNodeData['parentNode']} node
  * @returns {{source: LH.Audit.Details.UrlValue | LH.Audit.Details.SourceLocationValue | LH.Audit.Details.CodeValue, selector: string | LH.Audit.Details.NodeValue}}
  */
 function findStyleRuleSource(baseURL, styleDeclaration, node) {
@@ -198,16 +200,17 @@ function findStyleRuleSource(baseURL, styleDeclaration, node) {
 
 /**
  * @param {FailingNodeData['cssRule']} styleDeclaration
- * @param {FailingNodeData['node']} node
+ * @param {FailingNodeData['parentNode']} node
+ * @param {number} textNodeId
  * @return {string}
  */
-function getFontArtifactId(styleDeclaration, node) {
+function getFontArtifactId(styleDeclaration, node, textNodeId) {
   if (styleDeclaration && styleDeclaration.type === 'Regular') {
     const startLine = styleDeclaration.range ? styleDeclaration.range.startLine : 0;
     const startColumn = styleDeclaration.range ? styleDeclaration.range.startColumn : 0;
     return `${styleDeclaration.styleSheetId}@${startLine}:${startColumn}`;
   } else {
-    return `node_${node.nodeId}`;
+    return `node_${textNodeId}`;
   }
 }
 
@@ -274,9 +277,9 @@ class FontSize extends Audit {
     ];
 
     const tableData = failingRules.sort((a, b) => b.textLength - a.textLength)
-      .map(({cssRule, textLength, fontSize, node}) => {
+      .map(({cssRule, textLength, fontSize, parentNode}) => {
         const percentageOfAffectedText = textLength / totalTextLength * 100;
-        const origin = findStyleRuleSource(pageUrl, cssRule, node);
+        const origin = findStyleRuleSource(pageUrl, cssRule, parentNode);
 
         return {
           source: origin.source,
