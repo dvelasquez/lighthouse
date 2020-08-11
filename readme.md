@@ -388,9 +388,6 @@ Other awesome open source projects that use Lighthouse.
 * **[performance-budgets](https://performance-budgets.netlify.com/)** - Easily assert Lighthouse budgets with Docker.
 * **[pwmetrics](https://github.com/paulirish/pwmetrics/)** - Gather performance metrics
 * **[react-lighthouse-viewer](https://www.npmjs.com/package/react-lighthouse-viewer)** - Render a Lighthouse JSON report in a React Component.
-* **[react2-lighthouse-viewer](https://github.com/dvelasquez/lighthouse-viewer/tree/main/packages/react2-lighthouse-viewer)** - Render a Lighthouse JSON report in a React Component, based on [lighthouse-viewer](https://github.com/dvelasquez/lighthouse-viewer/tree/main/packages/lighthouse-viewer).
-* **[svelte-lighthouse-viewer](https://github.com/dvelasquez/lighthouse-viewer/tree/main/packages/svelte-lighthouse-viewer)** - Render a Lighthouse JSON report in a Svelte Component, based on [lighthouse-viewer](https://github.com/dvelasquez/lighthouse-viewer/tree/main/packages/vue-lighthouse-viewer).
-* **[vue-lighthouse-viewer](https://github.com/dvelasquez/lighthouse-viewer/tree/main/packages/lighthouse-viewer)** - Render a Lighthouse JSON report in a Vue Component, based on [lighthouse-viewer](https://github.com/dvelasquez/lighthouse-viewer/tree/main/packages/lighthouse-viewer).
 * **[webpack-lighthouse-plugin](https://github.com/addyosmani/webpack-lighthouse-plugin)** - Run Lighthouse from a Webpack build.
 * **[is-website-vulnerable](https://github.com/lirantal/is-website-vulnerable)** - An open source Node.js CLI tool that finds publicly known security vulnerabilities in a website's frontend JavaScript libraries.
 * **[cypress-audit](https://github.com/mfrachet/cypress-audit)** - Run Lighthouse and Pa11y audits directly in your E2E test suites.
